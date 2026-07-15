@@ -1,0 +1,45 @@
+{
+  "openai": {
+    "sources": [
+      "https://developers.openai.com/api/docs/models"
+    ],
+    "lastChecked": "2026-07-16",
+    "notes": "Also checked individual model pages, e.g. /models/gpt-5.6-sol, /models/gpt-5.4."
+  },
+  "anthropic": {
+    "sources": [
+      "https://platform.claude.com/docs/en/about-claude/models/overview"
+    ],
+    "lastChecked": "2026-07-16",
+    "notes": ""
+  },
+  "google": {
+    "sources": [
+      "https://ai.google.dev/gemini-api/docs/models"
+    ],
+    "lastChecked": "2026-07-16",
+    "notes": "Also checked individual per-model spec pages."
+  },
+  "zai": {
+    "sources": [
+      "https://docs.z.ai/guides/llm/glm-5.2",
+      "https://z.ai/subscribe"
+    ],
+    "lastChecked": "2026-07-16",
+    "notes": "z.ai/subscribe used to confirm glm-5.2 is the default for both general and GLM Coding Plan use."
+  },
+  "minimax": {
+    "sources": [
+      "https://platform.minimax.io/docs/api-reference/api-overview"
+    ],
+    "lastChecked": "2026-07-16",
+    "notes": ""
+  },
+  "deepseek": {
+    "sources": [
+      "https://api-docs.deepseek.com/quick_start/pricing/"
+    ],
+    "lastChecked": "2026-07-16",
+    "notes": ""
+  }
+}
