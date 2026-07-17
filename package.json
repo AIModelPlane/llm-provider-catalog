@@ -1,6 +1,6 @@
 {
   "name": "llm-provider-catalog",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A community-maintained registry of LLM provider metadata (base URLs, protocols, model lists, usage/quota lookups) for building AI gateways and routers.",
   "repository": {
     "type": "git",
