@@ -6,10 +6,10 @@ import openrouter from './openrouter';
 import novitaAi from './novita-ai';
 import minimaxGlobal from './minimax/minimax-global';
 import minimaxChina from './minimax/minimax-china';
-import zaiIntl from './zai/zai-intl';
-import zaiChina from './zai/glm-china';
-import glmCodingGlobal from './zai/zai-coding-intl';
-import glmCodingChina from './zai/glm-coding-china';
+import zai from './zai/zai';
+import zhipu from './zai/zhipu';
+import zaiCoding from './zai/zai-coding';
+import zhipuCoding from './zai/zhipu-coding';
 import minimaxCodingGlobal from './minimax/minimax-coding-global';
 import minimaxCodingChina from './minimax/minimax-coding-china';
 import deepseek from './deepseek';
@@ -29,10 +29,10 @@ export const PROVIDER_CATALOG: CatalogProvider[] = [
   google,
   minimaxGlobal,
   minimaxChina,
-  zaiIntl,
-  zaiChina,
-  glmCodingGlobal,
-  glmCodingChina,
+  zai,
+  zhipu,
+  zaiCoding,
+  zhipuCoding,
   minimaxCodingGlobal,
   openrouter,
   novitaAi,

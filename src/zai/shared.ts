@@ -6,7 +6,7 @@ import { ProviderUsageResult, QuotaWindow } from '../types';
 // Auth: Authorization: {key}  (no Bearer prefix)
 // The public OpenAPI spec does not expose a currency balance endpoint. This
 // monitor endpoint returns rolling quota windows used by the Z.ai dashboard.
-// Shared by zai-intl, zai-china, glm-coding-global, glm-coding-china.
+// Shared by zai, zhipu, zai-coding, zhipu-coding.
 // ---------------------------------------------------------------------------
 
 interface ZaiLimit {

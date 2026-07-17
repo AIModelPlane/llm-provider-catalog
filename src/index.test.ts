@@ -37,19 +37,19 @@ describe('catalog fetchUsage', () => {
 
   it.each([
     [
-      'zai-china',
+      'zhipu',
       'https://open.bigmodel.cn/api/monitor/usage/quota/limit',
-      'Z.AI / Zhipu (China)',
+      'Zhipu / BigModel (China)',
     ],
     [
-      'glm-coding-global',
+      'zai-coding',
       'https://api.z.ai/api/monitor/usage/quota/limit',
-      'GLM Coding Plan (Global)',
+      'Z.AI Coding Plan',
     ],
     [
-      'glm-coding-china',
+      'zhipu-coding',
       'https://open.bigmodel.cn/api/monitor/usage/quota/limit',
-      'GLM Coding Plan (China)',
+      'Zhipu Coding Plan (China)',
     ],
   ])(
     '%s queries Z.ai quota endpoint',
@@ -103,19 +103,18 @@ describe('catalog fetchUsage', () => {
         ),
       );
 
-    const result =
-      await getCatalogProvider('zai-china')!.fetchUsage!('bad-key');
+    const result = await getCatalogProvider('zhipu')!.fetchUsage!('bad-key');
 
     expect(result).toEqual({
       ok: false,
-      provider: 'Z.AI / Zhipu (China)',
+      provider: 'Zhipu / BigModel (China)',
       error: 'token expired',
     });
   });
 
-  it('zai-intl does not support usage query (no public balance API for pay-as-you-go accounts)', async () => {
+  it('zai does not support usage query (no public balance API for pay-as-you-go accounts)', async () => {
     await expect(
-      getCatalogProvider('zai-intl')!.fetchUsage!('any-key'),
-    ).rejects.toThrow('zai-intl does not support usage query');
+      getCatalogProvider('zai')!.fetchUsage!('any-key'),
+    ).rejects.toThrow('zai does not support usage query');
   });
 });

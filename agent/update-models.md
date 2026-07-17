@@ -11,7 +11,7 @@ model catalog (docs / model list / changelog page), then update the correspondin
 | OpenAI | `src/openai/models.ts` | `OPENAI_MODELS` |
 | Anthropic | `src/anthropic/models.ts` | `ANTHROPIC_MODELS` |
 | Google Gemini | `src/google/models.ts` | `GOOGLE_MODELS` |
-| Z.ai / GLM | `src/zai/models.ts` | `ZAI_MODELS`, `GLM_CODING_MODELS` |
+| Zhipu (Z.AI / BigModel, GLM models) | `src/zai/models.ts` | `ZAI_MODELS`, `GLM_CODING_MODELS` |
 | MiniMax | `src/minimax/models.ts` | `MINIMAX_MODELS` |
 | DeepSeek | `src/deepseek/index.ts` | inline `DEEPSEEK_MODELS` const |
 

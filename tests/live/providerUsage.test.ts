@@ -76,12 +76,12 @@ describe('provider fetchUsage — live API', () => {
   );
 
   it(
-    'glm-coding-global: returns 5h and/or 1w quota windows',
-    withKey('glm_coding_global', async (key) => {
-      const cat = getCatalogProvider('glm-coding-global')!;
+    'zai-coding: returns 5h and/or 1w quota windows',
+    withKey('zai_coding', async (key) => {
+      const cat = getCatalogProvider('zai-coding')!;
       expect(cat.fetchUsage).toBeDefined();
       const result = await cat.fetchUsage!(key);
-      console.log('glm-coding-global usage:', JSON.stringify(result, null, 2));
+      console.log('zai-coding usage:', JSON.stringify(result, null, 2));
       expect(result.ok).toBe(true);
       expect(result.quotas).toBeDefined();
       const has5h = result.quotas?.['5h'] !== undefined;
@@ -96,12 +96,12 @@ describe('provider fetchUsage — live API', () => {
   );
 
   it(
-    'glm-coding-china: returns quota windows',
-    withKey('glm_coding_china', async (key) => {
-      const cat = getCatalogProvider('glm-coding-china')!;
+    'zhipu-coding: returns quota windows',
+    withKey('zhipu_coding', async (key) => {
+      const cat = getCatalogProvider('zhipu-coding')!;
       expect(cat.fetchUsage).toBeDefined();
       const result = await cat.fetchUsage!(key);
-      console.log('glm-coding-china usage:', JSON.stringify(result, null, 2));
+      console.log('zhipu-coding usage:', JSON.stringify(result, null, 2));
       expect(result.ok).toBe(true);
       expect(result.quotas).toBeDefined();
     })
@@ -159,24 +159,24 @@ describe('provider fetchUsage — live API', () => {
   );
 
   it(
-    'zai-intl: does not support usage query (no public balance API for pay-as-you-go accounts)',
-    withKey('glm', async () => {
-      const cat = getCatalogProvider('zai-intl')!;
+    'zai: does not support usage query (no public balance API for pay-as-you-go accounts)',
+    withKey('zai', async () => {
+      const cat = getCatalogProvider('zai')!;
       expect(cat.fetchUsage).toBeDefined();
       await expect(cat.fetchUsage!('any-key')).rejects.toThrow(
-        'zai-intl does not support usage query'
+        'zai does not support usage query'
       );
     })
   );
 
   it(
-    'zai-china: returns quota windows',
-    withKey('zai_china', async (key) => {
-      const cat = getCatalogProvider('zai-china')!;
+    'zhipu: returns quota windows',
+    withKey('zhipu', async (key) => {
+      const cat = getCatalogProvider('zhipu')!;
       expect(cat.fetchUsage).toBeDefined();
       const result = await cat.fetchUsage!(key);
-      console.log('zai-china usage:', JSON.stringify(result, null, 2));
-      expect(result.provider).toBe('Z.AI / Zhipu (China)');
+      console.log('zhipu usage:', JSON.stringify(result, null, 2));
+      expect(result.provider).toBe('Zhipu / BigModel (China)');
       if (result.ok) {
         expect(result.quotas).toBeDefined();
       } else {

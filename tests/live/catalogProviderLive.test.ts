@@ -15,19 +15,19 @@
  * Credentials — copy .usage-creds.json.example to tests/live/.usage-creds.json
  * (gitignored) and fill in real API keys:
  *   {
- *     "glm": "...",          // → zai-intl
- *     "glm_coding_global": "...",
+ *     "zai": "...",
+ *     "zai_coding": "...",
  *     "minimax_coding_global": "...",
  *     "deepseek": "...",
  *     ...
  *   }
  *
- * Credential key = catalog ID with hyphens → underscores, except CRED_KEY_MAP
- * overrides. Auth headers are the two schemes every catalog entry's protocol
- * implies: `Authorization: Bearer <key>` for openai-protocol endpoints,
- * `x-api-key: <key>` for anthropic-protocol endpoints — this library only
- * asserts against the provider's raw HTTP API, not any particular gateway's
- * request-transform layer.
+ * Credential key = catalog ID with hyphens → underscores. Auth headers are the
+ * two schemes every catalog entry's protocol implies: `Authorization: Bearer
+ * <key>` for openai-protocol endpoints, `x-api-key: <key>` for
+ * anthropic-protocol endpoints — this library only asserts against the
+ * provider's raw HTTP API, not any particular gateway's request-transform
+ * layer.
  */
 
 import { existsSync, readFileSync } from 'fs';
@@ -42,12 +42,8 @@ const creds: Record<string, string> = existsSync(credsPath)
   ? JSON.parse(readFileSync(credsPath, 'utf8'))
   : {};
 
-const CRED_KEY_MAP: Record<string, string> = {
-  'zai-intl': 'glm',
-  'zai-china': 'glm_coding_china',
-};
 function credKey(catalogId: string): string {
-  return CRED_KEY_MAP[catalogId] ?? catalogId.replace(/-/g, '_');
+  return catalogId.replace(/-/g, '_');
 }
 function apiKey(cat: CatalogProvider): string | undefined {
   const k = creds[credKey(cat.id)];
@@ -431,11 +427,11 @@ describe('catalog provider live', () => {
   }
 
   // Usage/balance API: one describe per catalog provider that implements fetchUsage.
-  // zai-intl is excluded — it intentionally throws (no public balance API for
+  // zai is excluded — it intentionally throws (no public balance API for
   // pay-as-you-go accounts), which is covered by its own unit test instead.
   for (const cat of PROVIDER_CATALOG) {
     const key = apiKey(cat);
-    if (!key || typeof cat.fetchUsage !== 'function' || cat.id === 'zai-intl')
+    if (!key || typeof cat.fetchUsage !== 'function' || cat.id === 'zai')
       continue;
 
     describe(`${cat.label} (${cat.id}) — usage/balance API`, () => {
