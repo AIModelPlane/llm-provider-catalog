@@ -1,23 +1,24 @@
 import { CatalogProvider, ProviderUsageResult } from '../../types';
 import { fetchZaiQuotas } from '../shared';
-import { ZAI_MODELS } from '../models';
+import { GLM_CODING_MODELS } from '../models';
 
 const entry: CatalogProvider = {
-  id: 'zai-china',
-  label: 'Z.AI / Zhipu (China)',
-  brandId: 'zai',
+  id: 'zai-coding',
+  label: 'Z.AI Coding Plan',
+  brandId: 'zhipu',
+  codingPlan: true,
   provider: 'z-ai',
   protocols: ['openai', 'anthropic'],
   baseURLs: {
-    openai: 'https://open.bigmodel.cn/api/paas/v4',
-    anthropic: 'https://open.bigmodel.cn/api/anthropic',
+    openai: 'https://api.z.ai/api/coding/paas/v4',
+    anthropic: 'https://api.z.ai/api/anthropic/v1',
   },
-  models: ZAI_MODELS,
+  models: GLM_CODING_MODELS,
   async fetchUsage(apiKey: string): Promise<ProviderUsageResult> {
     return fetchZaiQuotas(
       apiKey,
-      'https://open.bigmodel.cn/api/monitor/usage/quota/limit',
-      'Z.AI / Zhipu (China)',
+      'https://api.z.ai/api/monitor/usage/quota/limit',
+      'Z.AI Coding Plan',
     );
   },
 };

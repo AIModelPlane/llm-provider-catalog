@@ -1,6 +1,6 @@
 import { CatalogModel } from '../types';
 
-// Shared by zai-intl, glm-china.
+// Shared by zai, zhipu.
 export const ZAI_MODELS: CatalogModel[] = [
   {
     id: 'glm-5.2',
@@ -59,7 +59,7 @@ export const ZAI_MODELS: CatalogModel[] = [
   },
 ];
 
-// Shared by zai-coding-intl, glm-coding-china.
+// Shared by zai-coding, zhipu-coding.
 export const GLM_CODING_MODELS: CatalogModel[] = [
   {
     id: 'glm-5.2',

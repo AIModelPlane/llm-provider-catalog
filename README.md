@@ -19,12 +19,12 @@ import { listCatalogProviders, getCatalogProvider } from 'llm-provider-catalog';
 
 const providers = listCatalogProviders();
 
-const zai = getCatalogProvider('zai-intl');
+const zai = getCatalogProvider('zai');
 console.log(zai?.baseURLs.openai); // https://api.z.ai/api/paas/v4
 
-const glmCoding = getCatalogProvider('glm-coding-global');
-if (glmCoding?.fetchUsage) {
-  const usage = await glmCoding.fetchUsage(apiKey);
+const zaiCoding = getCatalogProvider('zai-coding');
+if (zaiCoding?.fetchUsage) {
+  const usage = await zaiCoding.fetchUsage(apiKey);
   console.log(usage.quotas);
 }
 ```
@@ -33,7 +33,7 @@ if (glmCoding?.fetchUsage) {
 
 ```ts
 export interface CatalogProvider {
-  id: string; // unique catalog id, e.g. "openai" or "zai-china"
+  id: string; // unique catalog id, e.g. "openai" or "zhipu"
   label: string; // human-readable display name
   brandId?: string; // groups multiple catalog entries under one brand (e.g. minimax coding plan + standard plan)
   codingPlan?: boolean; // flags a coding-plan-specific entry (separate quota/billing from the standard plan)
@@ -57,8 +57,8 @@ As of this writing, these providers have **not** been exercised against a live a
 - `google` (Gemini)
 - `minimax-global` (Minimax standard plan)
 - `minimax-china` (Minimax standard plan, China)
-- `zai-china` (Z.AI / Zhipu, China)
-- `glm-coding-china` (GLM Coding Plan, China)
+- `zhipu` (Zhipu / BigModel, China)
+- `zhipu-coding` (Zhipu Coding Plan, China)
 - `minimax-coding-china` (Minimax Coding Plan, China)
 
 ## Contributing
