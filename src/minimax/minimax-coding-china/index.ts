@@ -14,6 +14,9 @@ const entry: CatalogProvider = {
     anthropic: 'https://api.minimax.com/anthropic/v1',
   },
   models: MINIMAX_MODELS,
+  reasoning: {
+    openai: { kind: 'passthrough-object', param: 'reasoning' },
+  },
   async fetchUsage(apiKey: string): Promise<ProviderUsageResult> {
     const res = await fetch('https://api.minimaxi.com/v1/token_plan/remains', {
       headers: {

@@ -23,6 +23,12 @@ const entry: CatalogProvider = {
     anthropic: 'https://api.deepseek.com/anthropic',
   },
   models: DEEPSEEK_MODELS,
+  reasoning: {
+    openai: [
+      { kind: 'effort-scalar', param: 'reasoning_effort' },
+      { kind: 'thinking-object', param: 'thinking' },
+    ],
+  },
   async fetchUsage(apiKey: string): Promise<ProviderUsageResult> {
     const res = await fetch('https://api.deepseek.com/user/balance', {
       headers: {

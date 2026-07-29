@@ -8,6 +8,9 @@ const entry: CatalogProvider = {
   protocols: ['openai'],
   baseURLs: {},
   models: OPENAI_MODELS,
+  reasoning: {
+    openai: { kind: 'effort-scalar', param: 'reasoning_effort' },
+  },
   async fetchUsage(apiKey: string): Promise<ProviderUsageResult> {
     // Unofficial endpoint — works for prepaid accounts; may return 403 for org-billed accounts
     const res = await fetch(

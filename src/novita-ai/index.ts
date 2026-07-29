@@ -12,6 +12,9 @@ const entry: CatalogProvider = {
     openai: 'https://api.novita.ai/v3/openai/v1',
   },
   models: [],
+  reasoning: {
+    openai: { kind: 'passthrough-object', param: 'reasoning' },
+  },
   async fetchUsage(apiKey: string): Promise<ProviderUsageResult> {
     const res = await fetch(
       'https://api.novita.ai/openapi/v1/billing/balance/detail',
