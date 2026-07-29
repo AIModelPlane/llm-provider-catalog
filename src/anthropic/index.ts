@@ -6,7 +6,7 @@ const entry: CatalogProvider = {
   label: 'Anthropic',
   provider: 'anthropic',
   protocols: ['anthropic'],
-  baseURLs: {},
+  baseURLs: { anthropic: 'https://api.anthropic.com/v1' },
   models: ANTHROPIC_MODELS,
   reasoning: {
     anthropic: {

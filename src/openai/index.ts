@@ -6,7 +6,7 @@ const entry: CatalogProvider = {
   label: 'OpenAI',
   provider: 'openai',
   protocols: ['openai'],
-  baseURLs: {},
+  baseURLs: { openai: 'https://api.openai.com/v1' },
   models: OPENAI_MODELS,
   reasoning: {
     openai: { kind: 'effort-scalar', param: 'reasoning_effort' },
