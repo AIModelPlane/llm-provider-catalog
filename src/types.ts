@@ -69,8 +69,11 @@ export type ReasoningMapping =
   // Forward the normalized ReasoningInput object verbatim under `param`;
   // omitted when reasoning is absent or would be empty.
   | { kind: 'passthrough-object'; param: string }
+  // Escape hatch for encodings that can't be expressed declaratively (e.g.
+  // per-model rewrites). `fn`'s return value is written verbatim under `param`.
   | {
       kind: 'custom';
+      param: string;
       fn: (
         input: ReasoningInput | undefined,
         ctx: { model?: string },

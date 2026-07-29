@@ -11,7 +11,11 @@ const entry: CatalogProvider = {
   },
   models: [],
   reasoning: {
-    openai: { kind: 'custom', fn: openrouterReasoningMapping },
+    openai: {
+      kind: 'custom',
+      param: 'reasoning',
+      fn: openrouterReasoningMapping,
+    },
   },
   async fetchUsage(apiKey: string): Promise<ProviderUsageResult> {
     const res = await fetch('https://openrouter.ai/api/v1/credits', {
