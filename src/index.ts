@@ -21,6 +21,8 @@ export type {
   ModelCapability,
   ProviderUsageResult,
   QuotaWindow,
+  ReasoningInput,
+  ReasoningMapping,
 } from './types';
 
 export const PROVIDER_CATALOG: CatalogProvider[] = [

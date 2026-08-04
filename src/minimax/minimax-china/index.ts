@@ -12,6 +12,9 @@ const entry: CatalogProvider = {
     anthropic: 'https://api.minimax.com/anthropic/v1',
   },
   models: MINIMAX_MODELS,
+  reasoning: {
+    openai: { kind: 'passthrough-object', param: 'reasoning' },
+  },
 };
 
 export default entry;

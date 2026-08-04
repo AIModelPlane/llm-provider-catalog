@@ -1,4 +1,5 @@
 import { CatalogProvider, ProviderUsageResult } from '../types';
+import { openrouterReasoningMapping } from './reasoning';
 
 const entry: CatalogProvider = {
   id: 'openrouter',
@@ -9,6 +10,13 @@ const entry: CatalogProvider = {
     openai: 'https://openrouter.ai/api/v1',
   },
   models: [],
+  reasoning: {
+    openai: {
+      kind: 'custom',
+      param: 'reasoning',
+      fn: openrouterReasoningMapping,
+    },
+  },
   async fetchUsage(apiKey: string): Promise<ProviderUsageResult> {
     const res = await fetch('https://openrouter.ai/api/v1/credits', {
       headers: {

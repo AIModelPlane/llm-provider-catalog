@@ -14,6 +14,9 @@ const entry: CatalogProvider = {
   // glm-4-long is bigmodel.cn (zhipu) only — the international API
   // rejects it with "Unknown Model, please check the model code."
   models: ZAI_MODELS.filter((m) => m.id !== 'glm-4-long'),
+  reasoning: {
+    openai: { kind: 'thinking-object', param: 'thinking' },
+  },
   async fetchUsage(): Promise<ProviderUsageResult> {
     // This is the pay-as-you-go entry — Z.ai does not expose a public API to
     // query pay-as-you-go wallet balance (the coding-plan quota endpoint

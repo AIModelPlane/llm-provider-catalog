@@ -6,8 +6,15 @@ const entry: CatalogProvider = {
   label: 'Anthropic',
   provider: 'anthropic',
   protocols: ['anthropic'],
-  baseURLs: {},
+  baseURLs: { anthropic: 'https://api.anthropic.com/v1' },
   models: ANTHROPIC_MODELS,
+  reasoning: {
+    anthropic: {
+      kind: 'thinking-object',
+      param: 'thinking',
+      includeBudget: true,
+    },
+  },
   // Anthropic does not expose a public programmatic balance endpoint
 };
 

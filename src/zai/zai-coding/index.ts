@@ -14,6 +14,9 @@ const entry: CatalogProvider = {
     anthropic: 'https://api.z.ai/api/anthropic/v1',
   },
   models: GLM_CODING_MODELS,
+  reasoning: {
+    openai: { kind: 'thinking-object', param: 'thinking' },
+  },
   async fetchUsage(apiKey: string): Promise<ProviderUsageResult> {
     return fetchZaiQuotas(
       apiKey,
