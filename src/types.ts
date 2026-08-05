@@ -1,5 +1,36 @@
 export type ModelTokenizer = 'openai' | 'anthropic' | 'approx';
 
+/** 'file' covers document input (PDFs and similar) — matches the term
+ *  vendors/aggregators (e.g. OpenRouter) actually use for this modality. */
+export type Modality = 'text' | 'image' | 'audio' | 'video' | 'file';
+
+/** What a model accepts as input and can produce as output, beyond plain
+ *  text. Omit this field entirely for text-only models rather than writing
+ *  `{ input: ['text'], output: ['text'] }` on every entry. */
+export interface ModalitySupport {
+  input: Modality[];
+  output: Modality[];
+}
+
+/** Well-known, cross-vendor feature flags for multimodal/agentic requests.
+ *  Deliberately not a free-form string bag — only fields we can actually
+ *  verify per-vendor belong here. Omit fields the vendor doesn't document,
+ *  rather than guessing false. */
+export interface ModelFeatures {
+  /** Function/tool calling support. */
+  toolUse?: boolean;
+  /** JSON mode / strict schema output. */
+  structuredOutputs?: boolean;
+  /** Whether tool calls and image/file input can be combined in one
+   *  request — some vendors restrict vision to tool-free requests. Only
+   *  set when explicitly confirmed; omit rather than assume. */
+  toolUseWithVision?: boolean;
+  /** Sandboxed code execution as a built-in tool. */
+  codeExecution?: boolean;
+  /** Native web search as a built-in tool. */
+  webSearch?: boolean;
+}
+
 export interface ModelCapability {
   /** Required when model capability is declared. */
   contextWindowTokens: number;
@@ -7,6 +38,12 @@ export interface ModelCapability {
   tokenizer?: ModelTokenizer;
   supportsCountTokens?: boolean;
   inputTokenSafetyMargin?: number;
+  /** Modalities this model accepts/produces, when it's not plain text-in/
+   *  text-out. Omit entirely for text-only models. */
+  modalities?: ModalitySupport;
+  /** Fine-grained feature support, when the vendor documents it. Omit
+   *  entirely rather than guess. */
+  features?: ModelFeatures;
 }
 
 export type ApiProtocol = 'openai' | 'anthropic';

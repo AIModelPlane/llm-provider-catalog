@@ -40,7 +40,7 @@ export interface CatalogProvider {
   provider: string; // underlying protocol-transform identifier a gateway would route on
   protocols: ApiProtocol[]; // 'openai' | 'anthropic' — which request/response shapes this provider accepts
   baseURLs: Partial<Record<ApiProtocol, string>>; // base URL per supported protocol
-  models: CatalogModel[]; // model id, display label, and capability (context window, max output tokens, tokenizer)
+  models: CatalogModel[]; // model id, display label, and capability (context window, max output tokens, tokenizer, modalities, features)
   embeddingModels?: CatalogEmbeddingModel[]; // same shape, for providers with an embeddings endpoint
   fetchUsage?(apiKey: string): Promise<ProviderUsageResult>; // optional balance/quota lookup
   fetchModels?(apiKey?: string): Promise<FetchModelsResult>; // optional live model-id lookup
@@ -49,6 +49,8 @@ export interface CatalogProvider {
 ```
 
 `fetchModels`/`fetchEmbeddingModels` are opt-in, per-provider live lookups against the provider's own model-list API — `fetchModels` returns just the model ids currently available to a key (most providers' `/models` endpoints don't expose capability data), while `fetchEmbeddingModels` returns full `CatalogEmbeddingModel` objects where the provider's endpoint publishes capability info (currently only OpenRouter).
+
+`ModelCapability` also carries optional multimodal info: `modalities: { input: Modality[]; output: Modality[] }` (`Modality` is `'text' | 'image' | 'audio' | 'video' | 'file'`), omitted entirely for plain text-in/text-out models, and `features: { toolUse?, structuredOutputs?, toolUseWithVision?, codeExecution?, webSearch? }` for well-known cross-vendor capability flags. Both are populated from live data for OpenRouter/Novita AI (their `/models` APIs expose this directly); for other providers they're filled in only when the vendor's own docs explicitly confirm it — an unset field means "unverified," not "unsupported."
 
 Full field-level type definitions live in [`src/types.ts`](./src/types.ts).
 

@@ -3,44 +3,44 @@
     "sources": [
       "https://developers.openai.com/api/docs/models"
     ],
-    "lastChecked": "2026-07-16",
-    "notes": "Also checked individual model pages, e.g. /models/gpt-5.6-sol, /models/gpt-5.4."
+    "lastChecked": "2026-08-05",
+    "notes": "Also checked individual model pages, e.g. /models/gpt-5.6-sol, /models/gpt-5.4. 2026-08-05: added modalities/features per-model from each model's own doc page (text+image input/text output, tools/structured-outputs/code-execution/web-search confirmed for all 7); toolUseWithVision and PDF/file input left unset (not explicitly confirmed)."
   },
   "anthropic": {
     "sources": [
       "https://platform.claude.com/docs/en/about-claude/models/overview"
     ],
-    "lastChecked": "2026-07-16",
-    "notes": ""
+    "lastChecked": "2026-08-05",
+    "notes": "2026-08-05: added modalities (text+image+file input/text output, per vision/pdf-support docs) and features (toolUse/structuredOutputs/codeExecution confirmed per-model via tool-use, structured-outputs, and code-execution-tool doc pages) for all 5 models. webSearch and toolUseWithVision left unset — no per-model confirmation found."
   },
   "google": {
     "sources": [
       "https://ai.google.dev/gemini-api/docs/models"
     ],
-    "lastChecked": "2026-07-16",
-    "notes": "Also checked individual per-model spec pages."
+    "lastChecked": "2026-08-05",
+    "notes": "Also checked individual per-model spec pages. 2026-08-05: added modalities/features per-model from each model's own spec page; all 7 confirmed toolUse/structuredOutputs/codeExecution/webSearch. gemini-2.5-flash's own page states text/image/audio/video input with no PDF mentioned (unlike its siblings, which state PDF too) — verify if this changes. toolUseWithVision left unset."
   },
   "zhipu": {
     "sources": [
       "https://docs.z.ai/guides/llm/glm-5.2",
       "https://z.ai/subscribe"
     ],
-    "lastChecked": "2026-07-16",
-    "notes": "z.ai/subscribe used to confirm glm-5.2 is the default for both general and GLM Coding Plan use."
+    "lastChecked": "2026-08-05",
+    "notes": "z.ai/subscribe used to confirm glm-5.2 is the default for both general and GLM Coding Plan use. 2026-08-05: added features per-model (toolUse/structuredOutputs where each model's own docs.z.ai page confirms it); all models are text-only per docs, so modalities left unset throughout. glm-4-long has no docs.z.ai page (checked docs.bigmodel.cn instead) and no confirmable feature support, so features left unset for it specifically."
   },
   "minimax": {
     "sources": [
       "https://platform.minimax.io/docs/api-reference/api-overview"
     ],
-    "lastChecked": "2026-07-16",
-    "notes": ""
+    "lastChecked": "2026-08-05",
+    "notes": "2026-08-05: added features (toolUse, confirmed via api-overview + per-model tool_calling_guide.md on GitHub) for all models except M2-her (MiniMax's own FAQ says M2-her is text-only, no tool-calling doc found). MiniMax-M3 additionally got modalities (text+image+video input; audio explicitly NOT supported per the openai-api reference doc) — the other M2.x models are confirmed text-only via the same doc. structuredOutputs left unset — found evidence response_format/JSON-schema is NOT supported on the M2.x/M3 series specifically."
   },
   "deepseek": {
     "sources": [
       "https://api-docs.deepseek.com/quick_start/pricing/"
     ],
-    "lastChecked": "2026-07-16",
-    "notes": ""
+    "lastChecked": "2026-08-05",
+    "notes": "2026-08-05: added features (toolUse, structuredOutputs) for both models per the pricing page's model comparison table (explicit ✓ for Json Output / Tool Calls). Both are text-only per docs, so modalities left unset."
   },
   "openrouter": {
     "sources": [
