@@ -19,8 +19,13 @@ Each provider lives in its own directory under `src/<provider-id>/index.ts` and 
    - `provider` is a routing identifier a consuming gateway matches against its own provider-transform implementations — it does not need to be unique per catalog entry (e.g. `minimax-global` and `minimax-coding-global` both use `provider: 'minimax'`).
 2. Register it in `src/index.ts`: import the entry and add it to the `PROVIDER_CATALOG` array.
 3. If your provider's `fetchUsage` shares a quota/balance response shape with an existing one, add a parser to that brand's `shared.ts` instead of duplicating fetch/parse logic (see `src/zai/shared.ts`'s `fetchZaiQuotas` or `src/minimax/shared.ts`'s `parseMinimaxQuotas` for the pattern). Provider-specific quirks (e.g. a custom error message) belong in the provider's own `index.ts`, not in `shared.ts`.
-4. Add or update a test in `src/index.test.ts` if you implemented `fetchUsage` — mock `fetch`, no real credentials needed (see the existing Z.ai cases for the pattern).
-5. Run `npm run build && npm test` before opening a PR.
+4. If your provider is OpenAI-protocol-compatible with a `{baseURLs.openai}/models` endpoint returning `{ data: [{ id }] }`, implement `fetchModels` with the cross-brand `fetchOpenAiCompatModelIds` helper in `src/shared/fetchModelIds.ts` rather than duplicating the fetch/parse logic (see `src/openai/index.ts` or `src/openrouter/index.ts`). Only write a bespoke `fetchModels` (see `src/anthropic/index.ts`, `src/google/index.ts`) if the provider's models endpoint has different auth or response shape.
+5. Add or update a test in `src/index.test.ts` if you implemented `fetchUsage`, `fetchModels`, or `fetchEmbeddingModels` — mock `fetch`, no real credentials needed (see the existing Z.ai/OpenAI/Anthropic/Google cases for the pattern).
+6. Run `npm run build && npm test` before opening a PR.
+
+## OpenRouter / Novita AI model lists
+
+Unlike every other provider, `src/openrouter/models.ts` and `src/novita-ai/models.ts` are **generated files** — regenerate them with `npm run fetch-openrouter-models` / `npm run fetch-novita-models` (see `agent/scripts/`) rather than hand-editing. Both providers publish a live, unauthenticated bulk model-list API, which is far more reliable than hand-curating 100+ entries from docs. See `agent/update-models.md` for the full policy.
 
 ## Testing
 

@@ -36,7 +36,9 @@
     "format": "prettier --write \"src/**/*.ts\"",
     "format:check": "prettier --check \"src/**/*.ts\"",
     "lint": "eslint .",
-    "update-models": "bash agent/update-models.sh"
+    "update-models": "bash agent/update-models.sh",
+    "fetch-openrouter-models": "node agent/scripts/fetch-openrouter-models.mjs",
+    "fetch-novita-models": "node agent/scripts/fetch-novita-models.mjs"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

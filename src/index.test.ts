@@ -118,3 +118,156 @@ describe('catalog fetchUsage', () => {
     ).rejects.toThrow('zai does not support usage query');
   });
 });
+
+describe('catalog fetchModels', () => {
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
+  it('openai queries its models endpoint via the shared OpenAI-compat helper', async () => {
+    const fetchSpy = jest
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValueOnce(
+        new Response(
+          JSON.stringify({ data: [{ id: 'gpt-5.6-sol' }, { id: 'gpt-5.5' }] }),
+          { status: 200 },
+        ),
+      );
+
+    const result = await getCatalogProvider('openai')!.fetchModels!('key-1');
+
+    expect(fetchSpy).toHaveBeenCalledWith('https://api.openai.com/v1/models', {
+      headers: { Accept: 'application/json', Authorization: 'Bearer key-1' },
+    });
+    expect(result).toEqual({
+      ok: true,
+      provider: 'OpenAI',
+      modelIds: ['gpt-5.6-sol', 'gpt-5.5'],
+    });
+  });
+
+  it('anthropic queries its models endpoint with x-api-key/anthropic-version headers', async () => {
+    const fetchSpy = jest.spyOn(globalThis, 'fetch').mockResolvedValueOnce(
+      new Response(JSON.stringify({ data: [{ id: 'claude-opus-5' }] }), {
+        status: 200,
+      }),
+    );
+
+    const result = await getCatalogProvider('anthropic')!.fetchModels!('key-2');
+
+    expect(fetchSpy).toHaveBeenCalledWith(
+      'https://api.anthropic.com/v1/models',
+      {
+        headers: {
+          'x-api-key': 'key-2',
+          'anthropic-version': '2023-06-01',
+          Accept: 'application/json',
+        },
+      },
+    );
+    expect(result).toEqual({
+      ok: true,
+      provider: 'Anthropic',
+      modelIds: ['claude-opus-5'],
+    });
+  });
+
+  it('anthropic requires an apiKey', async () => {
+    const result = await getCatalogProvider('anthropic')!.fetchModels!();
+    expect(result).toEqual({
+      ok: false,
+      provider: 'Anthropic',
+      error: 'apiKey required',
+    });
+  });
+
+  it('google queries models.list with the apiKey as a query param and strips the models/ id prefix', async () => {
+    const fetchSpy = jest
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValueOnce(
+        new Response(
+          JSON.stringify({ models: [{ name: 'models/gemini-3.5-flash' }] }),
+          { status: 200 },
+        ),
+      );
+
+    const result = await getCatalogProvider('google')!.fetchModels!('key-3');
+
+    expect(fetchSpy).toHaveBeenCalledWith(
+      'https://generativelanguage.googleapis.com/v1beta/models?key=key-3',
+      { headers: { Accept: 'application/json' } },
+    );
+    expect(result).toEqual({
+      ok: true,
+      provider: 'Google (Gemini)',
+      modelIds: ['gemini-3.5-flash'],
+    });
+  });
+
+  it('openrouter queries its models endpoint without requiring an apiKey', async () => {
+    const fetchSpy = jest
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValueOnce(
+        new Response(
+          JSON.stringify({ data: [{ id: 'anthropic/claude-opus-5' }] }),
+          { status: 200 },
+        ),
+      );
+
+    const result = await getCatalogProvider('openrouter')!.fetchModels!();
+
+    expect(fetchSpy).toHaveBeenCalledWith(
+      'https://openrouter.ai/api/v1/models',
+      {
+        headers: { Accept: 'application/json' },
+      },
+    );
+    expect(result).toEqual({
+      ok: true,
+      provider: 'OpenRouter',
+      modelIds: ['anthropic/claude-opus-5'],
+    });
+  });
+});
+
+describe('catalog fetchEmbeddingModels', () => {
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
+  it('openrouter returns full embedding model objects', async () => {
+    const fetchSpy = jest.spyOn(globalThis, 'fetch').mockResolvedValueOnce(
+      new Response(
+        JSON.stringify({
+          data: [
+            {
+              id: 'openai/text-embedding-3-small',
+              name: 'OpenAI: Text Embedding 3 Small',
+              context_length: 8192,
+            },
+          ],
+        }),
+        { status: 200 },
+      ),
+    );
+
+    const result =
+      await getCatalogProvider('openrouter')!.fetchEmbeddingModels!();
+
+    expect(fetchSpy).toHaveBeenCalledWith(
+      'https://openrouter.ai/api/v1/models?output_modalities=embeddings',
+      { headers: { Accept: 'application/json' } },
+    );
+    expect(result).toEqual({
+      ok: true,
+      provider: 'OpenRouter',
+      models: [
+        {
+          id: 'openai/text-embedding-3-small',
+          label: 'OpenAI: Text Embedding 3 Small',
+          capability: { contextWindowTokens: 8192 },
+        },
+      ],
+    });
+  });
+});

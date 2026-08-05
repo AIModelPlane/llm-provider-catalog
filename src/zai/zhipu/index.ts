@@ -1,6 +1,7 @@
 import { CatalogProvider, ProviderUsageResult } from '../../types';
 import { fetchZaiQuotas } from '../shared';
 import { ZAI_MODELS } from '../models';
+import { fetchOpenAiCompatModelIds } from '../../shared/fetchModelIds';
 
 const entry: CatalogProvider = {
   id: 'zhipu',
@@ -21,6 +22,13 @@ const entry: CatalogProvider = {
       apiKey,
       'https://open.bigmodel.cn/api/monitor/usage/quota/limit',
       'Zhipu / BigModel (China)',
+    );
+  },
+  fetchModels(apiKey?: string) {
+    return fetchOpenAiCompatModelIds(
+      entry.baseURLs.openai!,
+      'Zhipu / BigModel (China)',
+      apiKey,
     );
   },
 };

@@ -1,8 +1,10 @@
+export type ModelTokenizer = 'openai' | 'anthropic' | 'approx';
+
 export interface ModelCapability {
   /** Required when model capability is declared. */
   contextWindowTokens: number;
   maxOutputTokens?: number;
-  tokenizer?: 'openai' | 'anthropic' | 'approx';
+  tokenizer?: ModelTokenizer;
   supportsCountTokens?: boolean;
   inputTokenSafetyMargin?: number;
 }
@@ -13,6 +15,23 @@ export interface CatalogModel {
   id: string;
   label: string;
   capability: ModelCapability;
+}
+
+/** Capability shape for an embedding model — deliberately separate from
+ *  ModelCapability: embeddings have no output-token budget, and instead
+ *  expose a fixed vector size (dimensions) where the provider publishes one. */
+export interface EmbeddingModelCapability {
+  contextWindowTokens: number;
+  /** Output vector size, when the provider publishes a fixed one. Omit
+   *  rather than guess. */
+  dimensions?: number;
+  tokenizer?: ModelTokenizer;
+}
+
+export interface CatalogEmbeddingModel {
+  id: string;
+  label: string;
+  capability: EmbeddingModelCapability;
 }
 
 export interface QuotaWindow {
@@ -36,6 +55,31 @@ export interface ProviderUsageResult {
     '5h'?: QuotaWindow;
     '1w'?: QuotaWindow;
   };
+  error?: string;
+}
+
+/** Result of a live query against a provider's own model-list endpoint.
+ *  Deliberately just ids, not full CatalogModel objects — most providers'
+ *  `/models` endpoints don't expose capability data (context window, max
+ *  output tokens, etc.), so this is an availability/entitlement check
+ *  ("which model ids does this key currently have access to"), not a
+ *  capability source. Cross-reference against `CatalogProvider.models` for
+ *  known capability info. */
+export interface FetchModelsResult {
+  ok: boolean;
+  provider: string;
+  modelIds?: string[];
+  error?: string;
+}
+
+/** Result of a live query against a provider's embedding-model-list endpoint.
+ *  Unlike FetchModelsResult, this returns full CatalogEmbeddingModel objects
+ *  since (for the providers that expose one) the embeddings listing endpoint
+ *  actually publishes usable capability data. */
+export interface FetchEmbeddingModelsResult {
+  ok: boolean;
+  provider: string;
+  models?: CatalogEmbeddingModel[];
   error?: string;
 }
 
@@ -89,6 +133,9 @@ export interface CatalogProvider {
   protocols: ApiProtocol[];
   baseURLs: Partial<Record<ApiProtocol, string>>;
   models: CatalogModel[];
+  /** Optional embedding-model catalog, parallel to `models` (chat/completions
+   *  models). Omit entirely for providers with no embeddings endpoint. */
+  embeddingModels?: CatalogEmbeddingModel[];
   /** How to encode the gateway's unified `reasoning` field into a
    *  chatComplete request, keyed by protocol. An array means "apply all of
    *  these and merge the results" (e.g. a provider that expects both a
@@ -100,4 +147,11 @@ export interface CatalogProvider {
     Record<ApiProtocol, ReasoningMapping | ReasoningMapping[]>
   >;
   fetchUsage?(apiKey: string): Promise<ProviderUsageResult>;
+  /** Live query against the provider's own model-list endpoint. Optional
+   *  apiKey since some providers (OpenRouter, Novita AI) expose this
+   *  unauthenticated. */
+  fetchModels?(apiKey?: string): Promise<FetchModelsResult>;
+  /** Live query against the provider's own embedding-model-list endpoint.
+   *  Omit entirely for providers with no such endpoint. */
+  fetchEmbeddingModels?(apiKey?: string): Promise<FetchEmbeddingModelsResult>;
 }
