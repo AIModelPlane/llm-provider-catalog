@@ -70,9 +70,20 @@ Each entry is a `CatalogModel` (see `src/types.ts`):
     tokenizer?: 'openai' | 'anthropic' | 'approx';
     supportsCountTokens?: boolean;
     inputTokenSafetyMargin?: number;
+    modalities?: { input: Modality[]; output: Modality[] }; // see below
+    features?: {
+      toolUse?: boolean;
+      structuredOutputs?: boolean;
+      toolUseWithVision?: boolean;
+      codeExecution?: boolean;
+      webSearch?: boolean;
+    };
   };
 }
 ```
+
+`Modality` is `'text' | 'image' | 'audio' | 'video' | 'file'` (`'file'` means
+document/PDF input — matches the term OpenRouter's own API uses for this).
 
 ## What to do for each provider
 
@@ -87,6 +98,29 @@ Each entry is a `CatalogModel` (see `src/types.ts`):
    vendor's published limits.
 5. Keep `id` values byte-for-byte matching what the provider's API expects (this is
    what a consuming gateway sends on the wire) — never invent or guess an id.
+6. Fill in `modalities`/`features` **only when the vendor's own docs explicitly
+   state it** for that specific model — this is prose-based research for these
+   six providers (unlike OpenRouter/Novita, none of their `/models` APIs expose
+   this), so the bar is "the docs page said so in words," not "I assume this
+   family probably supports X":
+   - `modalities`: omit the field entirely for plain text-in/text-out models
+     (don't write `{ input: ['text'], output: ['text'] }` everywhere — see the
+     OpenRouter/Novita generated files for the convention). Only add it when the
+     model's own doc page states a non-text input or output modality (e.g. "this
+     model accepts image input", "supports PDF/document upload").
+   - `features`: only set a flag when the docs explicitly confirm it for that
+     model (e.g. a "Tools: Functions" list on the model's own page, or a stated
+     "supports JSON mode/structured outputs"). Leave a flag unset (not `false`)
+     when the docs don't say — unset means "unknown," `false` would incorrectly
+     assert the vendor doesn't support it.
+   - `toolUseWithVision` is the strictest of these — only set it when the docs
+     say tool calls and image/file input can be used in the *same* request, not
+     just that both features individually exist.
+   - If a whole provider's docs don't clearly state modality/feature info
+     per-model, it's fine to leave `modalities`/`features` unset for all of that
+     provider's models this run rather than guess — note this in the model's
+     entry in `agent/model-sources.json` (see below) so a future run knows it's
+     still unverified, not deliberately omitted.
 
 ## Constraints
 

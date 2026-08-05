@@ -5,12 +5,20 @@ const DEEPSEEK_MODELS: CatalogModel[] = [
   {
     id: 'deepseek-v4-pro',
     label: 'DeepSeek V4 Pro',
-    capability: { contextWindowTokens: 1_000_000, maxOutputTokens: 384_000 },
+    capability: {
+      contextWindowTokens: 1_000_000,
+      maxOutputTokens: 384_000,
+      features: { toolUse: true, structuredOutputs: true },
+    },
   },
   {
     id: 'deepseek-v4-flash',
     label: 'DeepSeek V4 Flash',
-    capability: { contextWindowTokens: 1_000_000, maxOutputTokens: 384_000 },
+    capability: {
+      contextWindowTokens: 1_000_000,
+      maxOutputTokens: 384_000,
+      features: { toolUse: true, structuredOutputs: true },
+    },
   },
 ];
 

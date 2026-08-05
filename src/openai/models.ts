@@ -8,6 +8,13 @@ export const OPENAI_MODELS: CatalogModel[] = [
       contextWindowTokens: 1_050_000,
       maxOutputTokens: 128_000,
       tokenizer: 'openai',
+      modalities: { input: ['text', 'image'], output: ['text'] },
+      features: {
+        toolUse: true,
+        structuredOutputs: true,
+        codeExecution: true,
+        webSearch: true,
+      },
     },
   },
   {
@@ -17,6 +24,13 @@ export const OPENAI_MODELS: CatalogModel[] = [
       contextWindowTokens: 1_050_000,
       maxOutputTokens: 128_000,
       tokenizer: 'openai',
+      modalities: { input: ['text', 'image'], output: ['text'] },
+      features: {
+        toolUse: true,
+        structuredOutputs: true,
+        codeExecution: true,
+        webSearch: true,
+      },
     },
   },
   {
@@ -26,6 +40,13 @@ export const OPENAI_MODELS: CatalogModel[] = [
       contextWindowTokens: 1_050_000,
       maxOutputTokens: 128_000,
       tokenizer: 'openai',
+      modalities: { input: ['text', 'image'], output: ['text'] },
+      features: {
+        toolUse: true,
+        structuredOutputs: true,
+        codeExecution: true,
+        webSearch: true,
+      },
     },
   },
   {
@@ -35,6 +56,13 @@ export const OPENAI_MODELS: CatalogModel[] = [
       contextWindowTokens: 1_050_000,
       maxOutputTokens: 128_000,
       tokenizer: 'openai',
+      modalities: { input: ['text', 'image'], output: ['text'] },
+      features: {
+        toolUse: true,
+        structuredOutputs: true,
+        codeExecution: true,
+        webSearch: true,
+      },
     },
   },
   {
@@ -44,6 +72,13 @@ export const OPENAI_MODELS: CatalogModel[] = [
       contextWindowTokens: 1_050_000,
       maxOutputTokens: 128_000,
       tokenizer: 'openai',
+      modalities: { input: ['text', 'image'], output: ['text'] },
+      features: {
+        toolUse: true,
+        structuredOutputs: true,
+        codeExecution: true,
+        webSearch: true,
+      },
     },
   },
   {
@@ -53,6 +88,13 @@ export const OPENAI_MODELS: CatalogModel[] = [
       contextWindowTokens: 400_000,
       maxOutputTokens: 128_000,
       tokenizer: 'openai',
+      modalities: { input: ['text', 'image'], output: ['text'] },
+      features: {
+        toolUse: true,
+        structuredOutputs: true,
+        codeExecution: true,
+        webSearch: true,
+      },
     },
   },
   {
@@ -62,6 +104,13 @@ export const OPENAI_MODELS: CatalogModel[] = [
       contextWindowTokens: 400_000,
       maxOutputTokens: 128_000,
       tokenizer: 'openai',
+      modalities: { input: ['text', 'image'], output: ['text'] },
+      features: {
+        toolUse: true,
+        structuredOutputs: true,
+        codeExecution: true,
+        webSearch: true,
+      },
     },
   },
 ];

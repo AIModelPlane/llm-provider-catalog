@@ -23,11 +23,44 @@ async function fetchModelList(url) {
   return json.data;
 }
 
+// Omit modalities entirely for plain text-in/text-out models, per the
+// "no speculative/redundant fields" convention.
+function toModalities(m) {
+  const input = m.architecture?.input_modalities;
+  const output = m.architecture?.output_modalities;
+  if (!Array.isArray(input) || !Array.isArray(output)) return undefined;
+  if (
+    input.length === 1 &&
+    input[0] === 'text' &&
+    output.length === 1 &&
+    output[0] === 'text'
+  ) {
+    return undefined;
+  }
+  return { input, output };
+}
+
+// Mapping verified against OpenRouter's actual supported_parameters
+// vocabulary (fetched live) — 'tools'/'structured_outputs'/'web_search_options'
+// are the only entries with a confirmed, unambiguous meaning here.
+function toFeatures(m) {
+  const params = m.supported_parameters ?? [];
+  const features = {};
+  if (params.includes('tools')) features.toolUse = true;
+  if (params.includes('structured_outputs')) features.structuredOutputs = true;
+  if (params.includes('web_search_options')) features.webSearch = true;
+  return Object.keys(features).length > 0 ? features : undefined;
+}
+
 function toChatModel(m) {
   const capability = { contextWindowTokens: m.context_length };
   if (m.top_provider?.max_completion_tokens != null) {
     capability.maxOutputTokens = m.top_provider.max_completion_tokens;
   }
+  const modalities = toModalities(m);
+  if (modalities) capability.modalities = modalities;
+  const features = toFeatures(m);
+  if (features) capability.features = features;
   return { id: m.id, label: m.name, capability };
 }
 

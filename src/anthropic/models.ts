@@ -9,6 +9,12 @@ export const ANTHROPIC_MODELS: CatalogModel[] = [
       maxOutputTokens: 131_072,
       tokenizer: 'anthropic',
       supportsCountTokens: true,
+      modalities: { input: ['text', 'image', 'file'], output: ['text'] },
+      features: {
+        toolUse: true,
+        structuredOutputs: true,
+        codeExecution: true,
+      },
     },
   },
   {
@@ -19,6 +25,12 @@ export const ANTHROPIC_MODELS: CatalogModel[] = [
       maxOutputTokens: 131_072,
       tokenizer: 'anthropic',
       supportsCountTokens: true,
+      modalities: { input: ['text', 'image', 'file'], output: ['text'] },
+      features: {
+        toolUse: true,
+        structuredOutputs: true,
+        codeExecution: true,
+      },
     },
   },
   {
@@ -29,6 +41,12 @@ export const ANTHROPIC_MODELS: CatalogModel[] = [
       maxOutputTokens: 131_072,
       tokenizer: 'anthropic',
       supportsCountTokens: true,
+      modalities: { input: ['text', 'image', 'file'], output: ['text'] },
+      features: {
+        toolUse: true,
+        structuredOutputs: true,
+        codeExecution: true,
+      },
     },
   },
   {
@@ -39,6 +57,12 @@ export const ANTHROPIC_MODELS: CatalogModel[] = [
       maxOutputTokens: 65_536,
       tokenizer: 'anthropic',
       supportsCountTokens: true,
+      modalities: { input: ['text', 'image', 'file'], output: ['text'] },
+      features: {
+        toolUse: true,
+        structuredOutputs: true,
+        codeExecution: true,
+      },
     },
   },
   {
@@ -49,6 +73,12 @@ export const ANTHROPIC_MODELS: CatalogModel[] = [
       maxOutputTokens: 131_072,
       tokenizer: 'anthropic',
       supportsCountTokens: true,
+      modalities: { input: ['text', 'image', 'file'], output: ['text'] },
+      features: {
+        toolUse: true,
+        structuredOutputs: true,
+        codeExecution: true,
+      },
     },
   },
 ];

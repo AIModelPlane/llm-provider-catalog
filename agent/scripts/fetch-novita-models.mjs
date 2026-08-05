@@ -14,11 +14,45 @@ import path from 'node:path';
 
 const MODELS_URL = 'https://api.novita.ai/v3/openai/v1/models';
 
+// Omit modalities entirely for plain text-in/text-out models, per the
+// "no speculative/redundant fields" convention.
+function toModalities(m) {
+  const input = m.input_modalities;
+  const output = m.output_modalities;
+  if (!Array.isArray(input) || !Array.isArray(output)) return undefined;
+  if (
+    input.length === 1 &&
+    input[0] === 'text' &&
+    output.length === 1 &&
+    output[0] === 'text'
+  ) {
+    return undefined;
+  }
+  return { input, output };
+}
+
+// Mapping verified against Novita's actual `features` vocabulary (fetched
+// live) — 'function-calling'/'structured-outputs' are the only entries with
+// a confirmed, unambiguous meaning here. ('serverless'/'reasoning' are not
+// modeled: 'serverless' is an infra detail, 'reasoning' is already covered
+// by this catalog's separate reasoning-mapping schema.)
+function toFeatures(m) {
+  const list = m.features ?? [];
+  const features = {};
+  if (list.includes('function-calling')) features.toolUse = true;
+  if (list.includes('structured-outputs')) features.structuredOutputs = true;
+  return Object.keys(features).length > 0 ? features : undefined;
+}
+
 function toChatModel(m) {
   const capability = { contextWindowTokens: m.context_size };
   if (m.max_output_tokens != null) {
     capability.maxOutputTokens = m.max_output_tokens;
   }
+  const modalities = toModalities(m);
+  if (modalities) capability.modalities = modalities;
+  const features = toFeatures(m);
+  if (features) capability.features = features;
   return { id: m.id, label: m.display_name ?? m.title ?? m.id, capability };
 }
 
