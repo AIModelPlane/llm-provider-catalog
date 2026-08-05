@@ -1,6 +1,7 @@
 import { CatalogProvider, ProviderUsageResult } from '../../types';
 import { fetchZaiQuotas } from '../shared';
 import { GLM_CODING_MODELS } from '../models';
+import { fetchOpenAiCompatModelIds } from '../../shared/fetchModelIds';
 
 const entry: CatalogProvider = {
   id: 'zhipu-coding',
@@ -22,6 +23,13 @@ const entry: CatalogProvider = {
       apiKey,
       'https://open.bigmodel.cn/api/monitor/usage/quota/limit',
       'Zhipu Coding Plan (China)',
+    );
+  },
+  fetchModels(apiKey?: string) {
+    return fetchOpenAiCompatModelIds(
+      entry.baseURLs.openai!,
+      'Zhipu Coding Plan (China)',
+      apiKey,
     );
   },
 };

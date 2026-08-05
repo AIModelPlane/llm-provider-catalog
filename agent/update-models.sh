@@ -62,7 +62,7 @@ case "$harness" in
     claude -p "$prompt" \
       --add-dir "$repo_root" \
       --permission-mode acceptEdits \
-      --allowedTools "Edit,Write,Read,Glob,Grep,WebSearch,WebFetch,Bash(npm run format),Bash(npm run build),Bash(npm test),Bash(npm run test)"
+      --allowedTools "Edit,Write,Read,Glob,Grep,WebSearch,WebFetch,Bash(npm run format),Bash(npm run build),Bash(npm test),Bash(npm run test),Bash(npm run fetch-openrouter-models),Bash(npm run fetch-novita-models)"
     ;;
   codex)
     codex exec \

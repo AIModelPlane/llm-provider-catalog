@@ -1,5 +1,11 @@
-import { CatalogProvider, ProviderUsageResult } from '../types';
+import {
+  CatalogProvider,
+  ProviderUsageResult,
+  FetchEmbeddingModelsResult,
+} from '../types';
 import { openrouterReasoningMapping } from './reasoning';
+import { OPENROUTER_MODELS, OPENROUTER_EMBEDDING_MODELS } from './models';
+import { fetchOpenAiCompatModelIds } from '../shared/fetchModelIds';
 
 const entry: CatalogProvider = {
   id: 'openrouter',
@@ -9,7 +15,8 @@ const entry: CatalogProvider = {
   baseURLs: {
     openai: 'https://openrouter.ai/api/v1',
   },
-  models: [],
+  models: OPENROUTER_MODELS,
+  embeddingModels: OPENROUTER_EMBEDDING_MODELS,
   reasoning: {
     openai: {
       kind: 'custom',
@@ -35,6 +42,41 @@ const entry: CatalogProvider = {
       ok: true,
       provider: 'OpenRouter',
       balance: { total, used, remaining: total - used, currency: 'USD' },
+    };
+  },
+  fetchModels(apiKey?: string) {
+    return fetchOpenAiCompatModelIds(
+      entry.baseURLs.openai!,
+      'OpenRouter',
+      apiKey,
+    );
+  },
+  async fetchEmbeddingModels(): Promise<FetchEmbeddingModelsResult> {
+    const res = await fetch(
+      'https://openrouter.ai/api/v1/models?output_modalities=embeddings',
+      { headers: { Accept: 'application/json' } },
+    );
+    if (!res.ok) {
+      return { ok: false, provider: 'OpenRouter', error: `HTTP ${res.status}` };
+    }
+    const json = (await res.json()) as {
+      data?: Array<{ id: string; name: string; context_length: number }>;
+    };
+    if (!Array.isArray(json.data)) {
+      return {
+        ok: false,
+        provider: 'OpenRouter',
+        error: 'Invalid models response',
+      };
+    }
+    return {
+      ok: true,
+      provider: 'OpenRouter',
+      models: json.data.map((m) => ({
+        id: m.id,
+        label: m.name,
+        capability: { contextWindowTokens: m.context_length },
+      })),
     };
   },
 };

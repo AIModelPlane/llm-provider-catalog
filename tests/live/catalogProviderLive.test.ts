@@ -450,4 +450,60 @@ describe('catalog provider live', () => {
       );
     });
   }
+
+  // Model-list API: one describe per catalog provider that implements
+  // fetchModels. OpenRouter/Novita AI don't require a key for /models — every
+  // other provider does, so skip those without a credential.
+  for (const cat of PROVIDER_CATALOG) {
+    if (typeof cat.fetchModels !== 'function') continue;
+    const key = apiKey(cat);
+    if (!key && cat.id !== 'openrouter' && cat.id !== 'novita-ai') continue;
+
+    describe(`${cat.label} (${cat.id}) — fetchModels`, () => {
+      it(
+        'returns model ids',
+        async () => {
+          const result = await cat.fetchModels!(key);
+          console.log(
+            `[${cat.id}/models]`,
+            JSON.stringify(result).slice(0, 300)
+          );
+          expect(result).toBeDefined();
+          expect(typeof result.ok).toBe('boolean');
+          if (result.ok) {
+            expect(Array.isArray(result.modelIds)).toBe(true);
+            expect(result.modelIds!.length).toBeGreaterThan(0);
+          }
+        },
+        TIMEOUT
+      );
+    });
+  }
+
+  // Embedding model-list API: only providers implementing fetchEmbeddingModels
+  // (currently just OpenRouter).
+  for (const cat of PROVIDER_CATALOG) {
+    if (typeof cat.fetchEmbeddingModels !== 'function') continue;
+    const key = apiKey(cat);
+
+    describe(`${cat.label} (${cat.id}) — fetchEmbeddingModels`, () => {
+      it(
+        'returns embedding model objects',
+        async () => {
+          const result = await cat.fetchEmbeddingModels!(key);
+          console.log(
+            `[${cat.id}/embeddingModels]`,
+            JSON.stringify(result).slice(0, 300)
+          );
+          expect(result).toBeDefined();
+          expect(typeof result.ok).toBe('boolean');
+          if (result.ok) {
+            expect(Array.isArray(result.models)).toBe(true);
+            expect(result.models!.length).toBeGreaterThan(0);
+          }
+        },
+        TIMEOUT
+      );
+    });
+  }
 });

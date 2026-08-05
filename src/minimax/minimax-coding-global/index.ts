@@ -1,6 +1,7 @@
 import { CatalogProvider, ProviderUsageResult } from '../../types';
 import { parseMinimaxQuotas } from '../shared';
 import { MINIMAX_MODELS } from '../models';
+import { fetchOpenAiCompatModelIds } from '../../shared/fetchModelIds';
 
 const entry: CatalogProvider = {
   id: 'minimax-coding-global',
@@ -46,6 +47,13 @@ const entry: CatalogProvider = {
       provider: 'Minimax Coding Plan (Global)',
       quotas: parseMinimaxQuotas(json),
     };
+  },
+  fetchModels(apiKey?: string) {
+    return fetchOpenAiCompatModelIds(
+      entry.baseURLs.openai!,
+      'Minimax Coding Plan (Global)',
+      apiKey,
+    );
   },
 };
 

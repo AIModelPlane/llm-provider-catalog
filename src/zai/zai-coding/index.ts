@@ -1,6 +1,7 @@
 import { CatalogProvider, ProviderUsageResult } from '../../types';
 import { fetchZaiQuotas } from '../shared';
 import { GLM_CODING_MODELS } from '../models';
+import { fetchOpenAiCompatModelIds } from '../../shared/fetchModelIds';
 
 const entry: CatalogProvider = {
   id: 'zai-coding',
@@ -22,6 +23,13 @@ const entry: CatalogProvider = {
       apiKey,
       'https://api.z.ai/api/monitor/usage/quota/limit',
       'Z.AI Coding Plan',
+    );
+  },
+  fetchModels(apiKey?: string) {
+    return fetchOpenAiCompatModelIds(
+      entry.baseURLs.openai!,
+      'Z.AI Coding Plan',
+      apiKey,
     );
   },
 };

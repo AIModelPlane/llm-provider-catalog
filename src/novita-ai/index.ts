@@ -1,4 +1,6 @@
 import { CatalogProvider, ProviderUsageResult } from '../types';
+import { NOVITA_MODELS } from './models';
+import { fetchOpenAiCompatModelIds } from '../shared/fetchModelIds';
 
 const entry: CatalogProvider = {
   id: 'novita-ai',
@@ -11,7 +13,7 @@ const entry: CatalogProvider = {
     // (missing /v1) resolved to the wrong endpoint.
     openai: 'https://api.novita.ai/v3/openai/v1',
   },
-  models: [],
+  models: NOVITA_MODELS,
   reasoning: {
     openai: { kind: 'passthrough-object', param: 'reasoning' },
   },
@@ -38,6 +40,13 @@ const entry: CatalogProvider = {
       provider: 'Novita AI',
       balance: { remaining, total: cash, currency: 'USD' },
     };
+  },
+  fetchModels(apiKey?: string) {
+    return fetchOpenAiCompatModelIds(
+      entry.baseURLs.openai!,
+      'Novita AI',
+      apiKey,
+    );
   },
 };
 

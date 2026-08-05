@@ -15,9 +15,26 @@ model catalog (docs / model list / changelog page), then update the correspondin
 | MiniMax | `src/minimax/models.ts` | `MINIMAX_MODELS` |
 | DeepSeek | `src/deepseek/index.ts` | inline `DEEPSEEK_MODELS` const |
 
-Do **not** touch `src/openrouter/index.ts` or `src/novita-ai/index.ts` — both are
-aggregator gateways with an intentionally empty `models: []` (their model list is
-dynamic/pass-through, not a fixed catalog). Leave them as-is.
+OpenRouter and Novita AI are aggregator gateways with model lists too large and
+volatile to hand-curate from vendor docs — instead of web-searching, regenerate
+them from their live model-list APIs:
+
+- Run `npm run fetch-openrouter-models` to regenerate `src/openrouter/models.ts`
+  (`OPENROUTER_MODELS` + `OPENROUTER_EMBEDDING_MODELS`) from
+  `https://openrouter.ai/api/v1/models` and
+  `https://openrouter.ai/api/v1/models?output_modalities=embeddings`.
+- Run `npm run fetch-novita-models` to regenerate `src/novita-ai/models.ts`
+  (`NOVITA_MODELS`) from `https://api.novita.ai/v3/openai/v1/models`.
+
+Do **not** hand-edit `src/openrouter/models.ts` or `src/novita-ai/models.ts` —
+they are generated files; re-run the scripts instead. Do not hand-edit
+`src/openrouter/index.ts` / `src/novita-ai/index.ts` either, beyond what the
+scripts already wire up.
+
+Novita has no public embeddings-listing endpoint (its `/models` endpoint only
+ever returns `model_type: "chat"` entries, even though embedding models like
+bge-m3 exist) — leave `embeddingModels` unset for `novita-ai`. Don't invent an
+endpoint or hand-curate one.
 
 ## Source memory
 

@@ -1,5 +1,6 @@
 import { CatalogProvider, ProviderUsageResult } from '../../types';
 import { ZAI_MODELS } from '../models';
+import { fetchOpenAiCompatModelIds } from '../../shared/fetchModelIds';
 
 const entry: CatalogProvider = {
   id: 'zai',
@@ -23,6 +24,13 @@ const entry: CatalogProvider = {
     // rejects these accounts with "当前用户不存在coding plan").
     throw new Error(
       'zai does not support usage query — no public balance API for pay-as-you-go accounts',
+    );
+  },
+  fetchModels(apiKey?: string) {
+    return fetchOpenAiCompatModelIds(
+      entry.baseURLs.openai!,
+      'Z.AI (International)',
+      apiKey,
     );
   },
 };

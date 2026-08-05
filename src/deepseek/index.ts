@@ -1,4 +1,5 @@
 import { CatalogProvider, CatalogModel, ProviderUsageResult } from '../types';
+import { fetchOpenAiCompatModelIds } from '../shared/fetchModelIds';
 
 const DEEPSEEK_MODELS: CatalogModel[] = [
   {
@@ -65,6 +66,13 @@ const entry: CatalogProvider = {
         currency: info.currency,
       },
     };
+  },
+  fetchModels(apiKey?: string) {
+    return fetchOpenAiCompatModelIds(
+      entry.baseURLs.openai!,
+      'DeepSeek',
+      apiKey,
+    );
   },
 };
 

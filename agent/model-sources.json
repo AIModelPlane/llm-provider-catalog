@@ -41,5 +41,20 @@
     ],
     "lastChecked": "2026-07-16",
     "notes": ""
+  },
+  "openrouter": {
+    "sources": [
+      "https://openrouter.ai/api/v1/models",
+      "https://openrouter.ai/api/v1/models?output_modalities=embeddings"
+    ],
+    "lastChecked": "2026-08-04",
+    "notes": "Scripted (npm run fetch-openrouter-models), not hand-verified from vendor docs."
+  },
+  "novita-ai": {
+    "sources": [
+      "https://api.novita.ai/v3/openai/v1/models"
+    ],
+    "lastChecked": "2026-08-04",
+    "notes": "Scripted (npm run fetch-novita-models). Filters to status === 1, an inferred heuristic (not documented by Novita) for 'currently active' — re-verify if the ratio of status !== 1 entries changes drastically. No public embeddings-listing endpoint found; embeddingModels intentionally left unset."
   }
 }

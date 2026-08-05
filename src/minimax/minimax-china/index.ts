@@ -1,5 +1,6 @@
 import { CatalogProvider } from '../../types';
 import { MINIMAX_MODELS } from '../models';
+import { fetchOpenAiCompatModelIds } from '../../shared/fetchModelIds';
 
 const entry: CatalogProvider = {
   id: 'minimax-china',
@@ -14,6 +15,13 @@ const entry: CatalogProvider = {
   models: MINIMAX_MODELS,
   reasoning: {
     openai: { kind: 'passthrough-object', param: 'reasoning' },
+  },
+  fetchModels(apiKey?: string) {
+    return fetchOpenAiCompatModelIds(
+      entry.baseURLs.openai!,
+      'Minimax (China)',
+      apiKey,
+    );
   },
 };
 

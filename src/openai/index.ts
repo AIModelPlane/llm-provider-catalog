@@ -1,5 +1,6 @@
 import { CatalogProvider, ProviderUsageResult } from '../types';
 import { OPENAI_MODELS } from './models';
+import { fetchOpenAiCompatModelIds } from '../shared/fetchModelIds';
 
 const entry: CatalogProvider = {
   id: 'openai',
@@ -42,6 +43,9 @@ const entry: CatalogProvider = {
         currency: 'USD',
       },
     };
+  },
+  fetchModels(apiKey?: string) {
+    return fetchOpenAiCompatModelIds(entry.baseURLs.openai!, 'OpenAI', apiKey);
   },
 };
 
