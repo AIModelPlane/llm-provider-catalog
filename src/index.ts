@@ -33,6 +33,42 @@ export type {
   ReasoningMapping,
 } from './types';
 
+export {
+  anthropicRequestToOpenAI,
+  applyReasoningMapping,
+  openaiResponseToAnthropic,
+  openaiChunksToAnthropicEvents,
+  parseSSEStream,
+  parseOpenAIStream,
+  formatAnthropicSSEEvent,
+} from './transform';
+
+export type {
+  AnthropicImageSource,
+  AnthropicDocumentSource,
+  AnthropicContentBlock,
+  AnthropicMessage,
+  AnthropicTool,
+  AnthropicToolChoice,
+  AnthropicThinkingConfig,
+  AnthropicMessagesRequest,
+  AnthropicResponseContentBlock,
+  AnthropicStopReason,
+  AnthropicUsage,
+  AnthropicMessageResponse,
+  AnthropicStreamEvent,
+  OpenAIContentPart,
+  OpenAIToolCall,
+  OpenAIMessage,
+  OpenAITool,
+  OpenAIToolChoice,
+  OpenAIChatCompletionRequest,
+  OpenAIUsage,
+  OpenAIFinishReason,
+  OpenAIChatCompletionResponse,
+  OpenAIChatCompletionChunk,
+} from './transform';
+
 export const PROVIDER_CATALOG: CatalogProvider[] = [
   openai,
   anthropic,
