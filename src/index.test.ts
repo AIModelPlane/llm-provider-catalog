@@ -117,6 +117,77 @@ describe('catalog fetchUsage', () => {
       getCatalogProvider('zai')!.fetchUsage!('any-key'),
     ).rejects.toThrow('zai does not support usage query');
   });
+
+  it.each([
+    [
+      'kimi',
+      'https://api.moonshot.ai/v1/users/me/balance',
+      'Kimi (International)',
+      'USD',
+    ],
+    [
+      'kimi-china',
+      'https://api.moonshot.cn/v1/users/me/balance',
+      'Kimi (China)',
+      'CNY',
+    ],
+  ])(
+    '%s queries the Moonshot balance endpoint',
+    async (catalogId, endpoint, provider, currency) => {
+      const fetchSpy = jest.spyOn(globalThis, 'fetch').mockResolvedValueOnce(
+        new Response(
+          JSON.stringify({
+            code: 0,
+            status: true,
+            scode: '0x0',
+            data: {
+              available_balance: 49.58894,
+              voucher_balance: 46.58893,
+              cash_balance: 3.00001,
+            },
+          }),
+          { status: 200 },
+        ),
+      );
+
+      const result =
+        await getCatalogProvider(catalogId)!.fetchUsage!('kimi-key');
+
+      expect(fetchSpy).toHaveBeenCalledWith(endpoint, {
+        headers: {
+          Authorization: 'Bearer kimi-key',
+          Accept: 'application/json',
+        },
+      });
+      expect(result).toEqual({
+        ok: true,
+        provider,
+        balance: { remaining: 49.58894, currency },
+      });
+    },
+  );
+
+  it('returns Kimi balance API error messages', async () => {
+    jest.spyOn(globalThis, 'fetch').mockResolvedValueOnce(
+      new Response(JSON.stringify({ code: 401, status: false }), {
+        status: 200,
+      }),
+    );
+
+    const result = await getCatalogProvider('kimi')!.fetchUsage!('bad-key');
+
+    expect(result).toEqual({
+      ok: false,
+      provider: 'Kimi (International)',
+      error: 'Balance query failed (401)',
+    });
+  });
+
+  it('kimi-coding does not support usage query (no publicly documented quota API)', async () => {
+    await expect(
+      getCatalogProvider('kimi-coding')!.fetchUsage!('any-key'),
+    ).rejects.toThrow('kimi-coding does not support usage query');
+  });
 });
 
 describe('catalog fetchModels', () => {
@@ -201,6 +272,25 @@ describe('catalog fetchModels', () => {
       ok: true,
       provider: 'Google (Gemini)',
       modelIds: ['gemini-3.5-flash'],
+    });
+  });
+
+  it('kimi queries its models endpoint via the shared OpenAI-compat helper', async () => {
+    const fetchSpy = jest.spyOn(globalThis, 'fetch').mockResolvedValueOnce(
+      new Response(JSON.stringify({ data: [{ id: 'kimi-k3' }] }), {
+        status: 200,
+      }),
+    );
+
+    const result = await getCatalogProvider('kimi')!.fetchModels!('key-4');
+
+    expect(fetchSpy).toHaveBeenCalledWith('https://api.moonshot.ai/v1/models', {
+      headers: { Accept: 'application/json', Authorization: 'Bearer key-4' },
+    });
+    expect(result).toEqual({
+      ok: true,
+      provider: 'Kimi (International)',
+      modelIds: ['kimi-k3'],
     });
   });
 
