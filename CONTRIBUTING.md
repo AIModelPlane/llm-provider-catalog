@@ -27,6 +27,10 @@ Each provider lives in its own directory under `src/<provider-id>/index.ts` and 
 
 Unlike every other provider, `src/openrouter/models.ts` and `src/novita-ai/models.ts` are **generated files** — regenerate them with `npm run fetch-openrouter-models` / `npm run fetch-novita-models` (see `agent/scripts/`) rather than hand-editing. Both providers publish a live, unauthenticated bulk model-list API, which is far more reliable than hand-curating 100+ entries from docs. See `agent/update-models.md` for the full policy.
 
+## OpenAI ↔ Anthropic transform (`src/transform/`)
+
+This module is exempt from the "just metadata" convention described above — it's a deliberate, self-contained second capability (see [README.md](./README.md#optional-openai--anthropic-protocol-transform)), not something every contribution needs to touch. If you change it, keep it consistent with its confirmed v1 fidelity scope (text, tool calling, thinking via each provider's existing `reasoning` mapping, image/document/audio input, usage/token accounting) rather than incrementally bolting on more surface (server-side tools, citations, `cache_control`, video) — that's a deliberate future decision, not something to creep into piecemeal. Add tests alongside the function you change (`request.test.ts`/`response.test.ts`/`stream.test.ts`/`sse.test.ts`), mocked/no-network, following the existing per-branch style.
+
 ## Testing
 
 Two separate test surfaces:

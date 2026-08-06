@@ -54,6 +54,59 @@ export interface CatalogProvider {
 
 Full field-level type definitions live in [`src/types.ts`](./src/types.ts).
 
+## Optional: OpenAI ↔ Anthropic protocol transform
+
+A second, self-contained capability alongside the metadata catalog: a request/response/streaming transform so any provider without native Anthropic support (`protocols` excludes `'anthropic'` — currently `openai`, `google`, `openrouter`, `novita-ai`) can be called through an Anthropic Messages API shape. It's parameterized by a `CatalogProvider`, so it automatically reuses that provider's own declared `reasoning` mapping for `thinking` — no per-provider glue code.
+
+```ts
+import {
+  anthropicRequestToOpenAI,
+  openaiResponseToAnthropic,
+  openaiChunksToAnthropicEvents,
+  parseOpenAIStream,
+  formatAnthropicSSEEvent,
+  getCatalogProvider,
+} from 'llm-provider-catalog';
+
+const provider = getCatalogProvider('openai')!;
+
+// 1. Build the outgoing OpenAI-shaped request from an Anthropic-shaped one.
+const openaiRequest = anthropicRequestToOpenAI(
+  {
+    model: 'gpt-5.6-sol',
+    max_tokens: 1024,
+    thinking: { type: 'enabled', budget_tokens: 2000 },
+    messages: [{ role: 'user', content: 'Hello' }],
+  },
+  provider,
+);
+
+// 2a. Non-streaming: call the provider, then convert the response back.
+const res = await fetch(`${provider.baseURLs.openai}/chat/completions`, {
+  method: 'POST',
+  headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
+  body: JSON.stringify(openaiRequest),
+});
+const anthropicMessage = openaiResponseToAnthropic(await res.json(), { model: openaiRequest.model });
+
+// 2b. Streaming: parse the provider's raw SSE, convert chunk-by-chunk, re-serialize.
+const streamRes = await fetch(`${provider.baseURLs.openai}/chat/completions`, {
+  method: 'POST',
+  headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
+  body: JSON.stringify({ ...openaiRequest, stream: true }),
+});
+for await (const event of openaiChunksToAnthropicEvents(
+  parseOpenAIStream(streamRes.body!),
+  { model: openaiRequest.model },
+)) {
+  outgoingResponse.write(formatAnthropicSSEEvent(event));
+}
+```
+
+**v1 scope**: text, function/tool calling, thinking/reasoning (via `reasoning`), multimodal input (image, PDF/document, audio — Anthropic's own request schema has no audio content block at all, so there's nothing to map *from* on that side), and usage/token accounting (including a best-effort `reasoning_tokens` ↔ `thinking_tokens` mapping).
+
+**Explicitly out of scope**: Anthropic server-side tools (`web_search`/`code_execution` as response content blocks), citations, prompt `cache_control`, video input, batch API — none have a clean OpenAI Chat Completions equivalent.
+
 ## Live testing
 
 `npm run test:live` (see [CONTRIBUTING.md](./CONTRIBUTING.md)) exercises each catalog provider against its real API using credentials in `tests/live/.usage-creds.json` (gitignored, copy from `.usage-creds.json.example`). Cases for a provider are skipped automatically when its credential is missing.
