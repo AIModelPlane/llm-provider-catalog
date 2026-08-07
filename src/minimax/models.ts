@@ -1,6 +1,11 @@
 import { CatalogModel } from '../types';
 
 // Shared by minimax-global, minimax-china, minimax-coding-global, minimax-coding-china.
+//
+// Thinking: M3 supports `thinking: { type: 'adaptive' | 'disabled' }` (omitted
+// = adaptive). The M2.x family cannot actually be made to skip thinking —
+// they accept `type: 'disabled'` without erroring but keep thinking on, so
+// callers must not assume it took effect for these models.
 export const MINIMAX_MODELS: CatalogModel[] = [
   {
     id: 'MiniMax-M3',

@@ -13,8 +13,15 @@ const entry: CatalogProvider = {
     anthropic: 'https://api.minimax.com/anthropic/v1',
   },
   models: MINIMAX_MODELS,
+  // MiniMax's OpenAI-compat endpoint takes `thinking: { type: 'adaptive' |
+  // 'disabled' }`, not a `reasoning` passthrough. M2.x models accept
+  // `type: 'disabled'` but don't actually honor it — see MINIMAX_MODELS.
   reasoning: {
-    openai: { kind: 'passthrough-object', param: 'reasoning' },
+    openai: {
+      kind: 'thinking-object',
+      param: 'thinking',
+      enabledValue: 'adaptive',
+    },
   },
   fetchModels(apiKey?: string) {
     return fetchOpenAiCompatModelIds(

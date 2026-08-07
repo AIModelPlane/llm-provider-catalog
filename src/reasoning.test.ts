@@ -23,22 +23,22 @@ describe('CatalogProvider.reasoning coverage', () => {
     [
       'minimax-global',
       'openai',
-      { kind: 'passthrough-object', param: 'reasoning' },
+      { kind: 'thinking-object', param: 'thinking', enabledValue: 'adaptive' },
     ],
     [
       'minimax-china',
       'openai',
-      { kind: 'passthrough-object', param: 'reasoning' },
+      { kind: 'thinking-object', param: 'thinking', enabledValue: 'adaptive' },
     ],
     [
       'minimax-coding-global',
       'openai',
-      { kind: 'passthrough-object', param: 'reasoning' },
+      { kind: 'thinking-object', param: 'thinking', enabledValue: 'adaptive' },
     ],
     [
       'minimax-coding-china',
       'openai',
-      { kind: 'passthrough-object', param: 'reasoning' },
+      { kind: 'thinking-object', param: 'thinking', enabledValue: 'adaptive' },
     ],
     ['novita-ai', 'openai', { kind: 'passthrough-object', param: 'reasoning' }],
   ])(
