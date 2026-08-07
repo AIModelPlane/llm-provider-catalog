@@ -145,8 +145,15 @@ export type ReasoningMapping =
   // budget_tokens?, token_budget? }. Omitted entirely when reasoning is
   // absent. `includeBudget` controls whether max_tokens is forwarded as
   // budget_tokens/token_budget (not every provider's thinking object
-  // accepts a budget).
-  | { kind: 'thinking-object'; param: string; includeBudget?: boolean }
+  // accepts a budget). `enabledValue` overrides the `type` string used for
+  // an enabled/default request (e.g. MiniMax's `'adaptive'` in place of
+  // `'enabled'`); defaults to `'enabled'`. `'disabled'` is always used as-is.
+  | {
+      kind: 'thinking-object';
+      param: string;
+      includeBudget?: boolean;
+      enabledValue?: string;
+    }
   // Forward the normalized ReasoningInput object verbatim under `param`;
   // omitted when reasoning is absent or would be empty.
   | { kind: 'passthrough-object'; param: string }

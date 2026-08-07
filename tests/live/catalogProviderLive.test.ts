@@ -64,12 +64,27 @@ interface ThinkingConfig {
   disableAnthropic?: Record<string, unknown>;
   disableOpenAI?: Record<string, unknown>;
 }
+// M3 honors `thinking: { type: 'disabled' }`; M2.x models accept the param
+// without erroring but keep thinking on regardless (see src/minimax/models.ts).
+// Factor tests only exercise each catalog's first model, which for every
+// MiniMax entry is MiniMax-M3 (src/minimax/models.ts), so this reliably
+// proves the openai-protocol thinking mapping.
+const MINIMAX_THINKING: ThinkingConfig = {
+  openai: { thinking: { type: 'adaptive' } },
+  defaultOn: { openai: true },
+  disableOpenAI: { thinking: { type: 'disabled' } },
+};
+
 const THINKING: Record<string, ThinkingConfig> = {
   deepseek: {
     anthropic: { thinking: { type: 'enabled', budget_tokens: 512 } },
     defaultOn: { anthropic: true },
     disableAnthropic: { thinking: { type: 'disabled' } },
   },
+  'minimax-global': MINIMAX_THINKING,
+  'minimax-china': MINIMAX_THINKING,
+  'minimax-coding-global': MINIMAX_THINKING,
+  'minimax-coding-china': MINIMAX_THINKING,
 };
 
 // ---------------------------------------------------------------------------
@@ -154,6 +169,28 @@ function hasTextContent(body: unknown): boolean {
     content.some((c) => c.type === 'text') ||
     choices.some((c) => c.message?.content || c.delta?.content)
   );
+}
+
+// Anthropic responses put reasoning in a dedicated `content[].type ===
+// 'thinking'` block. OpenAI-protocol responses vary by provider: some use a
+// `reasoning_content` field, others (e.g. MiniMax's non-split default) embed
+// a `<think>...</think>` span directly inside `message.content`.
+function hasThinkingContent(
+  body: unknown,
+  protocol: 'openai' | 'anthropic'
+): boolean {
+  if (protocol === 'anthropic') {
+    const content: any[] = (body as any)?.content ?? [];
+    return content.some((c) => c.type === 'thinking');
+  }
+  const choices: any[] = (body as any)?.choices ?? [];
+  return choices.some((c) => {
+    const message = c.message ?? {};
+    if (message.reasoning_content) return true;
+    return typeof message.content === 'string'
+      ? message.content.includes('<think>')
+      : false;
+  });
 }
 
 // Coding-plan accounts have narrow rolling quotas (5h/1w windows) that
@@ -352,8 +389,7 @@ describe('catalog provider live', () => {
             }
             expect(status).toBe(200);
             expect(isValidResponse(body)).toBe(true);
-            const content: any[] = (body as any)?.content ?? [];
-            expect(content.some((c) => c.type === 'thinking')).toBe(true);
+            expect(hasThinkingContent(body, protocol)).toBe(true);
           },
           TIMEOUT
         );
@@ -386,8 +422,7 @@ describe('catalog provider live', () => {
               }
               expect(status).toBe(200);
               expect(isValidResponse(body)).toBe(true);
-              const content: any[] = (body as any)?.content ?? [];
-              expect(content.every((c) => c.type !== 'thinking')).toBe(true);
+              expect(hasThinkingContent(body, protocol)).toBe(false);
             },
             TIMEOUT
           );
