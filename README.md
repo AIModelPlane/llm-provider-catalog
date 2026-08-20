@@ -67,6 +67,9 @@ As of this writing, these providers have **not** been exercised against a live a
 - `zhipu` (Zhipu / BigModel, China)
 - `zhipu-coding` (Zhipu Coding Plan, China)
 - `minimax-coding-china` (Minimax Coding Plan, China)
+- `kimi` (Kimi / Moonshot AI, International)
+- `kimi-china` (Kimi / Moonshot AI, China)
+- `kimi-coding` (Kimi Code)
 
 ## Contributing
 

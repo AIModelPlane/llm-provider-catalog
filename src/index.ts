@@ -13,6 +13,9 @@ import zhipuCoding from './zai/zhipu-coding';
 import minimaxCodingGlobal from './minimax/minimax-coding-global';
 import minimaxCodingChina from './minimax/minimax-coding-china';
 import deepseek from './deepseek';
+import kimi from './kimi/kimi';
+import kimiChina from './kimi/kimi-china';
+import kimiCoding from './kimi/kimi-coding';
 
 export type {
   CatalogProvider,
@@ -48,6 +51,9 @@ export const PROVIDER_CATALOG: CatalogProvider[] = [
   novitaAi,
   minimaxCodingChina,
   deepseek,
+  kimi,
+  kimiChina,
+  kimiCoding,
 ];
 
 export function getCatalogProvider(id: string): CatalogProvider | undefined {

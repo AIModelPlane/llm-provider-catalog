@@ -61,5 +61,15 @@
     ],
     "lastChecked": "2026-08-20",
     "notes": "Scripted (npm run fetch-novita-models). Filters to status === 1, an inferred heuristic (not documented by Novita) for 'currently active' — re-verify if the ratio of status !== 1 entries changes drastically. No public embeddings-listing endpoint found; embeddingModels intentionally left unset."
+  },
+  "kimi": {
+    "sources": [
+      "https://platform.kimi.ai/docs/models",
+      "https://platform.kimi.ai/docs/pricing/chat-k3",
+      "https://platform.kimi.ai/docs/guide/use-kimi-vision-model",
+      "https://www.kimi.com/code/docs/en/kimi-code/models.html"
+    ],
+    "lastChecked": "2026-08-21",
+    "notes": "2026-08-21: verified KIMI_MODELS (11 models) against the model-list and vision-guide pages — no changes; per-model image/video modality already matched docs exactly. Fixed KIMI_CODING_MODELS' k3-256k, which wrongly listed video input support — the Kimi Code docs explicitly say k3-256k is image-only (video not supported), unlike k3/kimi-for-coding/kimi-for-coding-highspeed which support both. kimi-k2.5 and the moonshot-v1 series are flagged for full sunset on 2026-08-31 but still serving as of this check, so kept per the deprecated-but-still-serving rule — re-verify after that date."
   }
 }
