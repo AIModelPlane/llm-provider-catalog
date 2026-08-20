@@ -82,15 +82,6 @@ export const NOVITA_MODELS: CatalogModel[] = [
     },
   },
   {
-    id: 'deepseek/deepseek-ocr',
-    label: 'DeepSeek-OCR',
-    capability: {
-      contextWindowTokens: 8192,
-      maxOutputTokens: 8192,
-      modalities: { input: ['text', 'image'], output: ['text'] },
-    },
-  },
-  {
     id: 'deepseek/deepseek-ocr-2',
     label: 'DeepSeek-OCR 2',
     capability: {
@@ -236,6 +227,15 @@ export const NOVITA_MODELS: CatalogModel[] = [
     },
   },
   {
+    id: 'deepseek/deepseek-v4-pro-0813',
+    label: 'DeepSeek V4 Pro 0813',
+    capability: {
+      contextWindowTokens: 1048576,
+      maxOutputTokens: 393216,
+      features: { toolUse: true, structuredOutputs: true },
+    },
+  },
+  {
     id: 'deepseek/deepseek_v3',
     label: 'DeepSeek V3',
     capability: {
@@ -324,6 +324,15 @@ export const NOVITA_MODELS: CatalogModel[] = [
     },
   },
   {
+    id: 'inclusionai/ling-3.0-flash-fast',
+    label: 'Ling 3.0 Flash Fast',
+    capability: {
+      contextWindowTokens: 262144,
+      maxOutputTokens: 32768,
+      features: { toolUse: true },
+    },
+  },
+  {
     id: 'inclusionai/ring-2.6-1t',
     label: 'Ring-2.6-1T',
     capability: {
@@ -360,16 +369,11 @@ export const NOVITA_MODELS: CatalogModel[] = [
     },
   },
   {
-    id: 'meta-llama/llama-3.2-3b-instruct',
-    label: 'Llama 3.2 3B Instruct',
-    capability: { contextWindowTokens: 32768, maxOutputTokens: 32000 },
-  },
-  {
     id: 'meta-llama/llama-3.3-70b-instruct',
     label: 'Llama 3.3 70B Instruct',
     capability: {
-      contextWindowTokens: 6000,
-      maxOutputTokens: 120000,
+      contextWindowTokens: 12288,
+      maxOutputTokens: 12288,
       features: { toolUse: true, structuredOutputs: true },
     },
   },
@@ -1039,6 +1043,15 @@ export const NOVITA_MODELS: CatalogModel[] = [
   {
     id: 'zai-org/glm-5.2',
     label: 'GLM 5.2',
+    capability: {
+      contextWindowTokens: 1048576,
+      maxOutputTokens: 131072,
+      features: { toolUse: true, structuredOutputs: true },
+    },
+  },
+  {
+    id: 'zai-org/glm-5.3',
+    label: 'GLM 5.3',
     capability: {
       contextWindowTokens: 1048576,
       maxOutputTokens: 131072,

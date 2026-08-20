@@ -1,60 +1,65 @@
 {
   "openai": {
     "sources": [
-      "https://developers.openai.com/api/docs/models"
+      "https://developers.openai.com/api/docs/models",
+      "https://developers.openai.com/api/docs/deprecations"
     ],
-    "lastChecked": "2026-08-05",
-    "notes": "Also checked individual model pages, e.g. /models/gpt-5.6-sol, /models/gpt-5.4. 2026-08-05: added modalities/features per-model from each model's own doc page (text+image input/text output, tools/structured-outputs/code-execution/web-search confirmed for all 7); toolUseWithVision and PDF/file input left unset (not explicitly confirmed)."
+    "lastChecked": "2026-08-20",
+    "notes": "Re-verified all 7 models (GPT-5.6 Sol/Terra/Luna, 5.5, 5.4, 5.4-mini/nano) against each model's own doc page — no changes; ids/context/output/modalities/features all still accurate, none deprecated. Deliberately omitted: Pro reasoning-mode variants (e.g. gpt-5.6-sol-pro) and restricted 'Daybreak' cyber models (enrollment-gated). Next-gen 'Astra' teased but not yet GA with a public id."
   },
   "anthropic": {
     "sources": [
-      "https://platform.claude.com/docs/en/about-claude/models/overview"
+      "https://platform.claude.com/docs/en/about-claude/models/overview",
+      "https://platform.claude.com/docs/en/build-with-claude/context-windows"
     ],
-    "lastChecked": "2026-08-05",
-    "notes": "2026-08-05: added modalities (text+image+file input/text output, per vision/pdf-support docs) and features (toolUse/structuredOutputs/codeExecution confirmed per-model via tool-use, structured-outputs, and code-execution-tool doc pages) for all 5 models. webSearch and toolUseWithVision left unset — no per-model confirmation found."
+    "lastChecked": "2026-08-20",
+    "notes": "2026-08-20: added claude-fable-5, claude-opus-5, claude-sonnet-5 (new since 2026-08-05); kept claude-opus-4-8/claude-sonnet-4-6 (still served, not decommissioned). Fixed maxOutputTokens on all 6 models from binary-power values (131_072/65_536) to the vendor's actual round-decimal limits (128_000/64_000). webSearch left unset — no definitive per-model compatibility table found."
   },
   "google": {
     "sources": [
-      "https://ai.google.dev/gemini-api/docs/models"
+      "https://ai.google.dev/gemini-api/docs/models",
+      "https://ai.google.dev/gemini-api/docs/deprecations"
     ],
-    "lastChecked": "2026-08-05",
-    "notes": "Also checked individual per-model spec pages. 2026-08-05: added modalities/features per-model from each model's own spec page; all 7 confirmed toolUse/structuredOutputs/codeExecution/webSearch. gemini-2.5-flash's own page states text/image/audio/video input with no PDF mentioned (unlike its siblings, which state PDF too) — verify if this changes. toolUseWithVision left unset."
+    "lastChecked": "2026-08-20",
+    "notes": "2026-08-20: added gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash-lite (new since 2026-08-05); re-verified all 10 models per-model against their own doc pages, all fields already accurate. Confirmed via deprecations page that gemini-2.5-*, gemini-3.1-pro-preview and gemini-3-flash-preview have no shutdown date announced (a third-party rumor of a 2.5-series shutdown was incorrect)."
   },
   "zhipu": {
     "sources": [
-      "https://docs.z.ai/guides/llm/glm-5.2",
-      "https://z.ai/subscribe"
+      "https://docs.z.ai/guides/llm/glm-5.3",
+      "https://docs.z.ai/devpack/faq"
     ],
-    "lastChecked": "2026-08-05",
-    "notes": "z.ai/subscribe used to confirm glm-5.2 is the default for both general and GLM Coding Plan use. 2026-08-05: added features per-model (toolUse/structuredOutputs where each model's own docs.z.ai page confirms it); all models are text-only per docs, so modalities left unset throughout. glm-4-long has no docs.z.ai page (checked docs.bigmodel.cn instead) and no confirmable feature support, so features left unset for it specifically."
+    "lastChecked": "2026-08-20",
+    "notes": "2026-08-20: added glm-5.3 to ZAI_MODELS (new since 2026-08-05, docs.z.ai/guides/llm/glm-5.3). Corrected GLM_CODING_MODELS, which had wrongly mirrored most of ZAI_MODELS — docs.z.ai/devpack/faq states verbatim the Coding Plan only serves 3 models (GLM-5.3, GLM-5-Turbo, GLM-4.7); removed glm-5.2/5.1/5/4.7-flashx/4.6 from that array (GLM-5.2/5.1 requests are auto-routed to GLM-5.3 per docs.z.ai/devpack/overview). ZAI_MODELS itself unchanged otherwise."
   },
   "minimax": {
     "sources": [
-      "https://platform.minimax.io/docs/api-reference/api-overview"
+      "https://platform.minimax.io/docs/api-reference/api-overview",
+      "https://platform.minimax.io/docs/api-reference/text-chat-openai"
     ],
-    "lastChecked": "2026-08-05",
-    "notes": "2026-08-05: added features (toolUse, confirmed via api-overview + per-model tool_calling_guide.md on GitHub) for all models except M2-her (MiniMax's own FAQ says M2-her is text-only, no tool-calling doc found). MiniMax-M3 additionally got modalities (text+image+video input; audio explicitly NOT supported per the openai-api reference doc) — the other M2.x models are confirmed text-only via the same doc. structuredOutputs left unset — found evidence response_format/JSON-schema is NOT supported on the M2.x/M3 series specifically."
+    "lastChecked": "2026-08-20",
+    "notes": "2026-08-20: model lineup unchanged (M3 still newest, released Jun 2026). Added maxOutputTokens per-model from text-chat-openai's max_completion_tokens table: M3 524_288, M2.x family 204_800, M2-her 2_048. All other fields (ids, context windows, modalities, toolUse) re-verified accurate."
   },
   "deepseek": {
     "sources": [
-      "https://api-docs.deepseek.com/quick_start/pricing/"
+      "https://api-docs.deepseek.com/quick_start/pricing/",
+      "https://api-docs.deepseek.com/updates/"
     ],
-    "lastChecked": "2026-08-05",
-    "notes": "2026-08-05: added features (toolUse, structuredOutputs) for both models per the pricing page's model comparison table (explicit ✓ for Json Output / Tool Calls). Both are text-only per docs, so modalities left unset."
+    "lastChecked": "2026-08-20",
+    "notes": "2026-08-20: re-verified deepseek-v4-pro/deepseek-v4-flash (DeepSeek-V4-Pro-0813, DeepSeek-V4-Flash-0731) against the model comparison table — no changes, exact match."
   },
   "openrouter": {
     "sources": [
       "https://openrouter.ai/api/v1/models",
       "https://openrouter.ai/api/v1/models?output_modalities=embeddings"
     ],
-    "lastChecked": "2026-08-04",
+    "lastChecked": "2026-08-20",
     "notes": "Scripted (npm run fetch-openrouter-models), not hand-verified from vendor docs."
   },
   "novita-ai": {
     "sources": [
       "https://api.novita.ai/v3/openai/v1/models"
     ],
-    "lastChecked": "2026-08-04",
+    "lastChecked": "2026-08-20",
     "notes": "Scripted (npm run fetch-novita-models). Filters to status === 1, an inferred heuristic (not documented by Novita) for 'currently active' — re-verify if the ratio of status !== 1 entries changes drastically. No public embeddings-listing endpoint found; embeddingModels intentionally left unset."
   }
 }

@@ -3,6 +3,15 @@ import { CatalogModel } from '../types';
 // Shared by zai, zhipu.
 export const ZAI_MODELS: CatalogModel[] = [
   {
+    id: 'glm-5.3',
+    label: 'GLM-5.3',
+    capability: {
+      contextWindowTokens: 1_000_000,
+      maxOutputTokens: 131_072,
+      features: { toolUse: true, structuredOutputs: true },
+    },
+  },
+  {
     id: 'glm-5.2',
     label: 'GLM-5.2',
     capability: {
@@ -102,28 +111,10 @@ export const ZAI_MODELS: CatalogModel[] = [
 // Shared by zai-coding, zhipu-coding.
 export const GLM_CODING_MODELS: CatalogModel[] = [
   {
-    id: 'glm-5.2',
-    label: 'GLM-5.2',
+    id: 'glm-5.3',
+    label: 'GLM-5.3',
     capability: {
       contextWindowTokens: 1_000_000,
-      maxOutputTokens: 131_072,
-      features: { toolUse: true, structuredOutputs: true },
-    },
-  },
-  {
-    id: 'glm-5.1',
-    label: 'GLM-5.1',
-    capability: {
-      contextWindowTokens: 200_000,
-      maxOutputTokens: 131_072,
-      features: { toolUse: true, structuredOutputs: true },
-    },
-  },
-  {
-    id: 'glm-5',
-    label: 'GLM-5',
-    capability: {
-      contextWindowTokens: 200_000,
       maxOutputTokens: 131_072,
       features: { toolUse: true, structuredOutputs: true },
     },
@@ -144,24 +135,6 @@ export const GLM_CODING_MODELS: CatalogModel[] = [
       contextWindowTokens: 200_000,
       maxOutputTokens: 131_072,
       features: { toolUse: true, structuredOutputs: true },
-    },
-  },
-  {
-    id: 'glm-4.7-flashx',
-    label: 'GLM-4.7 FlashX',
-    capability: {
-      contextWindowTokens: 200_000,
-      maxOutputTokens: 131_072,
-      features: { toolUse: true, structuredOutputs: true },
-    },
-  },
-  {
-    id: 'glm-4.6',
-    label: 'GLM-4.6',
-    capability: {
-      contextWindowTokens: 200_000,
-      maxOutputTokens: 131_072,
-      features: { toolUse: true },
     },
   },
 ];
