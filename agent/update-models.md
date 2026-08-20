@@ -14,6 +14,7 @@ model catalog (docs / model list / changelog page), then update the correspondin
 | Zhipu (Z.AI / BigModel, GLM models) | `src/zai/models.ts` | `ZAI_MODELS`, `GLM_CODING_MODELS` |
 | MiniMax | `src/minimax/models.ts` | `MINIMAX_MODELS` |
 | DeepSeek | `src/deepseek/index.ts` | inline `DEEPSEEK_MODELS` const |
+| Kimi (Moonshot AI) | `src/kimi/models.ts` | `KIMI_MODELS`, `KIMI_CODING_MODELS` |
 
 OpenRouter and Novita AI are aggregator gateways with model lists too large and
 volatile to hand-curate from vendor docs — instead of web-searching, regenerate

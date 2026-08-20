@@ -109,7 +109,7 @@ export const KIMI_CODING_MODELS: CatalogModel[] = [
     label: 'Kimi K3 256k (Coding Plan)',
     capability: {
       contextWindowTokens: 262_144,
-      modalities: { input: ['text', 'image', 'video'], output: ['text'] },
+      modalities: { input: ['text', 'image'], output: ['text'] },
       features: { toolUse: true },
     },
   },
