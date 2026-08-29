@@ -35,16 +35,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
   {
     id: 'aion-labs/aion-rp-llama-3.1-8b',
     label: 'AionLabs: Aion-RP 1.0 (8B)',
-    capability: { contextWindowTokens: 32768, maxOutputTokens: 32768 },
-  },
-  {
-    id: 'allenai/olmo-3-32b-think',
-    label: 'AllenAI: Olmo 3 32B Think',
-    capability: {
-      contextWindowTokens: 65536,
-      maxOutputTokens: 65536,
-      features: { structuredOutputs: true },
-    },
+    capability: { contextWindowTokens: 32768, maxOutputTokens: 29491 },
   },
   {
     id: 'amazon/nova-2-lite-v1',
@@ -392,17 +383,8 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Arcee AI: Trinity Large Thinking',
     capability: {
       contextWindowTokens: 262144,
-      maxOutputTokens: 262144,
+      maxOutputTokens: 235929,
       features: { toolUse: true, structuredOutputs: true },
-    },
-  },
-  {
-    id: 'arcee-ai/virtuoso-large',
-    label: 'Arcee AI: Virtuoso Large',
-    capability: {
-      contextWindowTokens: 131072,
-      maxOutputTokens: 64000,
-      features: { toolUse: true },
     },
   },
   {
@@ -439,7 +421,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'ByteDance Seed: Seed 2.1 Turbo',
     capability: {
       contextWindowTokens: 262144,
-      maxOutputTokens: 262144,
+      maxOutputTokens: 235929,
       modalities: { input: ['text', 'image', 'video'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
@@ -535,14 +517,6 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     },
   },
   {
-    id: 'deepcogito/cogito-v2.1-671b',
-    label: 'Deep Cogito: Cogito v2.1 671B',
-    capability: {
-      contextWindowTokens: 128000,
-      features: { structuredOutputs: true },
-    },
-  },
-  {
     id: 'deepseek/deepseek-chat',
     label: 'DeepSeek: DeepSeek V3',
     capability: {
@@ -556,7 +530,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'DeepSeek: DeepSeek V3 0324',
     capability: {
       contextWindowTokens: 163840,
-      maxOutputTokens: 163840,
+      maxOutputTokens: 147456,
       features: { toolUse: true, structuredOutputs: true },
     },
   },
@@ -565,7 +539,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'DeepSeek: DeepSeek V3.1',
     capability: {
       contextWindowTokens: 163840,
-      maxOutputTokens: 32768,
+      maxOutputTokens: 144900,
       features: { toolUse: true, structuredOutputs: true },
     },
   },
@@ -590,14 +564,14 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
   {
     id: 'deepseek/deepseek-r1-distill-llama-70b',
     label: 'DeepSeek: R1 Distill Llama 70B',
-    capability: { contextWindowTokens: 8192, maxOutputTokens: 8192 },
+    capability: { contextWindowTokens: 8192, maxOutputTokens: 7372 },
   },
   {
     id: 'deepseek/deepseek-v3.1-terminus',
     label: 'DeepSeek: DeepSeek V3.1 Terminus',
     capability: {
       contextWindowTokens: 163840,
-      maxOutputTokens: 163840,
+      maxOutputTokens: 32768,
       features: { toolUse: true, structuredOutputs: true },
     },
   },
@@ -606,7 +580,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'DeepSeek: DeepSeek V3.2',
     capability: {
       contextWindowTokens: 163840,
-      maxOutputTokens: 65536,
+      maxOutputTokens: 147456,
       features: { toolUse: true, structuredOutputs: true },
     },
   },
@@ -633,8 +607,27 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'DeepSeek: DeepSeek V4 Flash 0731',
     capability: {
       contextWindowTokens: 1310720,
-      maxOutputTokens: 393216,
+      maxOutputTokens: 943718,
       features: { toolUse: true, structuredOutputs: true },
+    },
+  },
+  {
+    id: 'deepseek/deepseek-v4-flash-0731:batch',
+    label: 'DeepSeek: DeepSeek V4 Flash 0731 (batch)',
+    capability: {
+      contextWindowTokens: 1048576,
+      maxOutputTokens: 943718,
+      features: { toolUse: true, structuredOutputs: true },
+    },
+  },
+  {
+    id: 'deepseek/deepseek-v4-flash-vision-exp',
+    label: 'DeepSeek: DeepSeek V4 Flash Vision Exp',
+    capability: {
+      contextWindowTokens: 1048576,
+      maxOutputTokens: 384000,
+      modalities: { input: ['text', 'image'], output: ['text'] },
+      features: { toolUse: true },
     },
   },
   {
@@ -642,7 +635,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'DeepSeek: DeepSeek V4 Pro 0423',
     capability: {
       contextWindowTokens: 1048576,
-      maxOutputTokens: 393216,
+      maxOutputTokens: 384000,
       features: { toolUse: true, structuredOutputs: true },
     },
   },
@@ -651,6 +644,16 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'DeepSeek: DeepSeek V4 Pro 0813',
     capability: {
       contextWindowTokens: 1048576,
+      maxOutputTokens: 384000,
+      features: { toolUse: true, structuredOutputs: true },
+    },
+  },
+  {
+    id: 'deepseek/deepseek-v4-pro-0813:batch',
+    label: 'DeepSeek: DeepSeek V4 Pro 0813 (batch)',
+    capability: {
+      contextWindowTokens: 1048576,
+      maxOutputTokens: 943718,
       features: { toolUse: true, structuredOutputs: true },
     },
   },
@@ -659,7 +662,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Dots Studio: Dots3-Note Preview (free)',
     capability: {
       contextWindowTokens: 512000,
-      maxOutputTokens: 512000,
+      maxOutputTokens: 460800,
       modalities: { input: ['text', 'image'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
@@ -839,7 +842,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Google: Nano Banana 2 (Gemini 3.1 Flash Image Preview)',
     capability: {
       contextWindowTokens: 65536,
-      maxOutputTokens: 65536,
+      maxOutputTokens: 58982,
       modalities: { input: ['image', 'text'], output: ['image', 'text'] },
       features: { structuredOutputs: true },
     },
@@ -862,7 +865,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Google: Nano Banana 2 Lite (Gemini 3.1 Flash Lite Image)',
     capability: {
       contextWindowTokens: 65536,
-      maxOutputTokens: 65536,
+      maxOutputTokens: 58982,
       modalities: { input: ['image', 'text'], output: ['image', 'text'] },
     },
   },
@@ -1058,8 +1061,8 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     id: 'google/gemma-3-27b-it',
     label: 'Google: Gemma 3 27B',
     capability: {
-      contextWindowTokens: 262144,
-      maxOutputTokens: 131072,
+      contextWindowTokens: 131072,
+      maxOutputTokens: 117964,
       modalities: { input: ['text', 'image'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
@@ -1071,14 +1074,6 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
       contextWindowTokens: 131072,
       maxOutputTokens: 16384,
       modalities: { input: ['text', 'image'], output: ['text'] },
-      features: { structuredOutputs: true },
-    },
-  },
-  {
-    id: 'google/gemma-3n-e4b-it',
-    label: 'Google: Gemma 3n 4B',
-    capability: {
-      contextWindowTokens: 32768,
       features: { structuredOutputs: true },
     },
   },
@@ -1099,7 +1094,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
       contextWindowTokens: 262144,
       maxOutputTokens: 32768,
       modalities: { input: ['image', 'text', 'video'], output: ['text'] },
-      features: { toolUse: true, structuredOutputs: true },
+      features: { toolUse: true },
     },
   },
   {
@@ -1108,6 +1103,16 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     capability: {
       contextWindowTokens: 262144,
       maxOutputTokens: 16384,
+      modalities: { input: ['image', 'text', 'video'], output: ['text'] },
+      features: { toolUse: true, structuredOutputs: true },
+    },
+  },
+  {
+    id: 'google/gemma-4-31b-it:batch',
+    label: 'Google: Gemma 4 31B (batch)',
+    capability: {
+      contextWindowTokens: 262144,
+      maxOutputTokens: 235929,
       modalities: { input: ['image', 'text', 'video'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
@@ -1145,21 +1150,21 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'MythoMax 13B',
     capability: {
       contextWindowTokens: 8192,
-      maxOutputTokens: 4096,
+      maxOutputTokens: 3686,
       features: { structuredOutputs: true },
     },
   },
   {
     id: 'ibm-granite/granite-4.0-h-micro',
     label: 'IBM: Granite 4.0 Micro',
-    capability: { contextWindowTokens: 131000, maxOutputTokens: 131000 },
+    capability: { contextWindowTokens: 131000, maxOutputTokens: 117900 },
   },
   {
     id: 'ibm-granite/granite-4.1-8b',
     label: 'IBM: Granite 4.1 8B',
     capability: {
       contextWindowTokens: 131072,
-      maxOutputTokens: 131072,
+      maxOutputTokens: 117964,
       features: { toolUse: true, structuredOutputs: true },
     },
   },
@@ -1173,24 +1178,6 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     },
   },
   {
-    id: 'inclusionai/ling-2.6-1t',
-    label: 'inclusionAI: Ling-2.6-1T',
-    capability: {
-      contextWindowTokens: 262144,
-      maxOutputTokens: 32768,
-      features: { toolUse: true, structuredOutputs: true },
-    },
-  },
-  {
-    id: 'inclusionai/ling-2.6-flash',
-    label: 'inclusionAI: Ling-2.6-flash',
-    capability: {
-      contextWindowTokens: 262144,
-      maxOutputTokens: 32768,
-      features: { toolUse: true, structuredOutputs: true },
-    },
-  },
-  {
     id: 'inclusionai/ling-3.0-flash',
     label: 'Ling-3.0-flash',
     capability: {
@@ -1200,11 +1187,11 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     },
   },
   {
-    id: 'inclusionai/ring-2.6-1t',
-    label: 'inclusionAI: Ring-2.6-1T',
+    id: 'inclusionai/ling-3.0-flash-fin:free',
+    label: 'Ling 3.0 Flash Fin (free)',
     capability: {
       contextWindowTokens: 262144,
-      maxOutputTokens: 65536,
+      maxOutputTokens: 32768,
       features: { toolUse: true },
     },
   },
@@ -1230,7 +1217,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     id: 'kwaipilot/kat-coder-pro-v2.5',
     label: 'Kwaipilot: KAT-Coder-Pro V2.5',
     capability: {
-      contextWindowTokens: 256000,
+      contextWindowTokens: 262144,
       maxOutputTokens: 80000,
       features: { toolUse: true, structuredOutputs: true },
     },
@@ -1239,10 +1226,15 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     id: 'liquid/lfm-2.5-2.6b:free',
     label: 'LiquidAI: LFM2.5-2.6B (free)',
     capability: {
-      contextWindowTokens: 128000,
+      contextWindowTokens: 65536,
       maxOutputTokens: 8192,
       features: { toolUse: true, structuredOutputs: true },
     },
+  },
+  {
+    id: 'mancer/weaver',
+    label: 'Mancer: Weaver (alpha)',
+    capability: { contextWindowTokens: 8000, maxOutputTokens: 6000 },
   },
   {
     id: 'meituan/longcat-2.0',
@@ -1267,21 +1259,21 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Meta: Llama 3.1 8B Instruct',
     capability: {
       contextWindowTokens: 131072,
-      maxOutputTokens: 131072,
+      maxOutputTokens: 117964,
       features: { toolUse: true, structuredOutputs: true },
     },
   },
   {
     id: 'meta-llama/llama-3.2-1b-instruct',
     label: 'Meta: Llama 3.2 1B Instruct',
-    capability: { contextWindowTokens: 60000, maxOutputTokens: 60000 },
+    capability: { contextWindowTokens: 60000, maxOutputTokens: 54000 },
   },
   {
     id: 'meta-llama/llama-3.2-3b-instruct',
     label: 'Meta: Llama 3.2 3B Instruct',
     capability: {
       contextWindowTokens: 131072,
-      maxOutputTokens: 131072,
+      maxOutputTokens: 117964,
       features: { structuredOutputs: true },
     },
   },
@@ -1290,7 +1282,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Meta: Llama 3.3 70B Instruct',
     capability: {
       contextWindowTokens: 131072,
-      maxOutputTokens: 16384,
+      maxOutputTokens: 115200,
       features: { toolUse: true, structuredOutputs: true },
     },
   },
@@ -1309,7 +1301,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Meta: Llama 4 Scout',
     capability: {
       contextWindowTokens: 1310720,
-      maxOutputTokens: 16384,
+      maxOutputTokens: 8192,
       modalities: { input: ['text', 'image'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
@@ -1318,7 +1310,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     id: 'meta-llama/llama-guard-4-12b',
     label: 'Meta: Llama Guard 4 12B',
     capability: {
-      contextWindowTokens: 1048576,
+      contextWindowTokens: 163840,
       maxOutputTokens: 16384,
       modalities: { input: ['image', 'text'], output: ['text'] },
     },
@@ -1328,6 +1320,17 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Meta: Muse Glimmer 30B',
     capability: {
       contextWindowTokens: 131072,
+      maxOutputTokens: 16384,
+      modalities: { input: ['text', 'image'], output: ['text'] },
+      features: { toolUse: true, structuredOutputs: true },
+    },
+  },
+  {
+    id: 'meta/muse-glimmer-30b:batch',
+    label: 'Meta: Muse Glimmer 30B (batch)',
+    capability: {
+      contextWindowTokens: 131072,
+      maxOutputTokens: 117964,
       modalities: { input: ['text', 'image'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
@@ -1337,6 +1340,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Meta: Muse Spark 1.1',
     capability: {
       contextWindowTokens: 1048576,
+      maxOutputTokens: 943718,
       modalities: {
         input: ['text', 'image', 'video', 'file', 'audio'],
         output: ['text'],
@@ -1349,6 +1353,20 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Meta: Muse Spark 1.2',
     capability: {
       contextWindowTokens: 1048576,
+      maxOutputTokens: 943718,
+      modalities: {
+        input: ['text', 'image', 'video', 'file', 'audio'],
+        output: ['text'],
+      },
+      features: { toolUse: true, structuredOutputs: true },
+    },
+  },
+  {
+    id: 'meta/muse-spark-1.2-contributor',
+    label: 'Meta: Muse Spark 1.2 Contributor',
+    capability: {
+      contextWindowTokens: 1048576,
+      maxOutputTokens: 943718,
       modalities: {
         input: ['text', 'image', 'video', 'file', 'audio'],
         output: ['text'],
@@ -1361,7 +1379,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Microsoft: Phi 4',
     capability: {
       contextWindowTokens: 16384,
-      maxOutputTokens: 16384,
+      maxOutputTokens: 14745,
       features: { structuredOutputs: true },
     },
   },
@@ -1375,7 +1393,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'MiniMax: MiniMax-01',
     capability: {
       contextWindowTokens: 1000192,
-      maxOutputTokens: 1000192,
+      maxOutputTokens: 900172,
       modalities: { input: ['text', 'image'], output: ['text'] },
     },
   },
@@ -1416,6 +1434,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'MiniMax: MiniMax M2.5',
     capability: {
       contextWindowTokens: 204800,
+      maxOutputTokens: 128000,
       features: { toolUse: true, structuredOutputs: true },
     },
   },
@@ -1426,6 +1445,15 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
       contextWindowTokens: 204800,
       maxOutputTokens: 131072,
       features: { toolUse: true, structuredOutputs: true },
+    },
+  },
+  {
+    id: 'minimax/minimax-m2.7:free',
+    label: 'MiniMax: MiniMax M2.7 (free)',
+    capability: {
+      contextWindowTokens: 196608,
+      maxOutputTokens: 176947,
+      features: { toolUse: true },
     },
   },
   {
@@ -1443,8 +1471,19 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'MiniMax: MiniMax M3 (batch)',
     capability: {
       contextWindowTokens: 524288,
+      maxOutputTokens: 471859,
       modalities: { input: ['text', 'image', 'video'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
+    },
+  },
+  {
+    id: 'minimax/minimax-m3:free',
+    label: 'MiniMax: MiniMax M3 (free)',
+    capability: {
+      contextWindowTokens: 1048576,
+      maxOutputTokens: 943718,
+      modalities: { input: ['text', 'image', 'video'], output: ['text'] },
+      features: { toolUse: true },
     },
   },
   {
@@ -1452,6 +1491,27 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Mistral: Codestral 2508',
     capability: {
       contextWindowTokens: 256000,
+      maxOutputTokens: 204800,
+      modalities: { input: ['text', 'file'], output: ['text'] },
+      features: { toolUse: true, structuredOutputs: true },
+    },
+  },
+  {
+    id: 'mistralai/codestral-2508:batch',
+    label: 'Mistral: Codestral 2508 (batch)',
+    capability: {
+      contextWindowTokens: 256000,
+      maxOutputTokens: 204800,
+      modalities: { input: ['text', 'file'], output: ['text'] },
+      features: { toolUse: true, structuredOutputs: true },
+    },
+  },
+  {
+    id: 'mistralai/devstral-2512',
+    label: 'Mistral: Devstral 2 2512',
+    capability: {
+      contextWindowTokens: 262144,
+      maxOutputTokens: 209715,
       modalities: { input: ['text', 'file'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
@@ -1461,6 +1521,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Mistral: Ministral 3 14B 2512',
     capability: {
       contextWindowTokens: 262144,
+      maxOutputTokens: 209715,
       modalities: { input: ['text', 'image'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
@@ -1470,6 +1531,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Mistral: Ministral 3 3B 2512',
     capability: {
       contextWindowTokens: 131072,
+      maxOutputTokens: 104857,
       modalities: { input: ['text', 'image'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
@@ -1479,6 +1541,17 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Mistral: Ministral 3 8B 2512',
     capability: {
       contextWindowTokens: 262144,
+      maxOutputTokens: 209715,
+      modalities: { input: ['text', 'image'], output: ['text'] },
+      features: { toolUse: true, structuredOutputs: true },
+    },
+  },
+  {
+    id: 'mistralai/ministral-8b-2512:batch',
+    label: 'Mistral: Ministral 3 8B 2512 (batch)',
+    capability: {
+      contextWindowTokens: 262144,
+      maxOutputTokens: 209715,
       modalities: { input: ['text', 'image'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
@@ -1488,6 +1561,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Mistral Large',
     capability: {
       contextWindowTokens: 128000,
+      maxOutputTokens: 102400,
       modalities: { input: ['text', 'file'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
@@ -1497,6 +1571,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Mistral Large 2407',
     capability: {
       contextWindowTokens: 131072,
+      maxOutputTokens: 104857,
       modalities: { input: ['text', 'file'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
@@ -1506,6 +1581,17 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Mistral: Mistral Large 3 2512',
     capability: {
       contextWindowTokens: 262144,
+      maxOutputTokens: 209715,
+      modalities: { input: ['text', 'image', 'file'], output: ['text'] },
+      features: { toolUse: true, structuredOutputs: true },
+    },
+  },
+  {
+    id: 'mistralai/mistral-large-2512:batch',
+    label: 'Mistral: Mistral Large 3 2512 (batch)',
+    capability: {
+      contextWindowTokens: 262144,
+      maxOutputTokens: 209715,
       modalities: { input: ['text', 'image', 'file'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
@@ -1515,6 +1601,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Mistral: Mistral Medium 3',
     capability: {
       contextWindowTokens: 131072,
+      maxOutputTokens: 104857,
       modalities: { input: ['text', 'image', 'file'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
@@ -1524,6 +1611,17 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Mistral: Mistral Medium 3.5',
     capability: {
       contextWindowTokens: 262144,
+      maxOutputTokens: 209715,
+      modalities: { input: ['text', 'image', 'file'], output: ['text'] },
+      features: { toolUse: true, structuredOutputs: true },
+    },
+  },
+  {
+    id: 'mistralai/mistral-medium-3-5:batch',
+    label: 'Mistral: Mistral Medium 3.5 (batch)',
+    capability: {
+      contextWindowTokens: 262144,
+      maxOutputTokens: 209715,
       modalities: { input: ['text', 'image', 'file'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
@@ -1533,6 +1631,17 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Mistral: Mistral Medium 3.1',
     capability: {
       contextWindowTokens: 131072,
+      maxOutputTokens: 104857,
+      modalities: { input: ['text', 'image', 'file'], output: ['text'] },
+      features: { toolUse: true, structuredOutputs: true },
+    },
+  },
+  {
+    id: 'mistralai/mistral-medium-3.1:batch',
+    label: 'Mistral: Mistral Medium 3.1 (batch)',
+    capability: {
+      contextWindowTokens: 131072,
+      maxOutputTokens: 104857,
       modalities: { input: ['text', 'image', 'file'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
@@ -1551,6 +1660,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Mistral: Saba',
     capability: {
       contextWindowTokens: 32768,
+      maxOutputTokens: 26214,
       modalities: { input: ['text', 'file'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
@@ -1569,6 +1679,17 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Mistral: Mistral Small 4',
     capability: {
       contextWindowTokens: 262144,
+      maxOutputTokens: 209715,
+      modalities: { input: ['text', 'image'], output: ['text'] },
+      features: { toolUse: true, structuredOutputs: true },
+    },
+  },
+  {
+    id: 'mistralai/mistral-small-2603:batch',
+    label: 'Mistral: Mistral Small 4 (batch)',
+    capability: {
+      contextWindowTokens: 262144,
+      maxOutputTokens: 209715,
       modalities: { input: ['text', 'image'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
@@ -1578,7 +1699,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Mistral: Mistral Small 3.1 24B',
     capability: {
       contextWindowTokens: 128000,
-      maxOutputTokens: 128000,
+      maxOutputTokens: 102400,
       modalities: { input: ['text', 'image'], output: ['text'] },
     },
   },
@@ -1586,7 +1707,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     id: 'mistralai/mistral-small-3.2-24b-instruct',
     label: 'Mistral: Mistral Small 3.2 24B',
     capability: {
-      contextWindowTokens: 256000,
+      contextWindowTokens: 131072,
       maxOutputTokens: 16384,
       modalities: { input: ['image', 'text'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
@@ -1597,6 +1718,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Mistral: Mixtral 8x22B Instruct',
     capability: {
       contextWindowTokens: 65536,
+      maxOutputTokens: 52428,
       modalities: { input: ['text', 'file'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
@@ -1605,7 +1727,8 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     id: 'mistralai/voxtral-small-24b-2507',
     label: 'Mistral: Voxtral Small 24B 2507',
     capability: {
-      contextWindowTokens: 32000,
+      contextWindowTokens: 32768,
+      maxOutputTokens: 26214,
       modalities: { input: ['text', 'audio', 'file'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
@@ -1642,7 +1765,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'MoonshotAI: Kimi K2.5',
     capability: {
       contextWindowTokens: 262144,
-      maxOutputTokens: 262144,
+      maxOutputTokens: 235929,
       modalities: { input: ['text', 'image'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
@@ -1652,7 +1775,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'MoonshotAI: Kimi K2.6',
     capability: {
       contextWindowTokens: 262144,
-      maxOutputTokens: 262144,
+      maxOutputTokens: 235929,
       modalities: { input: ['text', 'image'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
@@ -1662,16 +1785,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'MoonshotAI: Kimi K2.7 Code',
     capability: {
       contextWindowTokens: 262144,
-      maxOutputTokens: 262144,
-      modalities: { input: ['text', 'image'], output: ['text'] },
-      features: { toolUse: true, structuredOutputs: true },
-    },
-  },
-  {
-    id: 'moonshotai/kimi-k2.7-code:batch',
-    label: 'MoonshotAI: Kimi K2.7 Code (batch)',
-    capability: {
-      contextWindowTokens: 262144,
+      maxOutputTokens: 235929,
       modalities: { input: ['text', 'image'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
@@ -1681,6 +1795,17 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'MoonshotAI: Kimi K3',
     capability: {
       contextWindowTokens: 1048576,
+      maxOutputTokens: 943718,
+      modalities: { input: ['text', 'image', 'video'], output: ['text'] },
+      features: { toolUse: true, structuredOutputs: true },
+    },
+  },
+  {
+    id: 'moonshotai/kimi-k3:batch',
+    label: 'MoonshotAI: Kimi K3 (batch)',
+    capability: {
+      contextWindowTokens: 1048576,
+      maxOutputTokens: 943718,
       modalities: { input: ['text', 'image', 'video'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
@@ -1704,7 +1829,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Nex AGI: Nex-N2-Mini',
     capability: {
       contextWindowTokens: 262144,
-      maxOutputTokens: 262144,
+      maxOutputTokens: 235929,
       modalities: { input: ['text', 'image'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
@@ -1714,7 +1839,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Nex AGI: Nex-N2-Pro',
     capability: {
       contextWindowTokens: 262144,
-      maxOutputTokens: 262144,
+      maxOutputTokens: 235929,
       modalities: { input: ['text', 'image'], output: ['text'] },
       features: { toolUse: true },
     },
@@ -1740,26 +1865,21 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
   {
     id: 'nousresearch/hermes-4-405b',
     label: 'Nous: Hermes 4 405B',
-    capability: { contextWindowTokens: 131072 },
+    capability: { contextWindowTokens: 131072, maxOutputTokens: 117964 },
   },
   {
     id: 'nousresearch/hermes-4-70b',
     label: 'Nous: Hermes 4 70B',
-    capability: { contextWindowTokens: 131072 },
+    capability: { contextWindowTokens: 131072, maxOutputTokens: 117964 },
   },
   {
     id: 'nvidia/nemotron-3-nano-30b-a3b',
     label: 'NVIDIA: Nemotron 3 Nano 30B A3B',
     capability: {
       contextWindowTokens: 262144,
-      maxOutputTokens: 262144,
+      maxOutputTokens: 228000,
       features: { toolUse: true, structuredOutputs: true },
     },
-  },
-  {
-    id: 'nvidia/nemotron-3-nano-30b-a3b:free',
-    label: 'NVIDIA: Nemotron 3 Nano 30B A3B (free)',
-    capability: { contextWindowTokens: 256000, features: { toolUse: true } },
   },
   {
     id: 'nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free',
@@ -1788,7 +1908,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'NVIDIA: Nemotron 3 Super (free)',
     capability: {
       contextWindowTokens: 262144,
-      maxOutputTokens: 262144,
+      maxOutputTokens: 235929,
       features: { toolUse: true, structuredOutputs: true },
     },
   },
@@ -1796,7 +1916,8 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     id: 'nvidia/nemotron-3-ultra-550b-a55b',
     label: 'NVIDIA: Nemotron 3 Ultra',
     capability: {
-      contextWindowTokens: 512288,
+      contextWindowTokens: 262144,
+      maxOutputTokens: 16384,
       features: { toolUse: true, structuredOutputs: true },
     },
   },
@@ -1805,6 +1926,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'NVIDIA: Nemotron 3 Ultra (batch)',
     capability: {
       contextWindowTokens: 512288,
+      maxOutputTokens: 461059,
       features: { toolUse: true, structuredOutputs: true },
     },
   },
@@ -1830,7 +1952,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     id: 'nvidia/nemotron-3.5-lightning',
     label: 'NVIDIA: Nemotron 3.5 Lightning',
     capability: {
-      contextWindowTokens: 1000000,
+      contextWindowTokens: 262144,
       maxOutputTokens: 131072,
       features: { toolUse: true, structuredOutputs: true },
     },
@@ -1842,24 +1964,6 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
       contextWindowTokens: 1000000,
       maxOutputTokens: 65536,
       features: { toolUse: true },
-    },
-  },
-  {
-    id: 'nvidia/nemotron-nano-12b-v2-vl:free',
-    label: 'NVIDIA: Nemotron Nano 12B 2 VL (free)',
-    capability: {
-      contextWindowTokens: 128000,
-      maxOutputTokens: 128000,
-      modalities: { input: ['image', 'text', 'video'], output: ['text'] },
-      features: { toolUse: true },
-    },
-  },
-  {
-    id: 'nvidia/nemotron-nano-9b-v2:free',
-    label: 'NVIDIA: Nemotron Nano 9B V2 (free)',
-    capability: {
-      contextWindowTokens: 128000,
-      features: { toolUse: true, structuredOutputs: true },
     },
   },
   {
@@ -1876,7 +1980,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'OpenAI: GPT-3.5 Turbo (older v0613)',
     capability: {
       contextWindowTokens: 4095,
-      maxOutputTokens: 4096,
+      maxOutputTokens: 3685,
       features: { toolUse: true, structuredOutputs: true },
     },
   },
@@ -1894,17 +1998,8 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'OpenAI: GPT-3.5 Turbo Instruct',
     capability: {
       contextWindowTokens: 4095,
-      maxOutputTokens: 4096,
+      maxOutputTokens: 3685,
       features: { structuredOutputs: true },
-    },
-  },
-  {
-    id: 'openai/gpt-3.5-turbo:batch',
-    label: 'OpenAI: GPT-3.5 Turbo (batch)',
-    capability: {
-      contextWindowTokens: 16385,
-      maxOutputTokens: 4096,
-      features: { toolUse: true, structuredOutputs: true },
     },
   },
   {
@@ -1936,16 +2031,6 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     },
   },
   {
-    id: 'openai/gpt-4-turbo:batch',
-    label: 'OpenAI: GPT-4 Turbo (batch)',
-    capability: {
-      contextWindowTokens: 128000,
-      maxOutputTokens: 4096,
-      modalities: { input: ['text', 'image'], output: ['text'] },
-      features: { toolUse: true, structuredOutputs: true },
-    },
-  },
-  {
     id: 'openai/gpt-4.1',
     label: 'OpenAI: GPT-4.1',
     capability: {
@@ -1966,41 +2051,11 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     },
   },
   {
-    id: 'openai/gpt-4.1-mini:batch',
-    label: 'OpenAI: GPT-4.1 Mini (batch)',
-    capability: {
-      contextWindowTokens: 1047576,
-      maxOutputTokens: 32768,
-      modalities: { input: ['image', 'text', 'file'], output: ['text'] },
-      features: { toolUse: true, structuredOutputs: true },
-    },
-  },
-  {
     id: 'openai/gpt-4.1-nano',
     label: 'OpenAI: GPT-4.1 Nano',
     capability: {
       contextWindowTokens: 1047576,
-      maxOutputTokens: 32768,
-      modalities: { input: ['image', 'text', 'file'], output: ['text'] },
-      features: { toolUse: true, structuredOutputs: true },
-    },
-  },
-  {
-    id: 'openai/gpt-4.1-nano:batch',
-    label: 'OpenAI: GPT-4.1 Nano (batch)',
-    capability: {
-      contextWindowTokens: 1047576,
-      maxOutputTokens: 32768,
-      modalities: { input: ['image', 'text', 'file'], output: ['text'] },
-      features: { toolUse: true, structuredOutputs: true },
-    },
-  },
-  {
-    id: 'openai/gpt-4.1:batch',
-    label: 'OpenAI: GPT-4.1 (batch)',
-    capability: {
-      contextWindowTokens: 1047576,
-      maxOutputTokens: 32768,
+      maxOutputTokens: 942818,
       modalities: { input: ['image', 'text', 'file'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
@@ -2066,42 +2121,12 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     },
   },
   {
-    id: 'openai/gpt-4o-mini:batch',
-    label: 'OpenAI: GPT-4o-mini (batch)',
-    capability: {
-      contextWindowTokens: 128000,
-      maxOutputTokens: 16384,
-      modalities: { input: ['text', 'image', 'file'], output: ['text'] },
-      features: { toolUse: true, structuredOutputs: true, webSearch: true },
-    },
-  },
-  {
-    id: 'openai/gpt-4o:batch',
-    label: 'OpenAI: GPT-4o (batch)',
-    capability: {
-      contextWindowTokens: 128000,
-      maxOutputTokens: 16384,
-      modalities: { input: ['text', 'image', 'file'], output: ['text'] },
-      features: { toolUse: true, structuredOutputs: true, webSearch: true },
-    },
-  },
-  {
     id: 'openai/gpt-5',
     label: 'OpenAI: GPT-5',
     capability: {
       contextWindowTokens: 400000,
       maxOutputTokens: 128000,
       modalities: { input: ['text', 'image', 'file'], output: ['text'] },
-      features: { toolUse: true, structuredOutputs: true },
-    },
-  },
-  {
-    id: 'openai/gpt-5-codex:batch',
-    label: 'OpenAI: GPT-5 Codex (batch)',
-    capability: {
-      contextWindowTokens: 400000,
-      maxOutputTokens: 128000,
-      modalities: { input: ['text', 'image'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
   },
@@ -2142,16 +2167,6 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     },
   },
   {
-    id: 'openai/gpt-5-mini:batch',
-    label: 'OpenAI: GPT-5 Mini (batch)',
-    capability: {
-      contextWindowTokens: 400000,
-      maxOutputTokens: 128000,
-      modalities: { input: ['text', 'image', 'file'], output: ['text'] },
-      features: { toolUse: true, structuredOutputs: true },
-    },
-  },
-  {
     id: 'openai/gpt-5-nano',
     label: 'OpenAI: GPT-5 Nano',
     capability: {
@@ -2162,28 +2177,8 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     },
   },
   {
-    id: 'openai/gpt-5-nano:batch',
-    label: 'OpenAI: GPT-5 Nano (batch)',
-    capability: {
-      contextWindowTokens: 400000,
-      maxOutputTokens: 128000,
-      modalities: { input: ['text', 'image', 'file'], output: ['text'] },
-      features: { toolUse: true, structuredOutputs: true },
-    },
-  },
-  {
     id: 'openai/gpt-5-pro',
     label: 'OpenAI: GPT-5 Pro',
-    capability: {
-      contextWindowTokens: 400000,
-      maxOutputTokens: 128000,
-      modalities: { input: ['image', 'text', 'file'], output: ['text'] },
-      features: { toolUse: true, structuredOutputs: true },
-    },
-  },
-  {
-    id: 'openai/gpt-5-pro:batch',
-    label: 'OpenAI: GPT-5 Pro (batch)',
     capability: {
       contextWindowTokens: 400000,
       maxOutputTokens: 128000,
@@ -2232,16 +2227,6 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     },
   },
   {
-    id: 'openai/gpt-5.1:batch',
-    label: 'OpenAI: GPT-5.1 (batch)',
-    capability: {
-      contextWindowTokens: 400000,
-      maxOutputTokens: 128000,
-      modalities: { input: ['image', 'text', 'file'], output: ['text'] },
-      features: { toolUse: true, structuredOutputs: true },
-    },
-  },
-  {
     id: 'openai/gpt-5.2',
     label: 'OpenAI: GPT-5.2',
     capability: {
@@ -2278,26 +2263,6 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
       contextWindowTokens: 400000,
       maxOutputTokens: 128000,
       modalities: { input: ['image', 'text', 'file'], output: ['text'] },
-      features: { toolUse: true, structuredOutputs: true },
-    },
-  },
-  {
-    id: 'openai/gpt-5.2-pro:batch',
-    label: 'OpenAI: GPT-5.2 Pro (batch)',
-    capability: {
-      contextWindowTokens: 400000,
-      maxOutputTokens: 128000,
-      modalities: { input: ['image', 'text', 'file'], output: ['text'] },
-      features: { toolUse: true, structuredOutputs: true },
-    },
-  },
-  {
-    id: 'openai/gpt-5.2:batch',
-    label: 'OpenAI: GPT-5.2 (batch)',
-    capability: {
-      contextWindowTokens: 400000,
-      maxOutputTokens: 128000,
-      modalities: { input: ['file', 'image', 'text'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
   },
@@ -2345,16 +2310,6 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     },
   },
   {
-    id: 'openai/gpt-5.4-mini:batch',
-    label: 'OpenAI: GPT-5.4 Mini (batch)',
-    capability: {
-      contextWindowTokens: 400000,
-      maxOutputTokens: 128000,
-      modalities: { input: ['file', 'image', 'text'], output: ['text'] },
-      features: { toolUse: true, structuredOutputs: true },
-    },
-  },
-  {
     id: 'openai/gpt-5.4-nano',
     label: 'OpenAI: GPT-5.4 Nano',
     capability: {
@@ -2365,38 +2320,8 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     },
   },
   {
-    id: 'openai/gpt-5.4-nano:batch',
-    label: 'OpenAI: GPT-5.4 Nano (batch)',
-    capability: {
-      contextWindowTokens: 400000,
-      maxOutputTokens: 128000,
-      modalities: { input: ['file', 'image', 'text'], output: ['text'] },
-      features: { toolUse: true, structuredOutputs: true },
-    },
-  },
-  {
     id: 'openai/gpt-5.4-pro',
     label: 'OpenAI: GPT-5.4 Pro',
-    capability: {
-      contextWindowTokens: 1050000,
-      maxOutputTokens: 128000,
-      modalities: { input: ['text', 'image', 'file'], output: ['text'] },
-      features: { toolUse: true, structuredOutputs: true },
-    },
-  },
-  {
-    id: 'openai/gpt-5.4-pro:batch',
-    label: 'OpenAI: GPT-5.4 Pro (batch)',
-    capability: {
-      contextWindowTokens: 1050000,
-      maxOutputTokens: 128000,
-      modalities: { input: ['text', 'image', 'file'], output: ['text'] },
-      features: { toolUse: true, structuredOutputs: true },
-    },
-  },
-  {
-    id: 'openai/gpt-5.4:batch',
-    label: 'OpenAI: GPT-5.4 (batch)',
     capability: {
       contextWindowTokens: 1050000,
       maxOutputTokens: 128000,
@@ -2425,26 +2350,6 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     },
   },
   {
-    id: 'openai/gpt-5.5-pro:batch',
-    label: 'OpenAI: GPT-5.5 Pro (batch)',
-    capability: {
-      contextWindowTokens: 1050000,
-      maxOutputTokens: 128000,
-      modalities: { input: ['file', 'image', 'text'], output: ['text'] },
-      features: { toolUse: true, structuredOutputs: true },
-    },
-  },
-  {
-    id: 'openai/gpt-5.5:batch',
-    label: 'OpenAI: GPT-5.5 (batch)',
-    capability: {
-      contextWindowTokens: 1050000,
-      maxOutputTokens: 128000,
-      modalities: { input: ['file', 'image', 'text'], output: ['text'] },
-      features: { toolUse: true, structuredOutputs: true },
-    },
-  },
-  {
     id: 'openai/gpt-5.6-luna',
     label: 'OpenAI: GPT-5.6 Luna',
     capability: {
@@ -2457,26 +2362,6 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
   {
     id: 'openai/gpt-5.6-luna-pro',
     label: 'OpenAI: GPT-5.6 Luna Pro',
-    capability: {
-      contextWindowTokens: 1050000,
-      maxOutputTokens: 128000,
-      modalities: { input: ['file', 'image', 'text'], output: ['text'] },
-      features: { toolUse: true, structuredOutputs: true },
-    },
-  },
-  {
-    id: 'openai/gpt-5.6-luna-pro:batch',
-    label: 'OpenAI: GPT-5.6 Luna Pro (batch)',
-    capability: {
-      contextWindowTokens: 1050000,
-      maxOutputTokens: 128000,
-      modalities: { input: ['file', 'image', 'text'], output: ['text'] },
-      features: { toolUse: true, structuredOutputs: true },
-    },
-  },
-  {
-    id: 'openai/gpt-5.6-luna:batch',
-    label: 'OpenAI: GPT-5.6 Luna (batch)',
     capability: {
       contextWindowTokens: 1050000,
       maxOutputTokens: 128000,
@@ -2505,26 +2390,6 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     },
   },
   {
-    id: 'openai/gpt-5.6-sol-pro:batch',
-    label: 'OpenAI: GPT-5.6 Sol Pro (batch)',
-    capability: {
-      contextWindowTokens: 1050000,
-      maxOutputTokens: 128000,
-      modalities: { input: ['file', 'image', 'text'], output: ['text'] },
-      features: { toolUse: true, structuredOutputs: true },
-    },
-  },
-  {
-    id: 'openai/gpt-5.6-sol:batch',
-    label: 'OpenAI: GPT-5.6 Sol (batch)',
-    capability: {
-      contextWindowTokens: 1050000,
-      maxOutputTokens: 128000,
-      modalities: { input: ['file', 'image', 'text'], output: ['text'] },
-      features: { toolUse: true, structuredOutputs: true },
-    },
-  },
-  {
     id: 'openai/gpt-5.6-terra',
     label: 'OpenAI: GPT-5.6 Terra',
     capability: {
@@ -2541,36 +2406,6 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
       contextWindowTokens: 1050000,
       maxOutputTokens: 128000,
       modalities: { input: ['file', 'image', 'text'], output: ['text'] },
-      features: { toolUse: true, structuredOutputs: true },
-    },
-  },
-  {
-    id: 'openai/gpt-5.6-terra-pro:batch',
-    label: 'OpenAI: GPT-5.6 Terra Pro (batch)',
-    capability: {
-      contextWindowTokens: 1050000,
-      maxOutputTokens: 128000,
-      modalities: { input: ['file', 'image', 'text'], output: ['text'] },
-      features: { toolUse: true, structuredOutputs: true },
-    },
-  },
-  {
-    id: 'openai/gpt-5.6-terra:batch',
-    label: 'OpenAI: GPT-5.6 Terra (batch)',
-    capability: {
-      contextWindowTokens: 1050000,
-      maxOutputTokens: 128000,
-      modalities: { input: ['file', 'image', 'text'], output: ['text'] },
-      features: { toolUse: true, structuredOutputs: true },
-    },
-  },
-  {
-    id: 'openai/gpt-5:batch',
-    label: 'OpenAI: GPT-5 (batch)',
-    capability: {
-      contextWindowTokens: 400000,
-      maxOutputTokens: 128000,
-      modalities: { input: ['text', 'image', 'file'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
   },
@@ -2609,7 +2444,16 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'OpenAI: gpt-oss-120b',
     capability: {
       contextWindowTokens: 131072,
-      maxOutputTokens: 131072,
+      maxOutputTokens: 117964,
+      features: { toolUse: true, structuredOutputs: true },
+    },
+  },
+  {
+    id: 'openai/gpt-oss-120b:batch',
+    label: 'OpenAI: gpt-oss-120b (batch)',
+    capability: {
+      contextWindowTokens: 131072,
+      maxOutputTokens: 117964,
       features: { toolUse: true, structuredOutputs: true },
     },
   },
@@ -2618,17 +2462,17 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'OpenAI: gpt-oss-20b',
     capability: {
       contextWindowTokens: 131072,
-      maxOutputTokens: 131072,
+      maxOutputTokens: 117964,
       features: { toolUse: true, structuredOutputs: true },
     },
   },
   {
-    id: 'openai/gpt-oss-20b:free',
-    label: 'OpenAI: gpt-oss-20b (free)',
+    id: 'openai/gpt-oss-20b:batch',
+    label: 'OpenAI: gpt-oss-20b (batch)',
     capability: {
       contextWindowTokens: 131072,
-      maxOutputTokens: 32768,
-      features: { toolUse: true, structuredOutputs: true },
+      maxOutputTokens: 117964,
+      features: { structuredOutputs: true },
     },
   },
   {
@@ -2658,26 +2502,6 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
       maxOutputTokens: 100000,
       modalities: { input: ['text', 'image', 'file'], output: ['text'] },
       features: { structuredOutputs: true },
-    },
-  },
-  {
-    id: 'openai/o1-pro:batch',
-    label: 'OpenAI: o1-pro (batch)',
-    capability: {
-      contextWindowTokens: 200000,
-      maxOutputTokens: 100000,
-      modalities: { input: ['text', 'image', 'file'], output: ['text'] },
-      features: { structuredOutputs: true },
-    },
-  },
-  {
-    id: 'openai/o1:batch',
-    label: 'OpenAI: o1 (batch)',
-    capability: {
-      contextWindowTokens: 200000,
-      maxOutputTokens: 100000,
-      modalities: { input: ['text', 'image', 'file'], output: ['text'] },
-      features: { toolUse: true, structuredOutputs: true },
     },
   },
   {
@@ -2711,52 +2535,12 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     },
   },
   {
-    id: 'openai/o3-mini-high:batch',
-    label: 'OpenAI: o3 Mini High (batch)',
-    capability: {
-      contextWindowTokens: 200000,
-      maxOutputTokens: 100000,
-      modalities: { input: ['text', 'file'], output: ['text'] },
-      features: { toolUse: true, structuredOutputs: true },
-    },
-  },
-  {
-    id: 'openai/o3-mini:batch',
-    label: 'OpenAI: o3 Mini (batch)',
-    capability: {
-      contextWindowTokens: 200000,
-      maxOutputTokens: 100000,
-      modalities: { input: ['text', 'file'], output: ['text'] },
-      features: { toolUse: true, structuredOutputs: true },
-    },
-  },
-  {
     id: 'openai/o3-pro',
     label: 'OpenAI: o3 Pro',
     capability: {
       contextWindowTokens: 200000,
       maxOutputTokens: 100000,
       modalities: { input: ['text', 'file', 'image'], output: ['text'] },
-      features: { toolUse: true, structuredOutputs: true },
-    },
-  },
-  {
-    id: 'openai/o3-pro:batch',
-    label: 'OpenAI: o3 Pro (batch)',
-    capability: {
-      contextWindowTokens: 200000,
-      maxOutputTokens: 100000,
-      modalities: { input: ['text', 'file', 'image'], output: ['text'] },
-      features: { toolUse: true, structuredOutputs: true },
-    },
-  },
-  {
-    id: 'openai/o3:batch',
-    label: 'OpenAI: o3 (batch)',
-    capability: {
-      contextWindowTokens: 200000,
-      maxOutputTokens: 100000,
-      modalities: { input: ['image', 'text', 'file'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
   },
@@ -2773,26 +2557,6 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
   {
     id: 'openai/o4-mini-high',
     label: 'OpenAI: o4 Mini High',
-    capability: {
-      contextWindowTokens: 200000,
-      maxOutputTokens: 100000,
-      modalities: { input: ['image', 'text', 'file'], output: ['text'] },
-      features: { toolUse: true, structuredOutputs: true },
-    },
-  },
-  {
-    id: 'openai/o4-mini-high:batch',
-    label: 'OpenAI: o4 Mini High (batch)',
-    capability: {
-      contextWindowTokens: 200000,
-      maxOutputTokens: 100000,
-      modalities: { input: ['image', 'text', 'file'], output: ['text'] },
-      features: { toolUse: true, structuredOutputs: true },
-    },
-  },
-  {
-    id: 'openai/o4-mini:batch',
-    label: 'OpenAI: o4 Mini (batch)',
     capability: {
       contextWindowTokens: 200000,
       maxOutputTokens: 100000,
@@ -2863,6 +2627,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Perplexity: Sonar',
     capability: {
       contextWindowTokens: 127072,
+      maxOutputTokens: 114364,
       modalities: { input: ['text', 'image'], output: ['text'] },
       features: { webSearch: true },
     },
@@ -2870,7 +2635,11 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
   {
     id: 'perplexity/sonar-deep-research',
     label: 'Perplexity: Sonar Deep Research',
-    capability: { contextWindowTokens: 128000, features: { webSearch: true } },
+    capability: {
+      contextWindowTokens: 128000,
+      maxOutputTokens: 115200,
+      features: { webSearch: true },
+    },
   },
   {
     id: 'perplexity/sonar-pro',
@@ -2897,6 +2666,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Perplexity: Sonar Reasoning Pro',
     capability: {
       contextWindowTokens: 128000,
+      maxOutputTokens: 115200,
       modalities: { input: ['text', 'image'], output: ['text'] },
       features: { webSearch: true },
     },
@@ -2951,14 +2721,14 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Qwen: Qwen2.5 7B Instruct',
     capability: {
       contextWindowTokens: 32768,
-      maxOutputTokens: 32768,
+      maxOutputTokens: 29491,
       features: { toolUse: true, structuredOutputs: true },
     },
   },
   {
     id: 'qwen/qwen-2.5-coder-32b-instruct',
     label: 'Qwen2.5 Coder 32B Instruct',
-    capability: { contextWindowTokens: 32768, maxOutputTokens: 32768 },
+    capability: { contextWindowTokens: 32768, maxOutputTokens: 29491 },
   },
   {
     id: 'qwen/qwen-plus',
@@ -2979,20 +2749,11 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     },
   },
   {
-    id: 'qwen/qwen-plus-2025-07-28:thinking',
-    label: 'Qwen: Qwen Plus 0728 (thinking)',
-    capability: {
-      contextWindowTokens: 1000000,
-      maxOutputTokens: 32768,
-      features: { toolUse: true, structuredOutputs: true },
-    },
-  },
-  {
     id: 'qwen/qwen2.5-vl-72b-instruct',
     label: 'Qwen: Qwen2.5 VL 72B Instruct',
     capability: {
       contextWindowTokens: 128000,
-      maxOutputTokens: 128000,
+      maxOutputTokens: 28800,
       modalities: { input: ['text', 'image'], output: ['text'] },
       features: { structuredOutputs: true },
     },
@@ -3020,21 +2781,25 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Qwen: Qwen3 235B A22B Instruct 2507',
     capability: {
       contextWindowTokens: 262144,
-      maxOutputTokens: 16384,
+      maxOutputTokens: 235929,
       features: { toolUse: true, structuredOutputs: true },
     },
   },
   {
     id: 'qwen/qwen3-235b-a22b-thinking-2507',
     label: 'Qwen: Qwen3 235B A22B Thinking 2507',
-    capability: { contextWindowTokens: 262144, features: { toolUse: true } },
+    capability: {
+      contextWindowTokens: 131072,
+      maxOutputTokens: 117964,
+      features: { toolUse: true },
+    },
   },
   {
     id: 'qwen/qwen3-30b-a3b',
     label: 'Qwen: Qwen3 30B A3B',
     capability: {
       contextWindowTokens: 131072,
-      maxOutputTokens: 8192,
+      maxOutputTokens: 16384,
       features: { toolUse: true },
     },
   },
@@ -3088,7 +2853,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Qwen: Qwen3 Coder 30B A3B Instruct',
     capability: {
       contextWindowTokens: 262144,
-      maxOutputTokens: 262144,
+      maxOutputTokens: 235929,
       features: { toolUse: true, structuredOutputs: true },
     },
   },
@@ -3106,7 +2871,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Qwen: Qwen3 Coder Next',
     capability: {
       contextWindowTokens: 262144,
-      maxOutputTokens: 262144,
+      maxOutputTokens: 235929,
       features: { toolUse: true, structuredOutputs: true },
     },
   },
@@ -3142,7 +2907,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Qwen: Qwen3 Next 80B A3B Instruct',
     capability: {
       contextWindowTokens: 262144,
-      maxOutputTokens: 16384,
+      maxOutputTokens: 235929,
       features: { toolUse: true, structuredOutputs: true },
     },
   },
@@ -3180,7 +2945,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Qwen: Qwen3 VL 30B A3B Instruct',
     capability: {
       contextWindowTokens: 262144,
-      maxOutputTokens: 32768,
+      maxOutputTokens: 16384,
       modalities: { input: ['text', 'image'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
@@ -3230,7 +2995,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Qwen: Qwen3.5-122B-A10B',
     capability: {
       contextWindowTokens: 262144,
-      maxOutputTokens: 262144,
+      maxOutputTokens: 81920,
       modalities: { input: ['text', 'image', 'video'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
@@ -3250,7 +3015,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Qwen: Qwen3.5-35B-A3B',
     capability: {
       contextWindowTokens: 262144,
-      maxOutputTokens: 262144,
+      maxOutputTokens: 235929,
       modalities: { input: ['text', 'image', 'video'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
@@ -3270,7 +3035,17 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Qwen: Qwen3.5-9B',
     capability: {
       contextWindowTokens: 262144,
-      maxOutputTokens: 262144,
+      maxOutputTokens: 235929,
+      modalities: { input: ['text', 'image', 'video'], output: ['text'] },
+      features: { toolUse: true, structuredOutputs: true },
+    },
+  },
+  {
+    id: 'qwen/qwen3.5-9b:batch',
+    label: 'Qwen: Qwen3.5-9B (batch)',
+    capability: {
+      contextWindowTokens: 262144,
+      maxOutputTokens: 235929,
       modalities: { input: ['text', 'image', 'video'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
@@ -3310,7 +3085,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Qwen: Qwen3.6 27B',
     capability: {
       contextWindowTokens: 262144,
-      maxOutputTokens: 262144,
+      maxOutputTokens: 235929,
       modalities: { input: ['text', 'image', 'video'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
@@ -3320,7 +3095,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Qwen: Qwen3.6 35B A3B',
     capability: {
       contextWindowTokens: 262144,
-      maxOutputTokens: 262144,
+      maxOutputTokens: 235929,
       modalities: { input: ['text', 'image', 'video'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
@@ -3393,8 +3168,27 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     },
   },
   {
+    id: 'qwen/qwen3.8-2.4t-a95b:batch',
+    label: 'Qwen: Qwen3.8 2.4T A95B (batch)',
+    capability: {
+      contextWindowTokens: 1010000,
+      maxOutputTokens: 909000,
+      features: { toolUse: true, structuredOutputs: true },
+    },
+  },
+  {
     id: 'qwen/qwen3.8-27b',
     label: 'Qwen: Qwen3.8 27B',
+    capability: {
+      contextWindowTokens: 1000000,
+      maxOutputTokens: 131072,
+      modalities: { input: ['text', 'image', 'video'], output: ['text'] },
+      features: { toolUse: true, structuredOutputs: true },
+    },
+  },
+  {
+    id: 'qwen/qwen3.8-flash',
+    label: 'Qwen: Qwen3.8 Flash',
     capability: {
       contextWindowTokens: 1000000,
       maxOutputTokens: 131072,
@@ -3417,7 +3211,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Reka Edge',
     capability: {
       contextWindowTokens: 16384,
-      maxOutputTokens: 16384,
+      maxOutputTokens: 14745,
       modalities: { input: ['image', 'text', 'video'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
@@ -3427,7 +3221,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Reka Flash 3',
     capability: {
       contextWindowTokens: 65536,
-      maxOutputTokens: 65536,
+      maxOutputTokens: 58982,
       features: { structuredOutputs: true },
     },
   },
@@ -3470,7 +3264,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Sao10K: Llama 3 8B Lunaris',
     capability: {
       contextWindowTokens: 8192,
-      maxOutputTokens: 16384,
+      maxOutputTokens: 7372,
       features: { structuredOutputs: true },
     },
   },
@@ -3506,7 +3300,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'StepFun: Step 3.7 Flash',
     capability: {
       contextWindowTokens: 262144,
-      maxOutputTokens: 256000,
+      maxOutputTokens: 230400,
       modalities: { input: ['text', 'image', 'video'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
@@ -3516,7 +3310,30 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Tencent: Hunyuan A13B Instruct',
     capability: {
       contextWindowTokens: 131072,
-      maxOutputTokens: 131072,
+      maxOutputTokens: 117964,
+      features: { structuredOutputs: true },
+    },
+  },
+  {
+    id: 'tencent/hy-mt2-1.8b',
+    label: 'Tencent: Hy-MT2-1.8B',
+    capability: { contextWindowTokens: 8192, maxOutputTokens: 4096 },
+  },
+  {
+    id: 'tencent/hy-mt2-30b-a3b',
+    label: 'Tencent: Hy-MT2-30B-A3B',
+    capability: {
+      contextWindowTokens: 8192,
+      maxOutputTokens: 4096,
+      features: { structuredOutputs: true },
+    },
+  },
+  {
+    id: 'tencent/hy-mt2-7b',
+    label: 'Tencent: Hy-MT2-7B',
+    capability: {
+      contextWindowTokens: 8192,
+      maxOutputTokens: 4096,
       features: { structuredOutputs: true },
     },
   },
@@ -3532,23 +3349,27 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
   {
     id: 'tencent/hy3-preview',
     label: 'Tencent: Hy3 preview',
-    capability: { contextWindowTokens: 262144, features: { toolUse: true } },
+    capability: {
+      contextWindowTokens: 262144,
+      maxOutputTokens: 235929,
+      features: { toolUse: true },
+    },
+  },
+  {
+    id: 'tencent/hy4-preview',
+    label: 'Tencent: Hy4 preview',
+    capability: {
+      contextWindowTokens: 1048576,
+      maxOutputTokens: 64000,
+      features: { toolUse: true, structuredOutputs: true },
+    },
   },
   {
     id: 'thedrummer/cydonia-24b-v4.1',
     label: 'TheDrummer: Cydonia 24B V4.1',
     capability: {
       contextWindowTokens: 131072,
-      maxOutputTokens: 131072,
-      features: { structuredOutputs: true },
-    },
-  },
-  {
-    id: 'thedrummer/rocinante-12b',
-    label: 'TheDrummer: Rocinante 12B',
-    capability: {
-      contextWindowTokens: 65536,
-      maxOutputTokens: 65536,
+      maxOutputTokens: 117964,
       features: { structuredOutputs: true },
     },
   },
@@ -3557,7 +3378,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'TheDrummer: Skyfall 36B V2',
     capability: {
       contextWindowTokens: 32768,
-      maxOutputTokens: 32768,
+      maxOutputTokens: 29491,
       features: { structuredOutputs: true },
     },
   },
@@ -3566,7 +3387,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'TheDrummer: UnslopNemo 12B',
     capability: {
       contextWindowTokens: 1024000,
-      maxOutputTokens: 1024000,
+      maxOutputTokens: 26214,
       features: { toolUse: true, structuredOutputs: true },
     },
   },
@@ -3584,10 +3405,30 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     id: 'thinkingmachines/inkling-small',
     label: 'Thinking Machines: Inkling Small',
     capability: {
-      contextWindowTokens: 524288,
+      contextWindowTokens: 1048576,
       maxOutputTokens: 262144,
       modalities: { input: ['text', 'image', 'audio'], output: ['text'] },
-      features: { toolUse: true, structuredOutputs: true },
+      features: { toolUse: true },
+    },
+  },
+  {
+    id: 'thinkingmachines/inkling-small:batch',
+    label: 'Thinking Machines: Inkling Small (batch)',
+    capability: {
+      contextWindowTokens: 524288,
+      maxOutputTokens: 471859,
+      modalities: { input: ['text', 'image', 'audio'], output: ['text'] },
+      features: { toolUse: true },
+    },
+  },
+  {
+    id: 'thinkingmachines/inkling-small:free',
+    label: 'Thinking Machines: Inkling Small (free)',
+    capability: {
+      contextWindowTokens: 1048576,
+      maxOutputTokens: 262144,
+      modalities: { input: ['text', 'image', 'audio'], output: ['text'] },
+      features: { toolUse: true },
     },
   },
   {
@@ -3595,6 +3436,17 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Thinking Machines: Inkling (batch)',
     capability: {
       contextWindowTokens: 524288,
+      maxOutputTokens: 471859,
+      modalities: { input: ['text', 'image', 'audio'], output: ['text'] },
+      features: { toolUse: true },
+    },
+  },
+  {
+    id: 'thinkingmachines/inkling:free',
+    label: 'Thinking Machines: Inkling (free)',
+    capability: {
+      contextWindowTokens: 1048576,
+      maxOutputTokens: 262144,
       modalities: { input: ['text', 'image', 'audio'], output: ['text'] },
       features: { toolUse: true },
     },
@@ -3604,7 +3456,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'ReMM SLERP 13B',
     capability: {
       contextWindowTokens: 6144,
-      maxOutputTokens: 6144,
+      maxOutputTokens: 4096,
       features: { structuredOutputs: true },
     },
   },
@@ -3613,7 +3465,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Upstage: Solar Pro 3',
     capability: {
       contextWindowTokens: 131072,
-      maxOutputTokens: 131072,
+      maxOutputTokens: 117964,
       features: { toolUse: true, structuredOutputs: true },
     },
   },
@@ -3636,6 +3488,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'SpaceXAI: Grok 4.20',
     capability: {
       contextWindowTokens: 2000000,
+      maxOutputTokens: 1800000,
       modalities: { input: ['text', 'image', 'file'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
@@ -3645,6 +3498,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'SpaceXAI: Grok 4.20 Multi-Agent',
     capability: {
       contextWindowTokens: 2000000,
+      maxOutputTokens: 1800000,
       modalities: { input: ['text', 'image', 'file'], output: ['text'] },
       features: { structuredOutputs: true },
     },
@@ -3654,6 +3508,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'SpaceXAI: Grok 4.3',
     capability: {
       contextWindowTokens: 1000000,
+      maxOutputTokens: 900000,
       modalities: { input: ['text', 'image', 'file'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
@@ -3663,6 +3518,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'SpaceXAI: Grok 4.5',
     capability: {
       contextWindowTokens: 500000,
+      maxOutputTokens: 450000,
       modalities: { input: ['text', 'image', 'file'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
@@ -3672,6 +3528,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'SpaceXAI: Grok 4.6',
     capability: {
       contextWindowTokens: 500000,
+      maxOutputTokens: 450000,
       modalities: { input: ['text', 'image', 'file'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
@@ -3681,6 +3538,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'SpaceXAI: Grok Build 0.1',
     capability: {
       contextWindowTokens: 256000,
+      maxOutputTokens: 230400,
       modalities: { input: ['text', 'image', 'file'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
@@ -3740,7 +3598,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Z.ai: GLM 4.6',
     capability: {
       contextWindowTokens: 204800,
-      maxOutputTokens: 131072,
+      maxOutputTokens: 16384,
       features: { toolUse: true, structuredOutputs: true },
     },
   },
@@ -3795,7 +3653,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Z.ai: GLM 5.1',
     capability: {
       contextWindowTokens: 204800,
-      maxOutputTokens: 128000,
+      maxOutputTokens: 182476,
       features: { toolUse: true, structuredOutputs: true },
     },
   },
@@ -3804,15 +3662,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Z.ai: GLM 5.2',
     capability: {
       contextWindowTokens: 1048576,
-      maxOutputTokens: 131072,
-      features: { toolUse: true, structuredOutputs: true },
-    },
-  },
-  {
-    id: 'z-ai/glm-5.2:batch',
-    label: 'Z.ai: GLM 5.2 (batch)',
-    capability: {
-      contextWindowTokens: 512000,
+      maxOutputTokens: 262144,
       features: { toolUse: true, structuredOutputs: true },
     },
   },
@@ -3821,7 +3671,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'Z.ai: GLM 5.2 (free)',
     capability: {
       contextWindowTokens: 256000,
-      maxOutputTokens: 256000,
+      maxOutputTokens: 230400,
       features: { toolUse: true, structuredOutputs: true },
     },
   },
@@ -3829,9 +3679,29 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     id: 'z-ai/glm-5.3',
     label: 'Z.ai: GLM 5.3',
     capability: {
-      contextWindowTokens: 1048576,
+      contextWindowTokens: 1310720,
       maxOutputTokens: 131072,
-      features: { toolUse: true },
+      features: { toolUse: true, structuredOutputs: true },
+    },
+  },
+  {
+    id: 'z-ai/glm-5.3-flash',
+    label: 'Z.ai: GLM 5.3 Flash',
+    capability: {
+      contextWindowTokens: 1310720,
+      maxOutputTokens: 131072,
+      modalities: { input: ['text', 'image', 'video'], output: ['text'] },
+      features: { toolUse: true, structuredOutputs: true },
+    },
+  },
+  {
+    id: 'z-ai/glm-5.3-flash:batch',
+    label: 'Z.ai: GLM 5.3 Flash (batch)',
+    capability: {
+      contextWindowTokens: 1048575,
+      maxOutputTokens: 943717,
+      modalities: { input: ['text', 'image', 'video'], output: ['text'] },
+      features: { toolUse: true, structuredOutputs: true },
     },
   },
   {
@@ -3889,7 +3759,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'DeepSeek V4 Flash Latest',
     capability: {
       contextWindowTokens: 1310720,
-      maxOutputTokens: 262144,
+      maxOutputTokens: 131072,
       features: { toolUse: true, structuredOutputs: true },
     },
   },
@@ -3924,7 +3794,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'MoonshotAI Kimi Latest',
     capability: {
       contextWindowTokens: 1048576,
-      maxOutputTokens: 974842,
+      maxOutputTokens: 943718,
       modalities: { input: ['text', 'image', 'video'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
@@ -3954,6 +3824,7 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     label: 'xAI: Grok Latest',
     capability: {
       contextWindowTokens: 500000,
+      maxOutputTokens: 450000,
       modalities: { input: ['text', 'image', 'file'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
@@ -3962,9 +3833,9 @@ export const OPENROUTER_MODELS: CatalogModel[] = [
     id: '~z-ai/glm-latest',
     label: 'Z.ai: GLM Latest',
     capability: {
-      contextWindowTokens: 1048576,
-      maxOutputTokens: 131072,
-      features: { toolUse: true },
+      contextWindowTokens: 1310720,
+      maxOutputTokens: 943718,
+      features: { toolUse: true, structuredOutputs: true },
     },
   },
 ];
@@ -3998,6 +3869,11 @@ export const OPENROUTER_EMBEDDING_MODELS: CatalogEmbeddingModel[] = [
   {
     id: 'google/gemini-embedding-2-preview',
     label: 'Google: Gemini Embedding 2 Preview',
+    capability: { contextWindowTokens: 8192 },
+  },
+  {
+    id: 'google/gemini-embedding-2:batch',
+    label: 'Google: Gemini Embedding 2 (batch)',
     capability: { contextWindowTokens: 8192 },
   },
   {
@@ -4046,11 +3922,6 @@ export const OPENROUTER_EMBEDDING_MODELS: CatalogEmbeddingModel[] = [
     capability: { contextWindowTokens: 8192 },
   },
   {
-    id: 'openai/text-embedding-3-large:batch',
-    label: 'OpenAI: Text Embedding 3 Large (batch)',
-    capability: { contextWindowTokens: 8192 },
-  },
-  {
     id: 'openai/text-embedding-3-small',
     label: 'OpenAI: Text Embedding 3 Small',
     capability: { contextWindowTokens: 8192 },
@@ -4058,11 +3929,6 @@ export const OPENROUTER_EMBEDDING_MODELS: CatalogEmbeddingModel[] = [
   {
     id: 'openai/text-embedding-ada-002',
     label: 'OpenAI: Text Embedding Ada 002',
-    capability: { contextWindowTokens: 8192 },
-  },
-  {
-    id: 'openai/text-embedding-ada-002:batch',
-    label: 'OpenAI: Text Embedding Ada 002 (batch)',
     capability: { contextWindowTokens: 8192 },
   },
   {

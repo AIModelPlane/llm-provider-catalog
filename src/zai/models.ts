@@ -12,6 +12,19 @@ export const ZAI_MODELS: CatalogModel[] = [
     },
   },
   {
+    id: 'glm-5.3-flash',
+    label: 'GLM-5.3-Flash',
+    capability: {
+      contextWindowTokens: 1_000_000,
+      maxOutputTokens: 131_072,
+      modalities: {
+        input: ['text', 'image', 'video', 'file'],
+        output: ['text'],
+      },
+      features: { toolUse: true, structuredOutputs: true },
+    },
+  },
+  {
     id: 'glm-5.2',
     label: 'GLM-5.2',
     capability: {
@@ -120,20 +133,15 @@ export const GLM_CODING_MODELS: CatalogModel[] = [
     },
   },
   {
-    id: 'glm-5-turbo',
-    label: 'GLM-5 Turbo',
+    id: 'glm-5.3-flash',
+    label: 'GLM-5.3-Flash',
     capability: {
-      contextWindowTokens: 200_000,
+      contextWindowTokens: 1_000_000,
       maxOutputTokens: 131_072,
-      features: { toolUse: true, structuredOutputs: true },
-    },
-  },
-  {
-    id: 'glm-4.7',
-    label: 'GLM-4.7',
-    capability: {
-      contextWindowTokens: 200_000,
-      maxOutputTokens: 131_072,
+      modalities: {
+        input: ['text', 'image', 'video', 'file'],
+        output: ['text'],
+      },
       features: { toolUse: true, structuredOutputs: true },
     },
   },

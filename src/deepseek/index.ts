@@ -20,6 +20,15 @@ const DEEPSEEK_MODELS: CatalogModel[] = [
       features: { toolUse: true, structuredOutputs: true },
     },
   },
+  {
+    id: 'deepseek-v4-flash-vision-exp',
+    label: 'DeepSeek V4 Flash Vision (Experimental)',
+    capability: {
+      contextWindowTokens: 1_000_000,
+      maxOutputTokens: 384_000,
+      modalities: { input: ['text', 'image'], output: ['text'] },
+    },
+  },
 ];
 
 const entry: CatalogProvider = {
