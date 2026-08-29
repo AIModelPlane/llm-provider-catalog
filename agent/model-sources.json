@@ -4,62 +4,66 @@
       "https://developers.openai.com/api/docs/models",
       "https://developers.openai.com/api/docs/deprecations"
     ],
-    "lastChecked": "2026-08-20",
-    "notes": "Re-verified all 7 models (GPT-5.6 Sol/Terra/Luna, 5.5, 5.4, 5.4-mini/nano) against each model's own doc page — no changes; ids/context/output/modalities/features all still accurate, none deprecated. Deliberately omitted: Pro reasoning-mode variants (e.g. gpt-5.6-sol-pro) and restricted 'Daybreak' cyber models (enrollment-gated). Next-gen 'Astra' teased but not yet GA with a public id."
+    "lastChecked": "2026-08-29",
+    "notes": "2026-08-29: re-verified all 7 models; no changes. Models overview page only surfaces GPT-5.6 Sol/Terra/Luna + specialized models in its default view, but gpt-5.5/5.4/5.4-mini/5.4-nano each still have live doc pages with unchanged context/output limits, and none appear on the deprecations page. No image-output modality (models are text-out only, confirmed against an earlier mis-summary). No new GA model since gpt-5.6-cyber/Daybreak (2026-08-10, already excluded as enrollment-gated); Astra still teased, no public id."
   },
   "anthropic": {
     "sources": [
       "https://platform.claude.com/docs/en/about-claude/models/overview",
       "https://platform.claude.com/docs/en/build-with-claude/context-windows"
     ],
-    "lastChecked": "2026-08-20",
-    "notes": "2026-08-20: added claude-fable-5, claude-opus-5, claude-sonnet-5 (new since 2026-08-05); kept claude-opus-4-8/claude-sonnet-4-6 (still served, not decommissioned). Fixed maxOutputTokens on all 6 models from binary-power values (131_072/65_536) to the vendor's actual round-decimal limits (128_000/64_000). webSearch left unset — no definitive per-model compatibility table found."
+    "lastChecked": "2026-08-29",
+    "notes": "2026-08-29: re-verified all 6 models against the models-overview comparison table — no changes, exact match on ids/context/output. No new model since Claude Opus 5 (2026-07-24)."
   },
   "google": {
     "sources": [
       "https://ai.google.dev/gemini-api/docs/models",
       "https://ai.google.dev/gemini-api/docs/deprecations"
     ],
-    "lastChecked": "2026-08-20",
-    "notes": "2026-08-20: added gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash-lite (new since 2026-08-05); re-verified all 10 models per-model against their own doc pages, all fields already accurate. Confirmed via deprecations page that gemini-2.5-*, gemini-3.1-pro-preview and gemini-3-flash-preview have no shutdown date announced (a third-party rumor of a 2.5-series shutdown was incorrect)."
+    "lastChecked": "2026-08-29",
+    "notes": "2026-08-29: re-verified all 10 models — no changes, none deprecated. Deliberately not added: gemini-omni-1.1-flash, gemini-3.1-flash-image, gemini-3-pro-image, gemini-3.5-transcribe — these are image/video/speech-generation models outside this catalog's chat/text-output scope (every existing GOOGLE_MODELS entry has output: ['text'])."
   },
   "zhipu": {
     "sources": [
       "https://docs.z.ai/guides/llm/glm-5.3",
-      "https://docs.z.ai/devpack/faq"
+      "https://docs.z.ai/release-notes/new-released",
+      "https://docs.z.ai/guides/vlm/glm-5.3-flash",
+      "https://docs.z.ai/devpack/faq",
+      "https://docs.z.ai/devpack/overview"
     ],
-    "lastChecked": "2026-08-20",
-    "notes": "2026-08-20: added glm-5.3 to ZAI_MODELS (new since 2026-08-05, docs.z.ai/guides/llm/glm-5.3). Corrected GLM_CODING_MODELS, which had wrongly mirrored most of ZAI_MODELS — docs.z.ai/devpack/faq states verbatim the Coding Plan only serves 3 models (GLM-5.3, GLM-5-Turbo, GLM-4.7); removed glm-5.2/5.1/5/4.7-flashx/4.6 from that array (GLM-5.2/5.1 requests are auto-routed to GLM-5.3 per docs.z.ai/devpack/overview). ZAI_MODELS itself unchanged otherwise."
+    "lastChecked": "2026-08-29",
+    "notes": "2026-08-29: added glm-5.3-flash to ZAI_MODELS (released 2026-08-26, docs.z.ai/guides/vlm/glm-5.3-flash — native multimodal, 1M context/128K output, text+image+video+file input). GLM_CODING_MODELS changed again: devpack/faq and devpack/overview now state the Coding Plan serves only GLM-5.3 and GLM-5.3-Flash — GLM-5-Turbo is gone entirely and GLM-4.7 now auto-routes to GLM-5.3-Flash (previously GLM-5-Turbo/GLM-4.7 were directly callable as of 2026-08-20); removed both, added glm-5.3-flash. Rest of ZAI_MODELS unchanged."
   },
   "minimax": {
     "sources": [
-      "https://platform.minimax.io/docs/api-reference/api-overview",
+      "https://platform.minimax.io/docs/release-notes/models",
       "https://platform.minimax.io/docs/api-reference/text-chat-openai"
     ],
-    "lastChecked": "2026-08-20",
-    "notes": "2026-08-20: model lineup unchanged (M3 still newest, released Jun 2026). Added maxOutputTokens per-model from text-chat-openai's max_completion_tokens table: M3 524_288, M2.x family 204_800, M2-her 2_048. All other fields (ids, context windows, modalities, toolUse) re-verified accurate."
+    "lastChecked": "2026-08-29",
+    "notes": "2026-08-29: re-verified all 9 models, no changes. MiniMax H3 (2026-07-31) and Music-3.0 (2026-07-16) are video/music generation models, out of this catalog's text-chat scope — not added. M2-her isn't listed in text-chat-openai's model enum but is documented elsewhere (api-overview) with unchanged limits (65_536/2_048); kept as-is."
   },
   "deepseek": {
     "sources": [
       "https://api-docs.deepseek.com/quick_start/pricing/",
-      "https://api-docs.deepseek.com/updates/"
+      "https://api-docs.deepseek.com/updates/",
+      "https://api-docs.deepseek.com/guides/vision"
     ],
-    "lastChecked": "2026-08-20",
-    "notes": "2026-08-20: re-verified deepseek-v4-pro/deepseek-v4-flash (DeepSeek-V4-Pro-0813, DeepSeek-V4-Flash-0731) against the model comparison table — no changes, exact match."
+    "lastChecked": "2026-08-29",
+    "notes": "2026-08-29: re-verified deepseek-v4-pro/deepseek-v4-flash, unchanged. Added deepseek-v4-flash-vision-exp (experimental, released 2026-08-21, api-docs.deepseek.com/guides/vision) — same 1M context/384K output as v4-flash, text+image input/text output; tool-use/structured-outputs support not explicitly documented for this specific model so left unset."
   },
   "openrouter": {
     "sources": [
       "https://openrouter.ai/api/v1/models",
       "https://openrouter.ai/api/v1/models?output_modalities=embeddings"
     ],
-    "lastChecked": "2026-08-20",
+    "lastChecked": "2026-08-29",
     "notes": "Scripted (npm run fetch-openrouter-models), not hand-verified from vendor docs."
   },
   "novita-ai": {
     "sources": [
       "https://api.novita.ai/v3/openai/v1/models"
     ],
-    "lastChecked": "2026-08-20",
+    "lastChecked": "2026-08-29",
     "notes": "Scripted (npm run fetch-novita-models). Filters to status === 1, an inferred heuristic (not documented by Novita) for 'currently active' — re-verify if the ratio of status !== 1 entries changes drastically. No public embeddings-listing endpoint found; embeddingModels intentionally left unset."
   },
   "kimi": {
@@ -69,7 +73,7 @@
       "https://platform.kimi.ai/docs/guide/use-kimi-vision-model",
       "https://www.kimi.com/code/docs/en/kimi-code/models.html"
     ],
-    "lastChecked": "2026-08-21",
-    "notes": "2026-08-21: verified KIMI_MODELS (11 models) against the model-list and vision-guide pages — no changes; per-model image/video modality already matched docs exactly. Fixed KIMI_CODING_MODELS' k3-256k, which wrongly listed video input support — the Kimi Code docs explicitly say k3-256k is image-only (video not supported), unlike k3/kimi-for-coding/kimi-for-coding-highspeed which support both. kimi-k2.5 and the moonshot-v1 series are flagged for full sunset on 2026-08-31 but still serving as of this check, so kept per the deprecated-but-still-serving rule — re-verify after that date."
+    "lastChecked": "2026-08-29",
+    "notes": "2026-08-29: re-verified KIMI_MODELS (11 models) and KIMI_CODING_MODELS (4 models) — no changes, exact match. kimi-k2.5 and the moonshot-v1 series are still listed and serving (full sunset still slated for 2026-08-31, 2 days out), so kept per the deprecated-but-still-serving rule — re-verify after that date."
   }
 }

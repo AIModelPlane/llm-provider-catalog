@@ -218,6 +218,16 @@ export const NOVITA_MODELS: CatalogModel[] = [
     },
   },
   {
+    id: 'deepseek/deepseek-v4-flash-vision-exp',
+    label: 'DeepSeek V4 Flash Vision Exp',
+    capability: {
+      contextWindowTokens: 1048576,
+      maxOutputTokens: 393216,
+      modalities: { input: ['text', 'image'], output: ['text'] },
+      features: { toolUse: true, structuredOutputs: true },
+    },
+  },
+  {
     id: 'deepseek/deepseek-v4-pro',
     label: 'Deepseek V4 Pro',
     capability: {
@@ -297,24 +307,6 @@ export const NOVITA_MODELS: CatalogModel[] = [
     capability: { contextWindowTokens: 4096, maxOutputTokens: 3200 },
   },
   {
-    id: 'inclusionai/ling-2.6-1t',
-    label: 'Ling-2.6-1T',
-    capability: {
-      contextWindowTokens: 262144,
-      maxOutputTokens: 32768,
-      features: { toolUse: true, structuredOutputs: true },
-    },
-  },
-  {
-    id: 'inclusionai/ling-2.6-flash',
-    label: 'Ling-2.6-flash',
-    capability: {
-      contextWindowTokens: 262144,
-      maxOutputTokens: 32768,
-      features: { toolUse: true, structuredOutputs: true },
-    },
-  },
-  {
     id: 'inclusionai/ling-3.0-flash',
     label: 'Ling 3.0 Flash',
     capability: {
@@ -324,21 +316,12 @@ export const NOVITA_MODELS: CatalogModel[] = [
     },
   },
   {
-    id: 'inclusionai/ling-3.0-flash-fast',
-    label: 'Ling 3.0 Flash Fast',
+    id: 'inclusionai/ling-3.0-flash-fin',
+    label: 'Ling 3.0 Flash Fin',
     capability: {
       contextWindowTokens: 262144,
       maxOutputTokens: 32768,
       features: { toolUse: true },
-    },
-  },
-  {
-    id: 'inclusionai/ring-2.6-1t',
-    label: 'Ring-2.6-1T',
-    capability: {
-      contextWindowTokens: 262144,
-      maxOutputTokens: 65536,
-      features: { toolUse: true, structuredOutputs: true },
     },
   },
   {
@@ -856,6 +839,35 @@ export const NOVITA_MODELS: CatalogModel[] = [
     },
   },
   {
+    id: 'qwen/qwen3.8-2.4t-a95b',
+    label: 'Qwen3.8 2.4T A95B',
+    capability: {
+      contextWindowTokens: 1000000,
+      maxOutputTokens: 131072,
+      features: { toolUse: true, structuredOutputs: true },
+    },
+  },
+  {
+    id: 'qwen/qwen3.8-27b',
+    label: 'Qwen3.8 27B',
+    capability: {
+      contextWindowTokens: 1000000,
+      maxOutputTokens: 131072,
+      modalities: { input: ['text', 'image', 'video'], output: ['text'] },
+      features: { toolUse: true, structuredOutputs: true },
+    },
+  },
+  {
+    id: 'qwen/qwen3.8-flash',
+    label: 'Qwen3.8 Flash',
+    capability: {
+      contextWindowTokens: 1000000,
+      maxOutputTokens: 131072,
+      modalities: { input: ['text', 'image', 'video'], output: ['text'] },
+      features: { toolUse: true, structuredOutputs: true },
+    },
+  },
+  {
     id: 'qwen/qwen3.8-max',
     label: 'Qwen3.8 Max',
     capability: {
@@ -1055,6 +1067,16 @@ export const NOVITA_MODELS: CatalogModel[] = [
     capability: {
       contextWindowTokens: 1048576,
       maxOutputTokens: 131072,
+      features: { toolUse: true, structuredOutputs: true },
+    },
+  },
+  {
+    id: 'zai-org/glm-5.3-flash',
+    label: 'GLM 5.3 Flash',
+    capability: {
+      contextWindowTokens: 1048576,
+      maxOutputTokens: 131072,
+      modalities: { input: ['text', 'image', 'video'], output: ['text'] },
       features: { toolUse: true, structuredOutputs: true },
     },
   },
