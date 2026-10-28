@@ -1,6 +1,7 @@
 import { CatalogProvider, ProviderUsageResult } from '../types';
 import { NOVITA_MODELS } from './models';
 import { fetchOpenAiCompatModelIds } from '../shared/fetchModelIds';
+import { mapNovitaModelRow } from './modelRow';
 
 const entry: CatalogProvider = {
   id: 'novita-ai',
@@ -46,6 +47,7 @@ const entry: CatalogProvider = {
       entry.baseURLs.openai!,
       'Novita AI',
       apiKey,
+      mapNovitaModelRow,
     );
   },
 };

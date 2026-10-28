@@ -31,6 +31,7 @@ describe('fetchOpenAiCompatModelIds', () => {
       ok: true,
       provider: 'Example',
       modelIds: ['model-a', 'model-b'],
+      models: [{ id: 'model-a' }, { id: 'model-b' }],
     });
   });
 

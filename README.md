@@ -48,7 +48,7 @@ export interface CatalogProvider {
 }
 ```
 
-`fetchModels`/`fetchEmbeddingModels` are opt-in, per-provider live lookups against the provider's own model-list API — `fetchModels` returns just the model ids currently available to a key (most providers' `/models` endpoints don't expose capability data), while `fetchEmbeddingModels` returns full `CatalogEmbeddingModel` objects where the provider's endpoint publishes capability info (currently only OpenRouter).
+`fetchModels`/`fetchEmbeddingModels` are opt-in, per-provider live lookups against the provider's own model-list API — `fetchModels` returns the model ids currently available to a key, plus a parallel `models: DiscoveredModel[]` carrying whatever label/capability data the endpoint publishes (OpenRouter, Novita AI, Google, and Anthropic publish context window and max output tokens; OpenAI publishes none — an unset field means "not published", so prefer the curated `models` list for any model it covers), while `fetchEmbeddingModels` returns full `CatalogEmbeddingModel` objects where the provider's endpoint publishes capability info (currently only OpenRouter).
 
 `ModelCapability` also carries optional multimodal info: `modalities: { input: Modality[]; output: Modality[] }` (`Modality` is `'text' | 'image' | 'audio' | 'video' | 'file'`), omitted entirely for plain text-in/text-out models, and `features: { toolUse?, structuredOutputs?, toolUseWithVision?, codeExecution?, webSearch? }` for well-known cross-vendor capability flags. Both are populated from live data for OpenRouter/Novita AI (their `/models` APIs expose this directly); for other providers they're filled in only when the vendor's own docs explicitly confirm it — an unset field means "unverified," not "unsupported."
 
