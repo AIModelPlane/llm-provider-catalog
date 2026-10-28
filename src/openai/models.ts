@@ -2,6 +2,86 @@ import { CatalogModel } from '../types';
 
 export const OPENAI_MODELS: CatalogModel[] = [
   {
+    id: 'gpt-6-astra',
+    label: 'GPT-6 Astra',
+    capability: {
+      contextWindowTokens: 1_050_000,
+      maxOutputTokens: 128_000,
+      tokenizer: 'openai',
+      modalities: { input: ['text', 'image'], output: ['text'] },
+      features: {
+        toolUse: true,
+        structuredOutputs: true,
+        codeExecution: true,
+        webSearch: true,
+      },
+    },
+  },
+  {
+    id: 'gpt-6.1-sol',
+    label: 'GPT-6.1 Sol',
+    capability: {
+      contextWindowTokens: 1_050_000,
+      maxOutputTokens: 128_000,
+      tokenizer: 'openai',
+      modalities: { input: ['text', 'image'], output: ['text'] },
+      features: {
+        toolUse: true,
+        structuredOutputs: true,
+        codeExecution: true,
+        webSearch: true,
+      },
+    },
+  },
+  {
+    id: 'gpt-6.1-terra',
+    label: 'GPT-6.1 Terra',
+    capability: {
+      contextWindowTokens: 1_050_000,
+      maxOutputTokens: 128_000,
+      tokenizer: 'openai',
+      modalities: { input: ['text', 'image'], output: ['text'] },
+      features: {
+        toolUse: true,
+        structuredOutputs: true,
+        codeExecution: true,
+        webSearch: true,
+      },
+    },
+  },
+  {
+    id: 'gpt-6-luna',
+    label: 'GPT-6 Luna',
+    capability: {
+      contextWindowTokens: 1_050_000,
+      maxOutputTokens: 128_000,
+      tokenizer: 'openai',
+      modalities: { input: ['text', 'image'], output: ['text'] },
+      features: {
+        toolUse: true,
+        structuredOutputs: true,
+        codeExecution: true,
+        webSearch: true,
+      },
+    },
+  },
+  {
+    id: 'gpt-6-sol',
+    label: 'GPT-6 Sol',
+    capability: {
+      contextWindowTokens: 1_050_000,
+      maxOutputTokens: 128_000,
+      tokenizer: 'openai',
+      modalities: { input: ['text', 'image'], output: ['text'] },
+      features: {
+        toolUse: true,
+        structuredOutputs: true,
+        codeExecution: true,
+        webSearch: true,
+      },
+    },
+  },
+  {
     id: 'gpt-5.6-sol',
     label: 'GPT-5.6 Sol',
     capability: {

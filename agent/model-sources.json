@@ -2,45 +2,51 @@
   "openai": {
     "sources": [
       "https://developers.openai.com/api/docs/models",
+      "https://developers.openai.com/api/docs/models/all",
       "https://developers.openai.com/api/docs/deprecations"
     ],
-    "lastChecked": "2026-08-29",
-    "notes": "2026-08-29: re-verified all 7 models; no changes. Models overview page only surfaces GPT-5.6 Sol/Terra/Luna + specialized models in its default view, but gpt-5.5/5.4/5.4-mini/5.4-nano each still have live doc pages with unchanged context/output limits, and none appear on the deprecations page. No image-output modality (models are text-out only, confirmed against an earlier mis-summary). No new GA model since gpt-5.6-cyber/Daybreak (2026-08-10, already excluded as enrollment-gated); Astra still teased, no public id."
+    "lastChecked": "2026-10-29",
+    "notes": "2026-10-29: added gpt-6-astra, gpt-6.1-sol, gpt-6.1-terra, gpt-6-luna (flagships) and gpt-6-sol (superseded by 6.1 Sol, not deprecated) — limits/features from each model's own page. gpt-5.4-nano deprecated (shutdown 2027-04-01) but still serving, kept last. No gpt-6-terra exists on vendor docs; *-pro variants still out of scope."
   },
   "anthropic": {
     "sources": [
       "https://platform.claude.com/docs/en/about-claude/models/overview",
-      "https://platform.claude.com/docs/en/build-with-claude/context-windows"
+      "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+      "https://platform.claude.com/docs/en/build-with-claude/pdf-support"
     ],
-    "lastChecked": "2026-08-29",
-    "notes": "2026-08-29: re-verified all 6 models against the models-overview comparison table — no changes, exact match on ids/context/output. No new model since Claude Opus 5 (2026-07-24)."
+    "lastChecked": "2026-10-29",
+    "notes": "2026-10-29: added claude-fable-5-1, claude-opus-5-5, claude-sonnet-5-5, claude-haiku-5-5 (all 1M/128K); 'file' input + structured outputs/code execution confirmed via supportedModels lists on pdf-support, structured-outputs and code-execution-tool pages. All 6 prior models still Active. Claude Mythos 5.1 not added (verification-program gated)."
   },
   "google": {
     "sources": [
       "https://ai.google.dev/gemini-api/docs/models",
+      "https://ai.google.dev/gemini-api/docs/models/gemini-4-argon",
+      "https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash",
       "https://ai.google.dev/gemini-api/docs/deprecations"
     ],
-    "lastChecked": "2026-08-29",
-    "notes": "2026-08-29: re-verified all 10 models — no changes, none deprecated. Deliberately not added: gemini-omni-1.1-flash, gemini-3.1-flash-image, gemini-3-pro-image, gemini-3.5-transcribe — these are image/video/speech-generation models outside this catalog's chat/text-output scope (every existing GOOGLE_MODELS entry has output: ['text'])."
+    "lastChecked": "2026-10-29",
+    "notes": "2026-10-29: added gemini-4-argon and gemini-3.8-flash (per-model pages). gemini-4-argon maxOutputTokens is the 65,536 synchronous limit; up to 1M needs long decode via background Interactions API (ai.google.dev/gemini-api/docs/long-decode). gemini-3.7-flash/gemini-3.5-flash are deprecated but not shut down (API auto-routes to 3.8/3.6 Flash), kept. Live/TTS/image/music models still out of scope."
   },
   "zhipu": {
     "sources": [
-      "https://docs.z.ai/guides/llm/glm-5.3",
-      "https://docs.z.ai/release-notes/new-released",
+      "https://docs.z.ai/guides/overview/pricing",
       "https://docs.z.ai/guides/vlm/glm-5.3-flash",
-      "https://docs.z.ai/devpack/faq",
-      "https://docs.z.ai/devpack/overview"
+      "https://docs.z.ai/release-notes/new-released",
+      "https://docs.z.ai/devpack/overview",
+      "https://docs.bigmodel.cn/cn/guide/start/model-overview"
     ],
-    "lastChecked": "2026-08-29",
-    "notes": "2026-08-29: added glm-5.3-flash to ZAI_MODELS (released 2026-08-26, docs.z.ai/guides/vlm/glm-5.3-flash — native multimodal, 1M context/128K output, text+image+video+file input). GLM_CODING_MODELS changed again: devpack/faq and devpack/overview now state the Coding Plan serves only GLM-5.3 and GLM-5.3-Flash — GLM-5-Turbo is gone entirely and GLM-4.7 now auto-routes to GLM-5.3-Flash (previously GLM-5-Turbo/GLM-4.7 were directly callable as of 2026-08-20); removed both, added glm-5.3-flash. Rest of ZAI_MODELS unchanged."
+    "lastChecked": "2026-10-29",
+    "notes": "2026-10-29: added glm-5.3-flashx to ZAI_MODELS (same guide page as glm-5.3-flash: 1M/128K, text+image+video+file). Not added: glm-5.3-flashx-legal (enterprise application only), glm-5.3-prime (no vendor doc), glm-5v-turbo/glm-4.6v (vision line never in scope). bigmodel.cn model-overview still lists glm-5-turbo and glm-4-long, so kept. Coding Plan still only GLM-5.3 + GLM-5.3-Flash (FlashX not on plan)."
   },
   "minimax": {
     "sources": [
-      "https://platform.minimax.io/docs/release-notes/models",
-      "https://platform.minimax.io/docs/api-reference/text-chat-openai"
+      "https://platform.minimax.io/docs/faq/models",
+      "https://platform.minimax.io/docs/guides/text-generation",
+      "https://platform.minimax.io/docs/api-reference/text-chat-openai",
+      "https://platform.minimaxi.com/docs/faq/models"
     ],
-    "lastChecked": "2026-08-29",
-    "notes": "2026-08-29: re-verified all 9 models, no changes. MiniMax H3 (2026-07-31) and Music-3.0 (2026-07-16) are video/music generation models, out of this catalog's text-chat scope — not added. M2-her isn't listed in text-chat-openai's model enum but is documented elsewhere (api-overview) with unchanged limits (65_536/2_048); kept as-is."
+    "lastChecked": "2026-10-29",
+    "notes": "2026-10-29: added MiniMax-M3.1-Flash (2026-10-19; 1M ctx, max_completion_tokens max 524288, text+image+video). Removed M2.1, M2.1-highspeed, M2, M2-her (faq/models 'Retired Models'). M2.5/M2.7 (+highspeed) also listed as retired there, but the same page's notice says PAYG existing users keep access until 2026-11-18 and plan requests route to M3.1 Flash — kept for now; remove after 2026-11-18."
   },
   "deepseek": {
     "sources": [
@@ -48,32 +54,34 @@
       "https://api-docs.deepseek.com/updates/",
       "https://api-docs.deepseek.com/guides/vision"
     ],
-    "lastChecked": "2026-08-29",
-    "notes": "2026-08-29: re-verified deepseek-v4-pro/deepseek-v4-flash, unchanged. Added deepseek-v4-flash-vision-exp (experimental, released 2026-08-21, api-docs.deepseek.com/guides/vision) — same 1M context/384K output as v4-flash, text+image input/text output; tool-use/structured-outputs support not explicitly documented for this specific model so left unset."
+    "lastChecked": "2026-10-29",
+    "notes": "2026-10-29: added deepseek-flash (V4.1 Flash, now DeepSeek-V4.1-Flash-1017; 1M/384K, JSON output + tool calls + vision per pricing table). OpenRouter's deepseek-v4.1-flash is NOT a vendor id. V4 Flash / V4 Flash Vision Exp are retired but their ids are 'temporarily routed' to V4.1 Flash, so kept as lowest-priority entries — remove once DeepSeek drops the compat routing. deepseek-v4-pro unchanged."
   },
   "openrouter": {
     "sources": [
       "https://openrouter.ai/api/v1/models",
       "https://openrouter.ai/api/v1/models?output_modalities=embeddings"
     ],
-    "lastChecked": "2026-08-29",
+    "lastChecked": "2026-10-29",
     "notes": "Scripted (npm run fetch-openrouter-models), not hand-verified from vendor docs."
   },
   "novita-ai": {
     "sources": [
       "https://api.novita.ai/v3/openai/v1/models"
     ],
-    "lastChecked": "2026-08-29",
+    "lastChecked": "2026-10-29",
     "notes": "Scripted (npm run fetch-novita-models). Filters to status === 1, an inferred heuristic (not documented by Novita) for 'currently active' — re-verify if the ratio of status !== 1 entries changes drastically. No public embeddings-listing endpoint found; embeddingModels intentionally left unset."
   },
   "kimi": {
     "sources": [
       "https://platform.kimi.ai/docs/models",
-      "https://platform.kimi.ai/docs/pricing/chat-k3",
+      "https://platform.kimi.com/docs/models",
+      "https://platform.kimi.ai/docs/api/models-overview",
+      "https://platform.kimi.ai/docs/guide/kimi-k3-1-pro-quickstart",
       "https://platform.kimi.ai/docs/guide/use-kimi-vision-model",
       "https://www.kimi.com/code/docs/en/kimi-code/models.html"
     ],
-    "lastChecked": "2026-08-29",
-    "notes": "2026-08-29: re-verified KIMI_MODELS (11 models) and KIMI_CODING_MODELS (4 models) — no changes, exact match. kimi-k2.5 and the moonshot-v1 series are still listed and serving (full sunset still slated for 2026-08-31, 2 days out), so kept per the deprecated-but-still-serving rule — re-verify after that date."
+    "lastChecked": "2026-10-29",
+    "notes": "2026-10-29: added kimi-k3.1-pro/-highspeed; removed kimi-k2.5 + moonshot-v1 series (CN model list: '已于 2026 年 8 月 31 日下线'). kimi-k3.1-pro-highspeed modalities/structuredOutputs left unset — vision guide and structured-output examples only name kimi-k3.1-pro. Coding: added k3.1-pro/k3.1-pro-highspeed; kimi-for-coding now maps to K2.8 Preview with 1M context. K2 series (k2.6/k2.7-code) closed to new users 2026-10-31, retiring end of Dec 2026."
   }
 }

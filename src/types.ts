@@ -95,17 +95,31 @@ export interface ProviderUsageResult {
   error?: string;
 }
 
-/** Result of a live query against a provider's own model-list endpoint.
- *  Deliberately just ids, not full CatalogModel objects — most providers'
- *  `/models` endpoints don't expose capability data (context window, max
- *  output tokens, etc.), so this is an availability/entitlement check
- *  ("which model ids does this key currently have access to"), not a
- *  capability source. Cross-reference against `CatalogProvider.models` for
- *  known capability info. */
+/** One model from a live model-list query, carrying only what the
+ *  provider's endpoint actually published for it. Every capability field is
+ *  optional — contextWindowTokens included, unlike CatalogModel — because
+ *  many `/models` endpoints publish little or none of it; an unset field
+ *  means "not published", never "unsupported". */
+export interface DiscoveredModel {
+  id: string;
+  label?: string;
+  capability?: Partial<ModelCapability>;
+}
+
+/** Result of a live query against a provider's own model-list endpoint —
+ *  an availability/entitlement check ("which model ids does this key
+ *  currently have access to"). `models` carries the same entries as
+ *  `modelIds`, in the same order, plus whatever label/capability data the
+ *  endpoint publishes (e.g. OpenRouter/Novita AI/Google/Anthropic expose
+ *  context window and max output tokens; OpenAI exposes none). Prefer
+ *  `CatalogProvider.models` for a model it lists — that data is curated;
+ *  this is only a best-effort fill-in for models the catalog doesn't know
+ *  yet. */
 export interface FetchModelsResult {
   ok: boolean;
   provider: string;
   modelIds?: string[];
+  models?: DiscoveredModel[];
   error?: string;
 }
 

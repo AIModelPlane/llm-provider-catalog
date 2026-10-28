@@ -214,6 +214,7 @@ describe('catalog fetchModels', () => {
       ok: true,
       provider: 'OpenAI',
       modelIds: ['gpt-5.6-sol', 'gpt-5.5'],
+      models: [{ id: 'gpt-5.6-sol' }, { id: 'gpt-5.5' }],
     });
   });
 
@@ -227,7 +228,7 @@ describe('catalog fetchModels', () => {
     const result = await getCatalogProvider('anthropic')!.fetchModels!('key-2');
 
     expect(fetchSpy).toHaveBeenCalledWith(
-      'https://api.anthropic.com/v1/models',
+      'https://api.anthropic.com/v1/models?limit=1000',
       {
         headers: {
           'x-api-key': 'key-2',
@@ -240,6 +241,7 @@ describe('catalog fetchModels', () => {
       ok: true,
       provider: 'Anthropic',
       modelIds: ['claude-opus-5'],
+      models: [{ id: 'claude-opus-5' }],
     });
   });
 
@@ -265,13 +267,14 @@ describe('catalog fetchModels', () => {
     const result = await getCatalogProvider('google')!.fetchModels!('key-3');
 
     expect(fetchSpy).toHaveBeenCalledWith(
-      'https://generativelanguage.googleapis.com/v1beta/models?key=key-3',
+      'https://generativelanguage.googleapis.com/v1beta/models?pageSize=1000&key=key-3',
       { headers: { Accept: 'application/json' } },
     );
     expect(result).toEqual({
       ok: true,
       provider: 'Google (Gemini)',
       modelIds: ['gemini-3.5-flash'],
+      models: [{ id: 'gemini-3.5-flash' }],
     });
   });
 
@@ -291,6 +294,7 @@ describe('catalog fetchModels', () => {
       ok: true,
       provider: 'Kimi (International)',
       modelIds: ['kimi-k3'],
+      models: [{ id: 'kimi-k3' }],
     });
   });
 
@@ -316,6 +320,7 @@ describe('catalog fetchModels', () => {
       ok: true,
       provider: 'OpenRouter',
       modelIds: ['anthropic/claude-opus-5'],
+      models: [{ id: 'anthropic/claude-opus-5' }],
     });
   });
 });

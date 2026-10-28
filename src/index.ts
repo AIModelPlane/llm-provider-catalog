@@ -30,6 +30,7 @@ export type {
   EmbeddingModelCapability,
   ProviderUsageResult,
   FetchModelsResult,
+  DiscoveredModel,
   FetchEmbeddingModelsResult,
   QuotaWindow,
   ReasoningInput,

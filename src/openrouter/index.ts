@@ -6,6 +6,7 @@ import {
 import { openrouterReasoningMapping } from './reasoning';
 import { OPENROUTER_MODELS, OPENROUTER_EMBEDDING_MODELS } from './models';
 import { fetchOpenAiCompatModelIds } from '../shared/fetchModelIds';
+import { mapOpenRouterModelRow } from './modelRow';
 
 const entry: CatalogProvider = {
   id: 'openrouter',
@@ -49,6 +50,7 @@ const entry: CatalogProvider = {
       entry.baseURLs.openai!,
       'OpenRouter',
       apiKey,
+      mapOpenRouterModelRow,
     );
   },
   async fetchEmbeddingModels(): Promise<FetchEmbeddingModelsResult> {

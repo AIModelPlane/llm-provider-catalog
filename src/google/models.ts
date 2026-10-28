@@ -2,6 +2,42 @@ import { CatalogModel } from '../types';
 
 export const GOOGLE_MODELS: CatalogModel[] = [
   {
+    id: 'gemini-4-argon',
+    label: 'Gemini 4 Argon',
+    capability: {
+      contextWindowTokens: 1_048_576,
+      maxOutputTokens: 65_536,
+      modalities: {
+        input: ['text', 'image', 'audio', 'video', 'file'],
+        output: ['text'],
+      },
+      features: {
+        toolUse: true,
+        structuredOutputs: true,
+        codeExecution: true,
+        webSearch: true,
+      },
+    },
+  },
+  {
+    id: 'gemini-3.8-flash',
+    label: 'Gemini 3.8 Flash',
+    capability: {
+      contextWindowTokens: 1_048_576,
+      maxOutputTokens: 65_536,
+      modalities: {
+        input: ['text', 'image', 'audio', 'video', 'file'],
+        output: ['text'],
+      },
+      features: {
+        toolUse: true,
+        structuredOutputs: true,
+        codeExecution: true,
+        webSearch: true,
+      },
+    },
+  },
+  {
     id: 'gemini-3.7-flash',
     label: 'Gemini 3.7 Flash',
     capability: {
