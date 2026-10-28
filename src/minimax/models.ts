@@ -8,6 +8,16 @@ import { CatalogModel } from '../types';
 // callers must not assume it took effect for these models.
 export const MINIMAX_MODELS: CatalogModel[] = [
   {
+    id: 'MiniMax-M3.1-Flash',
+    label: 'MiniMax M3.1 Flash',
+    capability: {
+      contextWindowTokens: 1_000_000,
+      maxOutputTokens: 524_288,
+      modalities: { input: ['text', 'image', 'video'], output: ['text'] },
+      features: { toolUse: true },
+    },
+  },
+  {
     id: 'MiniMax-M3',
     label: 'MiniMax M3',
     capability: {
@@ -52,37 +62,5 @@ export const MINIMAX_MODELS: CatalogModel[] = [
       maxOutputTokens: 204_800,
       features: { toolUse: true },
     },
-  },
-  {
-    id: 'MiniMax-M2.1',
-    label: 'MiniMax M2.1',
-    capability: {
-      contextWindowTokens: 204_800,
-      maxOutputTokens: 204_800,
-      features: { toolUse: true },
-    },
-  },
-  {
-    id: 'MiniMax-M2.1-highspeed',
-    label: 'MiniMax M2.1 Highspeed',
-    capability: {
-      contextWindowTokens: 204_800,
-      maxOutputTokens: 204_800,
-      features: { toolUse: true },
-    },
-  },
-  {
-    id: 'MiniMax-M2',
-    label: 'MiniMax M2',
-    capability: {
-      contextWindowTokens: 204_800,
-      maxOutputTokens: 204_800,
-      features: { toolUse: true },
-    },
-  },
-  {
-    id: 'M2-her',
-    label: 'M2-her',
-    capability: { contextWindowTokens: 65_536, maxOutputTokens: 2_048 },
   },
 ];

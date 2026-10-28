@@ -2,6 +2,70 @@ import { CatalogModel } from '../types';
 
 export const ANTHROPIC_MODELS: CatalogModel[] = [
   {
+    id: 'claude-fable-5-1',
+    label: 'Claude Fable 5.1',
+    capability: {
+      contextWindowTokens: 1_000_000,
+      maxOutputTokens: 128_000,
+      tokenizer: 'anthropic',
+      supportsCountTokens: true,
+      modalities: { input: ['text', 'image', 'file'], output: ['text'] },
+      features: {
+        toolUse: true,
+        structuredOutputs: true,
+        codeExecution: true,
+      },
+    },
+  },
+  {
+    id: 'claude-opus-5-5',
+    label: 'Claude Opus 5.5',
+    capability: {
+      contextWindowTokens: 1_000_000,
+      maxOutputTokens: 128_000,
+      tokenizer: 'anthropic',
+      supportsCountTokens: true,
+      modalities: { input: ['text', 'image', 'file'], output: ['text'] },
+      features: {
+        toolUse: true,
+        structuredOutputs: true,
+        codeExecution: true,
+      },
+    },
+  },
+  {
+    id: 'claude-sonnet-5-5',
+    label: 'Claude Sonnet 5.5',
+    capability: {
+      contextWindowTokens: 1_000_000,
+      maxOutputTokens: 128_000,
+      tokenizer: 'anthropic',
+      supportsCountTokens: true,
+      modalities: { input: ['text', 'image', 'file'], output: ['text'] },
+      features: {
+        toolUse: true,
+        structuredOutputs: true,
+        codeExecution: true,
+      },
+    },
+  },
+  {
+    id: 'claude-haiku-5-5',
+    label: 'Claude Haiku 5.5',
+    capability: {
+      contextWindowTokens: 1_000_000,
+      maxOutputTokens: 128_000,
+      tokenizer: 'anthropic',
+      supportsCountTokens: true,
+      modalities: { input: ['text', 'image', 'file'], output: ['text'] },
+      features: {
+        toolUse: true,
+        structuredOutputs: true,
+        codeExecution: true,
+      },
+    },
+  },
+  {
     id: 'claude-fable-5',
     label: 'Claude Fable 5',
     capability: {

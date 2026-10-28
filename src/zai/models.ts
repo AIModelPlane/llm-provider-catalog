@@ -25,6 +25,19 @@ export const ZAI_MODELS: CatalogModel[] = [
     },
   },
   {
+    id: 'glm-5.3-flashx',
+    label: 'GLM-5.3-FlashX',
+    capability: {
+      contextWindowTokens: 1_000_000,
+      maxOutputTokens: 131_072,
+      modalities: {
+        input: ['text', 'image', 'video', 'file'],
+        output: ['text'],
+      },
+      features: { toolUse: true, structuredOutputs: true },
+    },
+  },
+  {
     id: 'glm-5.2',
     label: 'GLM-5.2',
     capability: {

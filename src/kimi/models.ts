@@ -6,6 +6,23 @@ import { CatalogModel } from '../types';
 // (image/video input support).
 export const KIMI_MODELS: CatalogModel[] = [
   {
+    id: 'kimi-k3.1-pro',
+    label: 'Kimi K3.1 Pro',
+    capability: {
+      contextWindowTokens: 1_048_576,
+      modalities: { input: ['text', 'image', 'video'], output: ['text'] },
+      features: { toolUse: true, structuredOutputs: true },
+    },
+  },
+  {
+    id: 'kimi-k3.1-pro-highspeed',
+    label: 'Kimi K3.1 Pro Highspeed',
+    capability: {
+      contextWindowTokens: 1_048_576,
+      features: { toolUse: true },
+    },
+  },
+  {
     id: 'kimi-k3',
     label: 'Kimi K3',
     capability: {
@@ -41,60 +58,30 @@ export const KIMI_MODELS: CatalogModel[] = [
       features: { toolUse: true, structuredOutputs: true },
     },
   },
-  {
-    id: 'kimi-k2.5',
-    label: 'Kimi K2.5',
-    capability: {
-      contextWindowTokens: 262_144,
-      modalities: { input: ['text', 'image'], output: ['text'] },
-      features: { toolUse: true, structuredOutputs: true },
-    },
-  },
-  {
-    id: 'moonshot-v1-8k',
-    label: 'Moonshot V1 8k',
-    capability: { contextWindowTokens: 8_192 },
-  },
-  {
-    id: 'moonshot-v1-32k',
-    label: 'Moonshot V1 32k',
-    capability: { contextWindowTokens: 32_768 },
-  },
-  {
-    id: 'moonshot-v1-128k',
-    label: 'Moonshot V1 128k',
-    capability: { contextWindowTokens: 131_072 },
-  },
-  {
-    id: 'moonshot-v1-8k-vision-preview',
-    label: 'Moonshot V1 8k Vision Preview',
-    capability: {
-      contextWindowTokens: 8_192,
-      modalities: { input: ['text', 'image'], output: ['text'] },
-    },
-  },
-  {
-    id: 'moonshot-v1-32k-vision-preview',
-    label: 'Moonshot V1 32k Vision Preview',
-    capability: {
-      contextWindowTokens: 32_768,
-      modalities: { input: ['text', 'image'], output: ['text'] },
-    },
-  },
-  {
-    id: 'moonshot-v1-128k-vision-preview',
-    label: 'Moonshot V1 128k Vision Preview',
-    capability: {
-      contextWindowTokens: 131_072,
-      modalities: { input: ['text', 'image'], output: ['text'] },
-    },
-  },
 ];
 
 // Kimi Code (coding plan) models — distinct aliases from the pay-as-you-go
 // model ids above; the Kimi Code endpoint rejects the regular model ids.
 // Source: https://www.kimi.com/code/docs/en/kimi-code/models.html
 export const KIMI_CODING_MODELS: CatalogModel[] = [
+  {
+    id: 'k3.1-pro',
+    label: 'Kimi K3.1 Pro (Coding Plan)',
+    capability: {
+      contextWindowTokens: 1_048_576,
+      modalities: { input: ['text', 'image', 'video'], output: ['text'] },
+      features: { toolUse: true },
+    },
+  },
+  {
+    id: 'k3.1-pro-highspeed',
+    label: 'Kimi K3.1 Pro Highspeed (Coding Plan)',
+    capability: {
+      contextWindowTokens: 1_048_576,
+      modalities: { input: ['text', 'image', 'video'], output: ['text'] },
+      features: { toolUse: true },
+    },
+  },
   {
     id: 'k3',
     label: 'Kimi K3 (Coding Plan)',
@@ -115,9 +102,9 @@ export const KIMI_CODING_MODELS: CatalogModel[] = [
   },
   {
     id: 'kimi-for-coding',
-    label: 'Kimi for Coding (K2.7 Code)',
+    label: 'Kimi for Coding (K2.8 Preview)',
     capability: {
-      contextWindowTokens: 262_144,
+      contextWindowTokens: 1_048_576,
       modalities: { input: ['text', 'image', 'video'], output: ['text'] },
       features: { toolUse: true },
     },

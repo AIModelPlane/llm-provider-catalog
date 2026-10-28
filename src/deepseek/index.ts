@@ -12,6 +12,16 @@ const DEEPSEEK_MODELS: CatalogModel[] = [
     },
   },
   {
+    id: 'deepseek-flash',
+    label: 'DeepSeek V4.1 Flash',
+    capability: {
+      contextWindowTokens: 1_000_000,
+      maxOutputTokens: 384_000,
+      modalities: { input: ['text', 'image'], output: ['text'] },
+      features: { toolUse: true, structuredOutputs: true },
+    },
+  },
+  {
     id: 'deepseek-v4-flash',
     label: 'DeepSeek V4 Flash',
     capability: {
